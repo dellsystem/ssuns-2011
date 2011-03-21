@@ -4393,6 +4393,7 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 		'RECORD_USERS'					=> $l_online_record,
 		'PRIVATE_MESSAGE_INFO'			=> $l_privmsgs_text,
 		'PRIVATE_MESSAGE_INFO_UNREAD'	=> $l_privmsgs_text_unread,
+		'USERNAME'						=> $user->data['username'],
 
 		'S_USER_NEW_PRIVMSG'			=> $user->data['user_new_privmsg'],
 		'S_USER_UNREAD_PRIVMSG'			=> $user->data['user_unread_privmsg'],
@@ -4432,6 +4433,8 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 		'U_PRIVACY'				=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=privacy'),
 		'U_RESTORE_PERMISSIONS'	=> ($user->data['user_perm_from'] && $auth->acl_get('a_switchperm')) ? append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=restore_perm') : '',
 		'U_FEED'				=> generate_board_url() . "/feed.$phpEx",
+		'U_FORGOT_PASS'			=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=sendpassword'),
+		'U_VIEW_PROFILE'		=> append_sid("{$phpbb_root_path}memberlist.$phpEx", 'mode=viewprofile&amp;u=' + $user->data['user_id']),
 
 		'S_USER_LOGGED_IN'		=> ($user->data['user_id'] != ANONYMOUS) ? true : false,
 		'S_AUTOLOGIN_ENABLED'	=> ($config['allow_autologin']) ? true : false,

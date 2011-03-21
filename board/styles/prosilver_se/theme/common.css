@@ -209,7 +209,7 @@ ul.dropdown li, ul.dropdown a {
     float: left;
     width: 160px;
     height: 40px;
-    color: #fff;
+    color: #FFF;
 }
     
 /* First level menubar hover */
@@ -217,7 +217,7 @@ ul.dropdown li.hover, ul.dropdown li:hover, ul.dropdown a:hover, ul.dropdown a.h
     position: relative;
     z-index: 599;
     cursor: pointer;
-    background-color: #FFF;
+    background-color: #909FAA;
     color: #FF0000;
     text-decoration: none;
 }
@@ -245,8 +245,8 @@ ul.dropdown li:hover > ul {
 }
 
 ul.dropdown li.hover, ul.dropdown a:hover, ul.dropdown a:link, ul.dropdown li:hover {
-	background-color: #FFF;
-    color: #ff0000;
+	/*background-color: #FFF;*/
+    /*color: #ff0000;*/
 }
 
 
@@ -259,8 +259,8 @@ ul.dropdown ul {
 /* Styling the dropdown menu components */
 ul.dropdown ul li, ul.dropdown ul li a {
     font-weight: normal;
-    background: #CCC;
-    color: #000;
+    background: #77838C;
+    color: #FFF;
     font-size: 0.9em;    
 }
 

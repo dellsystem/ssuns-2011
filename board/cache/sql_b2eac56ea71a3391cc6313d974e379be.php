@@ -1,8 +1,8 @@
 <?php exit; ?>
-1299361753
+1300684667
 SELECT s.style_id, c.theme_id, c.theme_data, c.theme_path, c.theme_name, c.theme_mtime, i.*, t.template_path FROM phpbb_styles s, phpbb_styles_template t, phpbb_styles_theme c, phpbb_styles_imageset i WHERE s.style_id = 2 AND t.template_id = s.template_id AND c.theme_id = s.theme_id AND i.imageset_id = s.imageset_id
-73169
-a:1:{i:0;a:11:{s:8:"style_id";s:1:"2";s:8:"theme_id";s:1:"2";s:10:"theme_data";s:72730:"/*  phpBB 3.0 Style Sheet
+75792
+a:1:{i:0;a:11:{s:8:"style_id";s:1:"2";s:8:"theme_id";s:1:"2";s:10:"theme_data";s:75353:"/*  phpBB 3.0 Style Sheet
     --------------------------------------------------------------
 	Style name:		proSilver
 	Based on style:	proSilver (this is the default phpBB 3 style)
@@ -114,6 +114,17 @@ p.right {
 	text-align: right;
 }
 
+.pagetitle {
+	font-family: serif;
+	font-size: 2.5em;
+	color: #000;
+}
+
+.pagecontent {
+/*	font-family: sans-serif;*/
+	font-size: 1.3em;
+}
+
 /* Border
 ---------------------------------------- */
 .border-left { 
@@ -180,11 +191,128 @@ p.right {
 	background: url("{T_THEME_PATH}/images/userbar_bg.png") no-repeat;
 }
 
+#userbar-contents {
+    width: 350px;
+    text-align: right;
+	font-size: 1.3em;
+}
+
 #menubar {
 	background: url("{T_THEME_PATH}/images/menubar_bg.png") repeat-x 0 100%;
 	height: 40px;
 	width: 100%;
+	font-size: 1.7em;
+	color: #FFF;
 }
+
+/* BEGIN DROPDOWN MENU STUFF*/
+/* from http://lwis.net/free-css-drop-down-menu/ GPL fuck yeah*/
+ul.dropdown, ul.dropdown li, ul.dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.dropdown {
+    z-index: 597;
+    width: 960px;
+	margin: 0 auto;
+}
+
+/* First level menubar main */
+ul.dropdown li, ul.dropdown a {
+    float: left;
+    width: 160px;
+    height: 40px;
+    color: #FFF;
+}
+    
+/* First level menubar hover */
+ul.dropdown li.hover, ul.dropdown li:hover, ul.dropdown a:hover, ul.dropdown a.hover {
+    position: relative;
+    z-index: 599;
+    cursor: pointer;
+    background-color: #909FAA;
+    color: #FF0000;
+    text-decoration: none;
+}
+
+/* First level dropdown main */
+ul.dropdown ul {
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 598;
+    width: 100%;
+}
+
+ul.dropdown ul li {
+    float: none;
+}
+
+ul.dropdown ul ul {
+    left: 99%;
+}
+
+ul.dropdown li:hover > ul {
+    visibility: visible;
+}
+
+ul.dropdown li.hover, ul.dropdown a:hover, ul.dropdown a:link, ul.dropdown li:hover {
+	/*background-color: #FFF;*/
+    /*color: #ff0000;*/
+}
+
+
+
+/* -- level mark -- */
+ul.dropdown ul {
+    width: 160px;
+}
+
+/* Styling the dropdown menu components */
+ul.dropdown ul li, ul.dropdown ul li a {
+    font-weight: normal;
+    background: #77838C;
+    color: #FFF;
+    font-size: 0.9em;    
+}
+
+
+
+/*-------------------------------------------------/
+ * @section		Support Class `dir`
+ * @level sep	ul, .class
+ */
+
+
+/* -- Components override -- */
+/*
+ul.dropdown-horizontal ul *.dir {
+ padding-right: 15px;
+ background-image: url(images/nav-arrow-right.png);
+ background-position: 100% 50%;
+ background-repeat: no-repeat;
+}
+
+ul.dropdown-upward *.dir {
+ background-image: url(images/nav-arrow-top.png);
+}
+
+ul.dropdown-vertical *.dir,
+ul.dropdown-upward ul *.dir {
+ background-image: url(images/nav-arrow-right.png);
+}
+
+ul.dropdown-vertical-rtl *.dir {
+ padding-right: 10px;
+ padding-left: 15px;
+ background-image: url(images/nav-arrow-left.png);
+ background-position: 0 50%;
+}*/
+
+
 
 #slideshow {
 	margin: 0 auto;
@@ -192,27 +320,41 @@ p.right {
 }
 
 #wrap {
-	padding: 0 20px;
 	min-width: 650px;
-	width: 960px;
+	width: 1000px;
 	margin: 0 auto;
+	background-color: #FFFFFF;
+	background: url("{T_THEME_PATH}/images/content_bg.png") repeat-y 0 100%;
+}
+
+#content {
+	width: 960px; /* aw yeah */
+	margin: 0 auto;
+	background: url("{T_THEME_PATH}/images/content_header.png") repeat-x  100%;
+	background-position: top;
 }
 
 #simple-wrap {
 	padding: 6px 10px;
 }
 
-#page-body {
-	margin: 4px 0;
-	clear: both;
-}
 
-#page-footer {
+#page-header, #page-body, #page-footer {
+	width: 900px;
+	margin: 0 auto;
 	clear: both;
 }
 
 #page-footer h3 {
 	margin-top: 20px;
+}
+
+#footer {
+	background-color: #3D629A;
+	color: #FFF;
+	width: 960px;
+	margin: 0 auto;
+	height: 70px;
 }
 
 #logo {
@@ -409,7 +551,6 @@ ul.linklist li.rightside, p.rightside {
 ul.navlinks {
 	padding-bottom: 1px;
 	margin-bottom: 1px;
-	border-bottom: 1px solid #FFFFFF;
 /*	font-weight: bold; */
 }
 
@@ -647,9 +788,9 @@ li.pagination {
 }
 
 .copyright {
-	padding: 5px;
+	padding: 10px;
 	text-align: center;
-	color: #555555;
+	font-size: 1.2em;
 	clear: both;
 }
 
@@ -2842,7 +2983,7 @@ Colours and backgrounds for common.css
 
 html, body {
 	color: #536482;
-	background-color: #DDEFFF;
+	background-color: #E6E6E6;
 }
 
 body.simple {
@@ -2895,7 +3036,7 @@ hr.dashed {
 }
 
 .navbar {
-	background-color: #7EBDF1;
+	background-color: #8EA1D5;
 }
 
 .forabg, .forumbg {
@@ -3050,12 +3191,12 @@ dl.details dd {
 /* Miscellaneous styles
 ---------------------------------------- */
 
-.copyright {
+/*.copyright {
 	color: #555555;
-}
+}*/
 
 .copyright a {
-    color: #000000 !important;
+    color: #FFF !important;
 }
 
 .error {
@@ -3877,4 +4018,4 @@ input.search {
 input.disabled {
 	color: #666666;
 }
-";s:10:"theme_path";s:12:"prosilver_se";s:10:"theme_name";s:25:"prosilver Special Edition";s:11:"theme_mtime";s:10:"1299361353";s:11:"imageset_id";s:1:"2";s:13:"imageset_name";s:25:"prosilver Special Edition";s:18:"imageset_copyright";s:24:"&copy; phpBB Group, 2008";s:13:"imageset_path";s:12:"prosilver_se";s:13:"template_path";s:12:"prosilver_se";}}
+";s:10:"theme_path";s:12:"prosilver_se";s:10:"theme_name";s:25:"prosilver Special Edition";s:11:"theme_mtime";s:10:"1300682839";s:11:"imageset_id";s:1:"2";s:13:"imageset_name";s:25:"prosilver Special Edition";s:18:"imageset_copyright";s:24:"&copy; phpBB Group, 2008";s:13:"imageset_path";s:12:"prosilver_se";s:13:"template_path";s:12:"prosilver_se";}}
