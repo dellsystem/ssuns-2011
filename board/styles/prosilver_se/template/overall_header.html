@@ -107,7 +107,23 @@
 	<div id="header-contents">
 		<a href="/ssuns/index.php"><img src="/ssuns/board/images/logo.png" alt="logo" /></a>
 		<div id="header-right">
-			<div id="userbar">Blah blah</div>
+			<div id="userbar"><div id="userbar-contents">
+        		<!-- IF not S_IS_BOT and S_USER_LOGGED_IN -->
+        			<a href="{U_PROFILE}" title="{L_PROFILE}" accesskey="e">{L_PROFILE}</a>
+				<!-- IF S_DISPLAY_PM --> (<a href="{U_PRIVATEMSGS}">{PRIVATE_MESSAGE_INFO}</a>)<!-- ENDIF -->
+				<!-- IF S_DISPLAY_SEARCH --> &bull;
+					<a href="{U_SEARCH_SELF}">{L_SEARCH_SELF}</a>
+				<!-- ENDIF -->
+        			<!-- IF U_RESTORE_PERMISSIONS --> &bull;
+        				<a href="{U_RESTORE_PERMISSIONS}">{L_RESTORE_PERMISSIONS}</a>
+        			<!-- ENDIF -->
+        		<!-- ENDIF -->
+	    		<!-- IF not S_USER_LOGGED_IN and S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) --><a href="{U_REGISTER}">{L_REGISTER}</a><!-- ENDIF -->
+	    		<a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x">{L_LOGIN_LOGOUT}</a>
+		    	<br />
+			    <a href="{U_FAQ}" title="{L_FAQ_EXPLAIN}">{L_FAQ}</a>
+        		<!-- IF S_DISPLAY_MEMBERLIST --><a href="{U_MEMBERLIST}" title="{L_MEMBERLIST_EXPLAIN}">{L_MEMBERLIST}</a><!-- ENDIF -->
+			</div></div>
 			<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
         		<div id="search-box">
         			<form action="{U_SEARCH}" method="post" id="search">
@@ -122,56 +138,73 @@
 		</div>
 	</div>
 </div>
-<div id="menubar">test</div>
-<br /><br />
-<div id="slideshow"><img src="/ssuns/board/images/ignite.png" /></div>
-<br /><br />
+<div id="menubar">
+<ul id="nav" class="dropdown">
+	<li ><a href="/ssuns/">Home</a></li>
+	<li class="dir"><a href="/ssuns/about">About</a>
+		<ul>
+			<li><a href="./">Meet the Secretariat</a></li>
+			<li><a href="./">Conference theme</a></li>
+			<li><a href="./">Conference itinerary</a></li>
+			<li><a href="./">Online brochure</a></li>
+			<li><a href="./">Newsletters</a></li>
+			<li><a href="./">Privacy policy</a></li>
+			<li><a href="./">Sponsorship</a></li>
+		</ul>
+	</li>
+	<li class="dir"><a>Registration</a>
+		<ul>
+			<li><a href="./">Register a school</a></li>
+			<li><a href="./">Payment policy</a></li>
+			<li><a href="./">Hotel information</a></li>
+			<li><a href="./">Checklist</a></li>
+			<li><a href="./">Conference policies</a></li>
+			<li><a href="./">SSUNS scholarships</a></li>
+		</ul>
+	</li>
+	<li class="dir"><a href="#">Committees</a>
+		<ul>
+			<li class="dir"><a href="./">Committee list</a></li>
+			<li><a href="./">Country-committee matrix</a></li>
+			<li><a href="./">Rules of procedure</a></li>
+			<li><a href="./">Press corps</a></li>
+			<li><a href="./">Position paper guidelines</a></li>
+			<li><a href="./">Other resources</a></li>
+			<li><a href="./">NGOs</a></li>
+		</ul>
+	</li>
+	<li class="dir"><a href="./">Montreal</a>
+		<ul>
+			<li><a href="./">McGill tours</a>
+			<li><a href="./">Montreal neighbourhoods</a></li>
+			<li><a href="./">Metro and restaurant map</a></li>
+		</ul>
+	</li>
+	<li><a href="/ssuns/board/">Board</a></li>
+</ul>
+</div>
 <div id="wrap">
-    <div class="border-left">
-    <div class="border-right">
-    <div class="border-top">
-    <div class="border-top-left">
-    <div class="border-top-right">
-        <div class="inside" style="direction: {S_CONTENT_DIRECTION};">
-        	<a id="top" name="top" accesskey="t"></a>
+	<!-- IF ENABLE_SLIDESHOW -->
+	<div id="slideshow"><img src="/ssuns/board/images/ignite.png" /></div>
+	<!-- ENDIF -->
+	<div id="content">
+<a id="top" name="top" accesskey="t"></a>
         	<div id="page-header">
         		<br />
-        		<div class="navbar">
+        	
+        	<!-- IF not OUTSIDE_OF_FORUM -->
+	       		<div class="navbar">
         			<div class="inner"><span class="corners-top"><span></span></span>
         
         			<ul class="linklist navlinks">
         				<li class="icon-home"><a href="{U_INDEX}" accesskey="h">{L_INDEX}</a> <!-- BEGIN navlinks --> <strong>&#8249;</strong> <a href="{navlinks.U_VIEW_FORUM}">{navlinks.FORUM_NAME}</a><!-- END navlinks --></li>
         
-        				<li class="rightside"><a href="#" onclick="fontsizeup(); return false;" onkeypress="return fontsizeup(event);" class="fontsize" title="{L_CHANGE_FONT_SIZE}">{L_CHANGE_FONT_SIZE}</a></li>
+        				<!-- <li class="rightside"><a href="#" onclick="fontsizeup(); return false;" onkeypress="return fontsizeup(event);" class="fontsize" title="{L_CHANGE_FONT_SIZE}">{L_CHANGE_FONT_SIZE}</a></li> --> <!-- i don't like this feature so bye -->
         
         				<!-- IF U_EMAIL_TOPIC --><li class="rightside"><a href="{U_EMAIL_TOPIC}" title="{L_EMAIL_TOPIC}" class="sendemail">{L_EMAIL_TOPIC}</a></li><!-- ENDIF -->
         				<!-- IF U_EMAIL_PM --><li class="rightside"><a href="{U_EMAIL_PM}" title="{L_EMAIL_PM}" class="sendemail">{L_EMAIL_PM}</a></li><!-- ENDIF -->
         				<!-- IF U_PRINT_TOPIC --><li class="rightside"><a href="{U_PRINT_TOPIC}" title="{L_PRINT_TOPIC}" accesskey="p" class="print">{L_PRINT_TOPIC}</a></li><!-- ENDIF -->
         				<!-- IF U_PRINT_PM --><li class="rightside"><a href="{U_PRINT_PM}" title="{L_PRINT_PM}" accesskey="p" class="print">{L_PRINT_PM}</a></li><!-- ENDIF -->
-        			</ul>
-        
-        			<!-- IF not S_IS_BOT and S_USER_LOGGED_IN -->
-        			<ul class="linklist leftside">
-        				<li class="icon-ucp">
-							<a href="{U_PROFILE}" title="{L_PROFILE}" accesskey="e">{L_PROFILE}</a>
-								<!-- IF S_DISPLAY_PM --> (<a href="{U_PRIVATEMSGS}">{PRIVATE_MESSAGE_INFO}</a>)<!-- ENDIF -->
-							<!-- IF S_DISPLAY_SEARCH --> &bull;
-							<a href="{U_SEARCH_SELF}">{L_SEARCH_SELF}</a>
-							<!-- ENDIF -->
-        					<!-- IF U_RESTORE_PERMISSIONS --> &bull;
-        					<a href="{U_RESTORE_PERMISSIONS}">{L_RESTORE_PERMISSIONS}</a>
-        					<!-- ENDIF -->
-        				</li>
-        			</ul>
-        			<!-- ENDIF -->
-        
-        			<ul class="linklist rightside">
-        				<li class="icon-faq"><a href="{U_FAQ}" title="{L_FAQ_EXPLAIN}">{L_FAQ}</a></li>
-        				<!-- IF not S_IS_BOT -->
-        					<!-- IF S_DISPLAY_MEMBERLIST --><li class="icon-members"><a href="{U_MEMBERLIST}" title="{L_MEMBERLIST_EXPLAIN}">{L_MEMBERLIST}</a></li><!-- ENDIF -->
-							<!-- IF not S_USER_LOGGED_IN and S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) --><li class="icon-register"><a href="{U_REGISTER}">{L_REGISTER}</a></li><!-- ENDIF -->
-							<li class="icon-logout"><a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x">{L_LOGIN_LOGOUT}</a></li>
-        				<!-- ENDIF -->
         			</ul>
         
         			<span class="corners-bottom"><span></span></span></div>
@@ -189,3 +222,4 @@
         			<span class="corners-bottom"><span></span></span></div>
         		</div>
         		<!-- ENDIF -->
+        	<!-- ENDIF -->

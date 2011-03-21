@@ -5,7 +5,7 @@ Colours and backgrounds for common.css
 
 html, body {
 	color: #536482;
-	background-color: #DDEFFF;
+	background-color: #E6E6E6;
 }
 
 body.simple {
@@ -58,7 +58,7 @@ hr.dashed {
 }
 
 .navbar {
-	background-color: #7EBDF1;
+	background-color: #87A4D0;
 }
 
 .forabg, .forumbg {
@@ -213,12 +213,12 @@ dl.details dd {
 /* Miscellaneous styles
 ---------------------------------------- */
 
-.copyright {
+/*.copyright {
 	color: #555555;
-}
+}*/
 
 .copyright a {
-    color: #000000 !important;
+    color: #FFF !important;
 }
 
 .error {

@@ -99,6 +99,17 @@ p.right {
 	text-align: right;
 }
 
+.pagetitle {
+	font-family: serif;
+	font-size: 2.5em;
+	color: #000;
+}
+
+.pagecontent {
+/*	font-family: sans-serif;*/
+	font-size: 1.3em;
+}
+
 /* Border
 ---------------------------------------- */
 .border-left { 
@@ -165,11 +176,128 @@ p.right {
 	background: url("{T_THEME_PATH}/images/userbar_bg.png") no-repeat;
 }
 
+#userbar-contents {
+    width: 350px;
+    text-align: right;
+	font-size: 1.3em;
+}
+
 #menubar {
 	background: url("{T_THEME_PATH}/images/menubar_bg.png") repeat-x 0 100%;
 	height: 40px;
 	width: 100%;
+	font-size: 1.7em;
+	color: #FFF;
 }
+
+/* BEGIN DROPDOWN MENU STUFF*/
+/* from http://lwis.net/free-css-drop-down-menu/ GPL fuck yeah*/
+ul.dropdown, ul.dropdown li, ul.dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.dropdown {
+    z-index: 597;
+    width: 960px;
+	margin: 0 auto;
+}
+
+/* First level menubar main */
+ul.dropdown li, ul.dropdown a {
+    float: left;
+    width: 160px;
+    height: 40px;
+    color: #fff;
+}
+    
+/* First level menubar hover */
+ul.dropdown li.hover, ul.dropdown li:hover, ul.dropdown a:hover, ul.dropdown a.hover {
+    position: relative;
+    z-index: 599;
+    cursor: pointer;
+    background-color: #FFF;
+    color: #FF0000;
+    text-decoration: none;
+}
+
+/* First level dropdown main */
+ul.dropdown ul {
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 598;
+    width: 100%;
+}
+
+ul.dropdown ul li {
+    float: none;
+}
+
+ul.dropdown ul ul {
+    left: 99%;
+}
+
+ul.dropdown li:hover > ul {
+    visibility: visible;
+}
+
+ul.dropdown li.hover, ul.dropdown a:hover, ul.dropdown a:link, ul.dropdown li:hover {
+	background-color: #FFF;
+    color: #ff0000;
+}
+
+
+
+/* -- level mark -- */
+ul.dropdown ul {
+    width: 160px;
+}
+
+/* Styling the dropdown menu components */
+ul.dropdown ul li, ul.dropdown ul li a {
+    font-weight: normal;
+    background: #CCC;
+    color: #000;
+    font-size: 0.9em;    
+}
+
+
+
+/*-------------------------------------------------/
+ * @section		Support Class `dir`
+ * @level sep	ul, .class
+ */
+
+
+/* -- Components override -- */
+/*
+ul.dropdown-horizontal ul *.dir {
+ padding-right: 15px;
+ background-image: url(images/nav-arrow-right.png);
+ background-position: 100% 50%;
+ background-repeat: no-repeat;
+}
+
+ul.dropdown-upward *.dir {
+ background-image: url(images/nav-arrow-top.png);
+}
+
+ul.dropdown-vertical *.dir,
+ul.dropdown-upward ul *.dir {
+ background-image: url(images/nav-arrow-right.png);
+}
+
+ul.dropdown-vertical-rtl *.dir {
+ padding-right: 10px;
+ padding-left: 15px;
+ background-image: url(images/nav-arrow-left.png);
+ background-position: 0 50%;
+}*/
+
+
 
 #slideshow {
 	margin: 0 auto;
@@ -177,27 +305,41 @@ p.right {
 }
 
 #wrap {
-	padding: 0 20px;
 	min-width: 650px;
-	width: 960px;
+	width: 1000px;
 	margin: 0 auto;
+	background-color: #FFFFFF;
+	background: url("{T_THEME_PATH}/images/content_bg.png") repeat-y 0 100%;
+}
+
+#content {
+	width: 960px; /* aw yeah */
+	margin: 0 auto;
+	background: url("{T_THEME_PATH}/images/content_header.png") repeat-x  100%;
+	background-position: top;
 }
 
 #simple-wrap {
 	padding: 6px 10px;
 }
 
-#page-body {
-	margin: 4px 0;
-	clear: both;
-}
 
-#page-footer {
+#page-header, #page-body, #page-footer {
+	width: 900px;
+	margin: 0 auto;
 	clear: both;
 }
 
 #page-footer h3 {
 	margin-top: 20px;
+}
+
+#footer {
+	background-color: #3D629A;
+	color: #FFF;
+	width: 960px;
+	margin: 0 auto;
+	height: 70px;
 }
 
 #logo {
@@ -394,7 +536,6 @@ ul.linklist li.rightside, p.rightside {
 ul.navlinks {
 	padding-bottom: 1px;
 	margin-bottom: 1px;
-	border-bottom: 1px solid #FFFFFF;
 /*	font-weight: bold; */
 }
 
@@ -632,9 +773,9 @@ li.pagination {
 }
 
 .copyright {
-	padding: 5px;
+	padding: 10px;
 	text-align: center;
-	color: #555555;
+	font-size: 1.2em;
 	clear: both;
 }
 

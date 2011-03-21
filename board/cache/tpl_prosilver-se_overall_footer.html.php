@@ -1,5 +1,7 @@
 <?php if (!defined('IN_PHPBB')) exit; ?></div>
     
+    		<?php if (! $this->_rootref['OUTSIDE_OF_FORUM']) {  ?>
+
                 <div id="page-footer">
                 
                 	<div class="navbar">
@@ -14,11 +16,10 @@
                 
                 		<span class="corners-bottom"><span></span></span></div>
                 	</div>
-                </div>
-            </div>
-        <div class="border-bottom"><span><span></span></span></div>
-    </div></div></div></div></div>
-</div>
+                </div><?php } ?>
+
+    <br />
+
 	
 <!--
 	We request you retain the full copyright notice below including the link to www.phpbb.com.
@@ -31,12 +32,14 @@
 	The phpBB Group : 2006
 //-->
 
+<div id="footer">
 	<div class="copyright">Powered by <a href="http://www.phpbb.com/">phpBB</a> &copy; 2000, 2002, 2005, 2007 phpBB Group
 		<?php if ($this->_rootref['TRANSLATION_INFO']) {  ?><br /><?php echo (isset($this->_rootref['TRANSLATION_INFO'])) ? $this->_rootref['TRANSLATION_INFO'] : ''; } if ($this->_rootref['DEBUG_OUTPUT']) {  ?><br /><?php echo (isset($this->_rootref['DEBUG_OUTPUT'])) ? $this->_rootref['DEBUG_OUTPUT'] : ''; } if ($this->_rootref['U_ACP']) {  ?><br /><strong><a href="<?php echo (isset($this->_rootref['U_ACP'])) ? $this->_rootref['U_ACP'] : ''; ?>"><?php echo ((isset($this->_rootref['L_ACP'])) ? $this->_rootref['L_ACP'] : ((isset($user->lang['ACP'])) ? $user->lang['ACP'] : '{ ACP }')); ?></a></strong><?php } ?>
 
 	</div>
+</div>
 
-
+	</div>
 
 <div>
 	<a id="bottom" name="bottom" accesskey="z"></a>

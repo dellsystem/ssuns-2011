@@ -9,11 +9,32 @@ $user->session_begin();
 $auth->acl($user->data);
 $user->setup();
 
-page_header('Test');
+page_header('');
+
+$page_name = ( strlen($_GET['name']) > 0 ) ? $_GET['name'] : 'home';
+$sql = "SELECT * FROM custom_pages
+	WHERE page_name = '" . $page_name . "'";
+$result = $db->sql_query($sql);
+$page = $db->sql_fetchrow($result);
 
 $template->set_filenames(array(
-	'body' => 'index_body.html',
+	'body' => 'template_body.html',
 ));
+
+// If no page is found, display the page-not-found stuff
+if ( intval($page['page_id']) < 1 ) {
+    $page['page_title'] = 'Page not found';
+    $page['page_content'] = 'The page you are looking for does not exist. If you have been given a broken link contact it@ssuns.org etc';
+}
+
+
+
+$template->assign_vars(array(
+	'PAGE_TITLE' => $page['page_title'],
+	'PAGE_CONTENT' => $page['page_content'],
+	'OUTSIDE_OF_FORUM' => true,
+	'ENABLE_SLIDESHOW' => true)
+);
 
 page_footer();
 ?>

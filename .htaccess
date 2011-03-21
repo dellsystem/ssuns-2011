@@ -1,0 +1,21 @@
+Options +FollowSymlinks
+RewriteEngine on
+# RewriteRule ^test/([^/]+) /ssuns/index.php?id=$1 [NC]
+RewriteCond %{REQUEST_URI} !index.php$
+RewriteCond %{REQUEST_URI} !board/(.*)
+RewriteRule ^(.*)$ /ssuns/index.php?name=$1 [L]
+
+# If requested resource exists as a file or directory, skip next two rules
+# RewriteCond /ssuns/%{DOCUMENT_ROOT}/$1 -f [OR]
+# RewriteCond /ssuns/%{DOCUMENT_ROOT}/$1 -d
+# RewriteRule (.*) - [S=2]
+#
+# Requested resource does not exist, do rewrite if it exists in /archive
+# RewriteCond %{DOCUMENT_ROOT}/archive/$1 -f [OR]
+# RewriteCond %{DOCUMENT_ROOT}/archive/$1 -d
+# RewriteRule (.*) /archive/$1 [L]
+#
+# Else rewrite requests for non-existent resources to /index.php
+#RewriteRule (.*) /ssuns/index.php?q=$1 [L]
+
+#ErrorDocument 404 /ssuns/404.html
