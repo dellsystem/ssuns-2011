@@ -273,6 +273,7 @@ define('WORDS_TABLE',				$table_prefix . 'words');
 define('ZEBRA_TABLE',				$table_prefix . 'zebra');
 
 // Additional tables
+define('CUSTOM_PAGES_TABLE',		'custom_pages');
 
 
 ?>
