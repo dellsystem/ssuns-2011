@@ -11,7 +11,7 @@ $user->setup();
 
 page_header('');
 
-$page_name = ( strlen($_GET['name']) > 0 ) ? $_GET['name'] : 'home';
+$page_name = ( strlen($_GET['name']) > 0 ) ? $_GET['name'] : 'index';
 $sql = "SELECT * FROM custom_pages
 	WHERE page_name = '" . $page_name . "'";
 $result = $db->sql_query($sql);
