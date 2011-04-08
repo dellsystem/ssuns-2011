@@ -67,7 +67,7 @@ class acp_custom_pages {
          		if ( !($this->unique_name($new_name)) ) {
          			trigger_error('Your page name (URL) is not unique!' . adm_back_link($this->u_action), E_USER_WARNING);
          		}
-         		
+
          		// Otherwise, might as well add the page ... ignore page_id, that autoincrements
          		$sql = "INSERT INTO " . CUSTOM_PAGES_TABLE . " (page_title, page_content, page_name, last_modified)
          				VALUES ('$new_title', '$new_content', '$new_name', " . time() . ")";

@@ -103,7 +103,7 @@
 
 <div id="header">
 	<div id="header-contents">
-		<a href="/ssuns/index.php"><img src="/ssuns/board/images/logo.png" alt="logo" /></a>
+		<a href="<?php echo (isset($this->_rootref['ROOT_PATH'])) ? $this->_rootref['ROOT_PATH'] : ''; ?>../index.php"><img src="<?php echo (isset($this->_rootref['ROOT_PATH'])) ? $this->_rootref['ROOT_PATH'] : ''; ?>images/logo.png" alt="logo" /></a>
 		<div id="header-right">
 			<div id="userbar"><div id="userbar-contents">
         		<?php if (! $this->_rootref['S_IS_BOT'] && $this->_rootref['S_USER_LOGGED_IN']) {  ?>
@@ -146,60 +146,12 @@
 		</div>
 	</div>
 </div>
-<div id="menubar">
-<ul id="nav" class="dropdown">
-	<li ><a href="/ssuns/">Home</a></li>
-	<li class="dir"><a href="/ssuns/about">About</a>
-		<ul>
-			<li><a href="./">Meet the Secretariat</a></li>
-			<li><a href="./">Conference theme</a></li>
-			<li><a href="./">Conference itinerary</a></li>
-			<li><a href="./">Online brochure</a></li>
-			<li><a href="./">Newsletters</a></li>
-			<li><a href="./">Privacy policy</a></li>
-			<li><a href="./">Sponsorship</a></li>
-		</ul>
-	</li>
-	<li class="dir"><a>Registration</a>
-		<ul>
-			<li><a href="./">Register a school</a></li>
-			<li><a href="./">Payment policy</a></li>
-			<li><a href="./">Hotel information</a></li>
-			<li><a href="./">Checklist</a></li>
-			<li><a href="./">Conference policies</a></li>
-			<li><a href="./">SSUNS scholarships</a></li>
-		</ul>
-	</li>
-	<li class="dir"><a href="#">Committees</a>
-		<ul>
-			<li class="dir"><a href="./">Committee list</a></li>
-			<li><a href="./">Country-committee matrix</a></li>
-			<li><a href="./">Rules of procedure</a></li>
-			<li><a href="./">Press corps</a></li>
-			<li><a href="./">Position paper guidelines</a></li>
-			<li><a href="./">Other resources</a></li>
-			<li><a href="./">NGOs</a></li>
-		</ul>
-	</li>
-	<li class="dir"><a href="./">Montreal</a>
-		<ul>
-			<li><a href="./">McGill tours</a>
-			<li><a href="./">Montreal neighbourhoods</a></li>
-			<li><a href="./">Metro and restaurant map</a></li>
-		</ul>
-	</li>
-	<li class="dir"><a href="/ssuns/board/">Board</a>
-		<ul>
-			<li><a href="/ssuns/board/faq.php">FAQ</a></li>
-			<li><a href="/ssuns/board/memberlist.php">Members</a></li>
-		</ul>
-	</li>
-</ul>
-</div>
+<?php $this->_tpl_include('menu.html'); ?>
+
 <div id="wrap">
 	<?php if ($this->_rootref['ENABLE_SLIDESHOW']) {  ?>
 
-	<div id="slideshow"><img src="/ssuns/board/images/ignite.png" /></div>
+	<div id="slideshow"><img src="<?php echo (isset($this->_rootref['ROOT_PATH'])) ? $this->_rootref['ROOT_PATH'] : ''; ?>images/ignite.png" /></div>
 	<?php } ?>
 
 	<div id="content">
@@ -235,4 +187,7 @@
 
         			<span class="corners-bottom"><span></span></span></div>
         		</div>
-        		<?php } } ?>
+        		<?php } } if ($this->_rootref['OUTSIDE_OF_FORUM']) {  ?>
+
+            <div class="markdown">
+            <?php } ?>

@@ -1,4 +1,9 @@
-<?php if (!defined('IN_PHPBB')) exit; ?></div>
+<?php if (!defined('IN_PHPBB')) exit; if ($this->_rootref['OUTSIDE_OF_FORUM']) {  ?>
+
+        </div>
+        <?php } ?>
+
+    	</div>
     
     		<?php if (! $this->_rootref['OUTSIDE_OF_FORUM']) {  ?>
 
