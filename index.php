@@ -28,10 +28,11 @@ if ( intval($page['page_id']) < 1 ) {
 }
 
 
-
+// Include markdown file to parse page_content
+include_once("{$phpbb_root_path}/includes/markdown/markdown.php");
 $template->assign_vars(array(
 	'PAGE_TITLE' => $page['page_title'],
-	'PAGE_CONTENT' => $page['page_content'],
+	'PAGE_CONTENT' => Markdown($page['page_content']),
 	'OUTSIDE_OF_FORUM' => true,
 	'ENABLE_SLIDESHOW' => true)
 );
