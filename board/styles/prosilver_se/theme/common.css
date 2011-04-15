@@ -887,4 +887,7 @@ p.rules a {
 
 .markdown p {
 	font-size: 1.3em;
+	/* Because Deep wants a serif font */
+	/* Taken from the DDMAL page lol */
+	font-family: "Baskerville", "Garamond", "Times New Roman", serif;
 }
