@@ -26,3 +26,4 @@
 *   /board/includes/acp/info/acp_custom_pages.php
 *   /board/adm/style/custom_pages_overview.html (and edit and add)
 *   the template file
+*   .htaccess (for redirection; optional)
