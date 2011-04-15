@@ -1,4 +1,8 @@
 # To-do list
+*   fix links (menu) - index for instance
+*   awesome buttons
+*   also, nice rounded input fields
+    *   maybe incorporate js too
 *   add language constants
 *   when adding to log, use ^
 *   authorisation in ACP
