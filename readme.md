@@ -3,6 +3,7 @@
 *   awesome buttons
 *   also, nice rounded input fields
     *   maybe incorporate js too
+*   something wrong with CSS for the view profile page T_T
 *   add language constants
 *   when adding to log, use ^
 *   authorisation in ACP

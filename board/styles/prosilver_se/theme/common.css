@@ -362,6 +362,7 @@ ul.dropdown-vertical-rtl *.dir {
 }
 
 #footer {
+	clear: both;
 	background-color: #CCCCCC;
 	color: #000000;
 	width: 100%;
