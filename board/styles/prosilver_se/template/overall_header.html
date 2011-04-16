@@ -149,7 +149,25 @@
 	<div id="content">
 		<a id="top" name="top" accesskey="t"></a>
         <div id="right-menu">
-        	Test<br />test<br />test<br />test<br />more<br />more
+        	<form method="post" action="">
+        		<br /><br />
+        		<p>
+        			<label for="username" class="hidden-label">Username</label><input type="text" name="username" id="username" value="Username" onclick="if(this.value=='Username')this.value='';" class="pretty" />
+        		</p>
+        		<p>
+        			<!-- i hope no one's password is 4everalone -->
+        			<label for="password" class="hidden-label">Password</label><input type="password" value="4everalone" onclick="if(this.value=='4everalone')this.value='';" name="password" id="password" class="pretty" />
+        		</p>
+        		<p>
+        			 <input type="submit" class="awesome" value="Login" />
+        		</p>
+        	</form>
+        	<div id="twitter">
+        		<strong>Twitter live feed</strong>
+        		<p>tweet one, make it a bit longer</p>
+        		<p>tweet two, shorter</p>
+        		<p>tweet one, even longer than the first one! by a bit</p>
+        	</div>
         </div>
        	<div id="left-content">
        	

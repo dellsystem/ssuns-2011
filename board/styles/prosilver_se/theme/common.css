@@ -1,6 +1,6 @@
 /* General proSilver Markup Styles
 ---------------------------------------- */
-@font-face {
+/*@font-face {
 	font-family: 'quicksand';
     src: url('{T_THEME_PATH}/fonts/Quicksand_Book-webfont.eot');
     src: url('{T_THEME_PATH}/fonts/Quicksand_Book-webfont.eot?#iefix') format('eot'),
@@ -9,7 +9,8 @@
          url('{T_THEME_PATH}/fonts/Quicksand_Book-webfont.svg#webfontQNKLE8Me') format('svg');
     font-weight: normal;
     font-style: normal;
-}
+} */
+/* fine */
 
 @font-face {
 	font-family: 'droid-serif';
@@ -351,9 +352,10 @@ ul.dropdown-vertical-rtl *.dir {
 	float: right;
 	background-color: #D9D9D9;
 	width: 200px;
-	height: 300px;
-	font-family: 'quicksand';
-	font-size: 2.0em;
+	min-height: 500px;
+	text-align: center;
+/*	font-family: 'quicksand';
+	font-size: 2.0em;*/
 }
 
 #footer {
@@ -857,8 +859,8 @@ p.rules a {
 }
 
 #top {
-	position: absolute;
-	top: -20px;
+/*	position: absolute;
+	top: -20px;*/
 }
 
 .clear {
@@ -887,4 +889,92 @@ p.rules a {
 	/* Taken from the DDMAL page lol */
 	font-family: "Baskerville", "Garamond", "Times New Roman", serif;
 	color: #444;
+}
+
+
+input[type="submit"].awesome {
+    border: 0px;
+}
+
+/* for the pretty login form as well as the search thing */
+input.pretty {
+	padding: 9px;  
+	border: solid 1px #E5E5E5;  
+	outline: 0;
+	width: 150px;
+	background-color: #FFFFFF;#
+	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+	/* fuck IE */
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	font-size: 1.2em;
+}
+
+input.pretty:hover, input.pretty:focus {
+	border-color: #C9C9C9; 
+	-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px; 
+	-moz-box-shadow:  rgba(0, 0, 0, 0.2) 0px 0px 8px; 
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px; 
+}
+
+/* you know, when you want to put in a label for accessibility but don't want it showing */
+.hidden-label {
+	display: none;
+}
+
+
+/* Awesome CSS3 buttons by ZURB Inc. http://www.zurb.com/blog_uploads/0000/0617/buttons-03.html */
+.awesome, .awesome:visited {
+    background: #222 url("{T_THEME_PATH}/images/alert-overlay.png") repeat-x; 
+    display: inline-block; 
+    padding: 5px 10px 6px; 
+    color: #fff; 
+    text-decoration: none;
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    position: relative;
+    cursor: pointer;
+    font-family: 'droid-serif';
+    background-color: #2B79C2; /* since we really only need blue */
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1.2em;
+}
+
+.awesome:hover {
+	background-color: #5C95E2;
+}
+
+/* The twitter box, scrollbar only appears if necessary */
+#twitter {
+	padding-top: 5px;
+	width: 170px;
+	height: 290px;
+	overflow: auto;
+	background-color: #8EC1DA;
+	margin: 0 auto;
+	border: 2px solid #FFFFFF;
+    -moz-border-radius: 10px; 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    color: #FFFFFF;
+    font-family: 'droid-serif';
+}
+
+#twitter strong {
+	font-size: 1.3em;
+	border-bottom: 1px dotted #FFFFFF;
+}
+
+#twitter p {
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
