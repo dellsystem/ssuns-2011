@@ -363,7 +363,8 @@ ul.dropdown-vertical-rtl *.dir {
 	width: 100%;
 	margin: 0 auto;
 	height: 50px;
-	margin-top: 50px;
+	position: relative;
+	top: 50px;
 }
 
 #logo {
