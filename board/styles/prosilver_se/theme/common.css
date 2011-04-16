@@ -182,27 +182,23 @@ p.right {
 
 #userbar {
 	display: none;
-	width: 400px;
-	height: 75px;
-	background: url("{T_THEME_PATH}/images/userbar_bg.png") no-repeat;
 }
 
 #userbar-contents {
-    width: 350px;
-    text-align: right;
-	font-size: 1.3em;
 }
 
 #menubar {
 	background-color: #2C3C4B;
 	height: 40px;
 	width: 100%;
-	font-size: 2.1em;
-	line-height: 2.1em;
+	font-size: 1.8em;
+	line-height: 1.8em;
 	text-align: center;
 	color: #FFF;
-	font-family: 'quicksand';
-	text-transform: uppercase;
+	font-family: 'droid-serif';
+	letter-spacing: 0.01em; 
+	/* fine */
+/*	text-transform: uppercase;*/
 }
 
 /* BEGIN DROPDOWN MENU STUFF*/
@@ -245,8 +241,6 @@ ul.dropdown ul {
     left: 0;
     z-index: 598;
     width: 100%;
-    font-size: 0.9em;
-    line-height: 0.9em;
 }
 
 ul.dropdown ul li {
@@ -278,7 +272,8 @@ ul.dropdown ul li, ul.dropdown ul li a {
     font-weight: normal;
     background: #40576D;
     color: #FFF;
-    font-size: 0.9em;    
+    font-size: 0.9em;
+    line-height: 0.9em; 
 }
 
 
@@ -886,8 +881,9 @@ p.rules a {
 }
 
 .markdown p {
-	font-size: 1.3em;
+	font-size: 1.5em;
 	/* Because Deep wants a serif font */
 	/* Taken from the DDMAL page lol */
 	font-family: "Baskerville", "Garamond", "Times New Roman", serif;
+	color: #444;
 }
