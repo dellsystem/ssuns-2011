@@ -107,36 +107,12 @@
 	<div id="header-contents">
 		<a href="{ROOT_PATH}../index.php"><img src="{ROOT_PATH}images/logo.png" alt="logo" /></a>
 		<div id="header-right">
-			<div id="userbar"><div id="userbar-contents">
-        		<!-- IF not S_IS_BOT and S_USER_LOGGED_IN -->
-        			<a href=""><strong>{USERNAME}</strong></a> (<a href="{U_PROFILE}" title="{L_PROFILE}" accesskey="e">{L_PROFILE}</a>)
-        			<br />
-				<!-- IF S_DISPLAY_PM --> (<a href="{U_PRIVATEMSGS}">{PRIVATE_MESSAGE_INFO}</a>)<!-- ENDIF -->
-				<!-- IF S_DISPLAY_SEARCH --> &bull;
-					<a href="{U_SEARCH_SELF}">{L_SEARCH_SELF}</a>
-				<!-- ENDIF -->
-				<br />
-				<a href="{U_LOGIN_LOGOUT}">Logout</a>
-        			<!-- IF U_RESTORE_PERMISSIONS --> &bull;
-        				<a href="{U_RESTORE_PERMISSIONS}">{L_RESTORE_PERMISSIONS}</a>
-        			<!-- ENDIF -->
-        		<!-- ENDIF -->
-	    		<!-- IF not S_USER_LOGGED_IN and S_REGISTER_ENABLED -->
-	    		<form method="post" action="{U_LOGIN_LOGOUT}">
-	    		User: <input type="text" name="username" size="10" value="" />
-	    		Pass: <input type="password" name="password" size="10" value="" /><br />
-	    		Log me on automatically <input type="checkbox" name="auto" checked="checked" /> <input type="submit" name="login" value="Go!" />
-	    		</form>
-	    		<a href="{U_FORGOT_PASS}">I forgot my password</a> &bull; <a href="{U_REGISTER}">{L_REGISTER}</a>
-	    		<!-- ENDIF -->
-			</div></div>
 			<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
         		<div id="search-box">
         			<form action="{U_SEARCH}" method="post" id="search">
         			<fieldset>
         				<input name="keywords" id="keywords" type="text" maxlength="128" title="{L_SEARCH_KEYWORDS}" class="inputbox search" value="<!-- IF SEARCH_WORDS-->{SEARCH_WORDS}<!-- ELSE -->{L_SEARCH_MINI}<!-- ENDIF -->" onclick="if(this.value=='{LA_SEARCH_MINI}')this.value='';" onblur="if(this.value=='')this.value='{LA_SEARCH_MINI}';" /> 
-        				<input class="button2" value="{L_SEARCH}" type="submit" /><br />
-        				<a href="{U_SEARCH}" title="{L_SEARCH_ADV_EXPLAIN}">{L_SEARCH_ADV}</a> {S_SEARCH_HIDDEN_FIELDS}
+        				<input class="button2" value="{L_SEARCH}" type="submit" /> {S_SEARCH_HIDDEN_FIELDS}
         			</fieldset>
         			</form>
         		</div>
@@ -162,12 +138,37 @@
         			 <input type="submit" class="awesome" value="Login" />
         		</p>
         	</form>
-        	<div id="twitter">
-        		<strong>Twitter live feed</strong>
-        		<p>tweet one, make it a bit longer</p>
-        		<p>tweet two, shorter</p>
-        		<p>tweet one, even longer than the first one! by a bit</p>
-        	</div>
+        		<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 3,
+  interval: 6000,
+  width: 200,
+  height: 290,
+  theme: {
+    shell: {
+      background: '#5C95E2',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#F4F4F4',
+      color: '#000000',
+      links: '#ff0000'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: false,
+    live: false,
+    hashtags: true,
+    timestamp: true,
+    avatars: false,
+    behavior: 'all'
+  }
+}).render().setUser('WikiNotesOC').start();
+</script>
         </div>
        	<div id="left-content">
        	

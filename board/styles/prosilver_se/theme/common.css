@@ -953,7 +953,7 @@ input.pretty:hover, input.pretty:focus {
 }
 
 /* The twitter box, scrollbar only appears if necessary */
-#twitter {
+/*#twitter {
 	padding-top: 5px;
 	width: 170px;
 	height: 290px;
@@ -967,7 +967,8 @@ input.pretty:hover, input.pretty:focus {
     font-size: 1.2em;
     color: #FFFFFF;
     font-family: 'droid-serif';
-}
+}*/
+/* Turns out Twitter has a widget thing for it, goodbye Twitter box :(  */
 
 #twitter strong {
 	font-size: 1.3em;
