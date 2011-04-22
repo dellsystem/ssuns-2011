@@ -125,7 +125,8 @@
 	<div id="content">
 		<a id="top" name="top" accesskey="t"></a>
         <div id="right-menu">
-        	<form method="post" action="">
+        	<!-- IF not S_USER_LOGGED_IN and not S_IS_BOT -->
+        	<form method="post" action="{S_LOGIN_ACTION}">
         		<br /><br />
         		<p>
         			<label for="username" class="hidden-label">Username</label><input type="text" name="username" id="username" value="Username" onclick="if(this.value=='Username')this.value='';" class="pretty" />
@@ -135,9 +136,20 @@
         			<label for="password" class="hidden-label">Password</label><input type="password" value="4everalone" onclick="if(this.value=='4everalone')this.value='';" name="password" id="password" class="pretty" />
         		</p>
         		<p>
-        			 <input type="submit" class="awesome" value="Login" />
+        			 <input type="submit" name="login" class="awesome" value="Login" />
         		</p>
         	</form>
+        	<!-- ELSEIF S_USER_LOGGED_IN -->
+        		<h2>Welcome, {USERNAME}</h2>{U_AVATAR}<br />
+	       		<a href="{U_PROFILE}" class="awesome" title="{L_PROFILE}" accesskey="e">{L_PROFILE}</a><br />   		
+				<!-- IF S_DISPLAY_PM --><a href="{U_PRIVATEMSGS}" class="awesome" title="{PRIVATE_MESSAGE_INFO}">{PRIVATE_MESSAGE_INFO}</a><!-- ENDIF --><br />
+				<a href="{U_SEARCH_SELF}" class="awesome" title="View your posts">View your posts</a><br />
+				<a href="{U_LOGIN_LOGOUT}" class="awesome" title="{L_LOGIN_LOGOUT}" accesskey="x">Logout</a><br />
+				<!-- IF U_RESTORE_PERMISSIONS --> &bull;
+					<br /><a href="{U_RESTORE_PERMISSIONS}" class="awesome">{L_RESTORE_PERMISSIONS}</a>
+				<!-- ENDIF -->
+        	<!-- ENDIF -->
+      		<br /><br />
         		<script src="http://widgets.twimg.com/j/2/widget.js"></script>
 <script>
 new TWTR.Widget({

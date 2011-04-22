@@ -4378,6 +4378,9 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 	{
 		$user_lang = substr($user_lang, 0, strpos($user_lang, '-x-'));
 	}
+	
+	// for the get_user_avatar functions
+	include_once("functions_display.php");
 
 	// The following assigns all _common_ variables that may be used at any point in a template.
 	$template->assign_vars(array(
@@ -4435,6 +4438,7 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 		'U_FEED'				=> generate_board_url() . "/feed.$phpEx",
 		'U_FORGOT_PASS'			=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=sendpassword'),
 		'U_VIEW_PROFILE'		=> append_sid("{$phpbb_root_path}memberlist.$phpEx", 'mode=viewprofile&amp;u=' + $user->data['user_id']),
+		'U_AVATAR'				=> get_user_avatar($user->data['user_avatar'], $user->data['user_avatar_type'], $user->data['user_avatar_width'], $user->data['user_avatar_height']),
 
 		'S_USER_LOGGED_IN'		=> ($user->data['user_id'] != ANONYMOUS) ? true : false,
 		'S_AUTOLOGIN_ENABLED'	=> ($config['allow_autologin']) ? true : false,

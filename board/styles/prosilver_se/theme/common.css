@@ -354,8 +354,11 @@ ul.dropdown-vertical-rtl *.dir {
 	width: 200px;
 	min-height: 500px;
 	text-align: center;
-/*	font-family: 'quicksand';
-	font-size: 2.0em;*/
+	font-family: 'droid-serif';
+}
+
+#right-menu h2 {
+	font-size: 1.5em;
 }
 
 #footer {
@@ -379,13 +382,13 @@ a#logo:hover {
 	text-decoration: none;
 }
 
-/* Search box
---------------------------------------------- */
+/* Search box - REPLACED BY A NICER INPUT BOX
+--------------------------------------------- 
 #search-box {
 	color: #FFFFFF;
 	text-align: right;
 	margin-top: 20px;
-	white-space: nowrap; /* For Opera */
+	white-space: nowrap;
 }
 
 #search-box #keywords {
@@ -397,7 +400,6 @@ a#logo:hover {
 	border: 1px solid #b0b0b0;
 }
 
-/* .button1 style defined later, just a few tweaks for the search button version */
 #search-box input.button1 {
 	padding: 1px 5px;
 }
@@ -410,7 +412,8 @@ a#logo:hover {
 #search-box img {
 	vertical-align: middle;
 	margin-right: 3px;
-}
+} */
+
 
 /* Site description and logo */
 #site-description {
@@ -930,8 +933,8 @@ input.pretty:hover, input.pretty:focus {
     background: #222 url("{T_THEME_PATH}/images/alert-overlay.png") repeat-x; 
     display: inline-block; 
     padding: 5px 10px 6px; 
-    color: #fff; 
-    text-decoration: none;
+    color: #fff !important; /* for a tags */
+    text-decoration: none !important; /* same */
     -moz-border-radius: 5px; 
     -webkit-border-radius: 5px;
     border-radius: 5px;
@@ -952,6 +955,7 @@ input.pretty:hover, input.pretty:focus {
 	background-color: #5C95E2;
 }
 
+/* Turns out Twitter has a widget thing for it, goodbye Twitter box :(  */
 /* The twitter box, scrollbar only appears if necessary */
 /*#twitter {
 	padding-top: 5px;
@@ -967,9 +971,7 @@ input.pretty:hover, input.pretty:focus {
     font-size: 1.2em;
     color: #FFFFFF;
     font-family: 'droid-serif';
-}*/
-/* Turns out Twitter has a widget thing for it, goodbye Twitter box :(  */
-
+}
 #twitter strong {
 	font-size: 1.3em;
 	border-bottom: 1px dotted #FFFFFF;
@@ -978,4 +980,4 @@ input.pretty:hover, input.pretty:focus {
 #twitter p {
 	margin-top: 5px;
 	margin-bottom: 5px;
-}
+}*/
