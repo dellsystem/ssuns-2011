@@ -518,7 +518,7 @@ span.corners-bottom {
 	background-image: none;
 	background-position: 0 100%;
 	margin: 0 -5px;
-	/*clear: both;*/ /* commented out to make the right menu work */
+	clear: both;
 }
 
 span.corners-bottom span {
@@ -967,6 +967,14 @@ input.pretty:hover, input.pretty:focus {
     font-size: 1.2em;
     font-weight: bold;
     line-height: 1.2em;
+}
+
+.new-messages {
+	background-color: #FF0000 !important;
+}
+
+.new-messages:hover {
+	background-color: #FF4C4C !important;
 }
 
 .awesome:hover {

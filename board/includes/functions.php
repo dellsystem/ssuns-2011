@@ -4439,7 +4439,8 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 		'U_FORGOT_PASS'			=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=sendpassword'),
 		'U_VIEW_PROFILE'		=> append_sid("{$phpbb_root_path}memberlist.$phpEx", 'mode=viewprofile&amp;u=' + $user->data['user_id']),
 		'U_AVATAR'				=> get_user_avatar($user->data['user_avatar'], $user->data['user_avatar_type'], $user->data['user_avatar_width'], $user->data['user_avatar_height']),
-
+		
+		'UNREAD_MESSAGES'		=> ($user->data['user_new_privmsg'] > 0) ? 'new-messages' : '', // to make the background stand out when there are new
 		'S_USER_LOGGED_IN'		=> ($user->data['user_id'] != ANONYMOUS) ? true : false,
 		'S_AUTOLOGIN_ENABLED'	=> ($config['allow_autologin']) ? true : false,
 		'S_BOARD_DISABLED'		=> ($config['board_disable']) ? true : false,

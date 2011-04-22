@@ -39,7 +39,7 @@
         	<!-- ELSEIF S_USER_LOGGED_IN -->
         		<h2>Welcome, {USERNAME}</h2>{U_AVATAR}<br />
 	       		<a href="{U_PROFILE}" class="awesome" title="{L_PROFILE}" accesskey="e">{L_PROFILE}</a><br />   		
-				<!-- IF S_DISPLAY_PM --><a href="{U_PRIVATEMSGS}" class="awesome" title="{PRIVATE_MESSAGE_INFO}">{PRIVATE_MESSAGE_INFO}</a><!-- ENDIF --><br />
+				<!-- IF S_DISPLAY_PM --><a href="{U_PRIVATEMSGS}" class="awesome {UNREAD_MESSAGES}" title="{PRIVATE_MESSAGE_INFO}">{PRIVATE_MESSAGE_INFO}</a><!-- ENDIF --><br />
 				<a href="{U_SEARCH_SELF}" class="awesome" title="View your posts">View your posts</a><br />
 				<a href="{U_LOGIN_LOGOUT}" class="awesome" title="{L_LOGIN_LOGOUT}" accesskey="x">Logout</a><br />
 				<!-- IF U_RESTORE_PERMISSIONS --> &bull;
