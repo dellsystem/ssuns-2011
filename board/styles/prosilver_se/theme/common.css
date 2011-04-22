@@ -899,6 +899,19 @@ p.rules a {
 	color: #444;
 }
 
+.markdown h3 { /* extends the regular h3 defined by phpBB ... will probably be changed later */
+	font-size: 1.7em;
+	clear: both;
+	padding-top: 20px;
+}
+
+/* for the secretariat images */
+
+.leftfloat {
+	float: left;
+	padding-right: 10px;
+}
+
 
 input[type="submit"].awesome {
     border: 0px;
