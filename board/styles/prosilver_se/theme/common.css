@@ -1,49 +1,13 @@
-/* General proSilver Markup Styles
----------------------------------------- */
-/*@font-face {
-	font-family: 'quicksand';
-    src: url('{T_THEME_PATH}/fonts/Quicksand_Book-webfont.eot');
-    src: url('{T_THEME_PATH}/fonts/Quicksand_Book-webfont.eot?#iefix') format('eot'),
-         url('{T_THEME_PATH}/fonts/Quicksand_Book-webfont.woff') format('woff'),
-         url('{T_THEME_PATH}/fonts/Quicksand_Book-webfont.ttf') format('truetype'),
-         url('{T_THEME_PATH}/fonts/Quicksand_Book-webfont.svg#webfontQNKLE8Me') format('svg');
-    font-weight: normal;
-    font-style: normal;
-} */
-/* fine */
-
-@font-face {
-	font-family: 'droid-serif';
-    src: url('{T_THEME_PATH}/fonts/DroidSerif-Regular-webfont.eot');
-    src: url('{T_THEME_PATH}/fonts/DroidSerif-Regular-webfont.eot?#iefix') format('eot'),
-         url('{T_THEME_PATH}/fonts/DroidSerif-Regular-webfont.woff') format('woff'),
-         url('{T_THEME_PATH}/fonts/DroidSerif-Regular-webfont.ttf') format('truetype'),
-         url('{T_THEME_PATH}/fonts/DroidSerif-Regular-webfont.svg#webfontQNKLE8Me') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
 * {
 	/* Reset browsers default margin, padding and font sizes */
 	margin: 0;
 	padding: 0;
 }
 
-html {
-	font-size: 100%;
-	/* Always show a scrollbar for short pages - stops the jump when the scrollbar appears. non-IE browsers */
-	height: 101%;
-}
 
-body {
-	/* Text-Sizing with ems: http://www.clagnut.com/blog/348/ */
-	font-family: Verdana, Helvetica, Arial, sans-serif;
-	color: #828282;
-	background-color: #FFFFFF;
-	/*font-size: 62.5%;			 This sets the default font size to be equivalent to 10px */
+html, body {
+	height: 100%;
 	font-size: 10px;
-	margin: 0;
-	/*padding: 27px 0;*/
 }
 
 h1 {
@@ -166,190 +130,102 @@ p.right {
 /* Main blocks
 ---------------------------------------- */
 
-#header {
-	height: 150px;
-	width: 100%;
-	background: url("{T_THEME_PATH}/images/header_bg.png") repeat-x 0 100%;
-}
-
-#header-contents {
-	width: 960px;
-	margin: 0 auto;
-}
-
-#header-right {
-	float: right;
-}
-
-#userbar {
-	display: none;
-}
-
-#userbar-contents {
-}
-
-#menubar {
-	background-color: #2C3C4B;
-	height: 40px;
-	width: 100%;
-	font-size: 1.8em;
-	line-height: 1.8em;
-	text-align: center;
-	color: #FFF;
-	font-family: 'droid-serif';
-	letter-spacing: 0.01em; 
-	/* fine */
-/*	text-transform: uppercase;*/
-}
-
-/* BEGIN DROPDOWN MENU STUFF*/
-/* from http://lwis.net/free-css-drop-down-menu/ GPL fuck yeah*/
-ul.dropdown, ul.dropdown li, ul.dropdown ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-ul.dropdown {
-    z-index: 597;
-    width: 960px;
-	margin: 0 auto;
-}
-
-/* First level menubar main */
-ul.dropdown li, ul.dropdown a {
-    float: left;
-    width: 160px;
-    height: 40px;
-    color: #FFF;
-}
-    
-/* First level menubar hover */
-ul.dropdown li.hover, ul.dropdown li:hover, ul.dropdown a:hover, ul.dropdown a.hover {
-    position: relative;
-    z-index: 599;
-    cursor: pointer;
-    background-color: #909FAA;
-   /* color: #FF0000;*/
-    text-decoration: none;
-}
-
-/* First level dropdown main */
-ul.dropdown ul {
-    visibility: hidden;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 598;
-    width: 100%;
-}
-
-ul.dropdown ul li {
-    float: none;
-}
-
-ul.dropdown ul ul {
-    left: 99%;
-}
-
-ul.dropdown li:hover > ul {
-    visibility: visible;
-}
-
-ul.dropdown li.hover, ul.dropdown a:hover, ul.dropdown a:link, ul.dropdown li:hover {
-	/*background-color: #FFF;*/
-    /*color: #ff0000;*/
-}
-
-
-
-/* -- level mark -- */
-ul.dropdown ul {
-    width: 160px;
-}
-
-/* Styling the dropdown menu components */
-ul.dropdown ul li, ul.dropdown ul li a {
-    font-weight: normal;
-    background: #40576D;
-    color: #FFF;
-    font-size: 0.9em;
-    line-height: 0.9em; 
-}
-
-
-
-/*-------------------------------------------------/
- * @section		Support Class `dir`
- * @level sep	ul, .class
- */
-
-
-/* -- Components override -- */
-/*
-ul.dropdown-horizontal ul *.dir {
- padding-right: 15px;
- background-image: url(images/nav-arrow-right.png);
- background-position: 100% 50%;
- background-repeat: no-repeat;
-}
-
-ul.dropdown-upward *.dir {
- background-image: url(images/nav-arrow-top.png);
-}
-
-ul.dropdown-vertical *.dir,
-ul.dropdown-upward ul *.dir {
- background-image: url(images/nav-arrow-right.png);
-}
-
-ul.dropdown-vertical-rtl *.dir {
- padding-right: 10px;
- padding-left: 15px;
- background-image: url(images/nav-arrow-left.png);
- background-position: 0 50%;
-}*/
-
-
-
-#slideshow {
-	margin: 0 auto;
-	width: 960px;
-}
-
 #wrap {
-	min-width: 650px;
+	min-height: 100%;
+	width: 960px;
+	margin: 0 auto;
+}
+
+/* Dropdown menu wizardry. http://csswizardry.com/2011/02/creating-a-pure-css-dropdown-menu/ */
+#nav {
+	background-color: #3F4450;
+	float: left;
 	width: 100%;
-	margin: 0 auto;
+	list-style: none;
+	height: 35px;
+	z-index: 9001;
+	position: relative;
+}
+
+#nav li {
+	float: left;
+	position: relative;
+	display: block;
+}
+
+#nav li a {
+	display: block;
+	padding-left: 10px;
+	padding-right: 50px;
+	line-height: 1.8em;
+	font-size: 1.8em;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.75); /* Text shadow to lift it a little */
+	height: 35px;
+}
+#nav li a:hover {
+	color:#fff;
+	background: #5A6273; /* Solid colour fall-back */
+	text-decoration: none;
+}
+
+/*--- DROPDOWN ---*/
+#nav ul {
+	list-style: none;
+	position: absolute;
+	left: -9999px; /* Hide off-screen when not needed (this is more accessible than display:none;) */
+	opacity: 0; /* Set initial state to transparent */
+	/*-webkit-transition:0.05s linear opacity; *//* Make the dropdown fade-in in Webkit */
+}
+
+#nav ul li {
+	float: none;
+}
+
+#nav ul a {
+	white-space: nowrap; /* Stop text wrapping and creating multi-line dropdown items */
+	display: block;
+}
+
+#nav li:hover ul { /* Display the dropdown on hover */
+	left: 0; /* Bring back on-screen when needed */
+	opacity: 1; /* Fade to opaque */
+	font-size: 0.8em;
+}
+
+#nav li:hover a { /* Set styles for top level when dropdown is hovered */
+	background: #5A6273; /* Solid colour fall-back */
+	text-decoration: none;
+}
+
+#nav li:hover ul a { /* Override some top level styles when dropdown is hovered */
+	text-decoration: none;
+}
+
+#nav li:hover ul li a:hover{ /* Set styles for dropdown when items are hovered */
+	background: #4C5361; /* Solid colour fall-back */
+}
+
+#main {
+	clear: both;
+	/*overflow: auto;*/
 	background-color: #FFFFFF;
-	background: url("{T_THEME_PATH}/images/body_bg.png") repeat-x 0 100%;
-	background-position: top;
+	color: #000;
+	width: 960px;
+	position: relative;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
 }
 
-#content {
-	width: 960px; /* aw yeah */
-	margin: 0 auto;
-	background-color: #FFFFFF;
-    -moz-box-shadow: 0 0 30px #B8B8B8;
-    -webkit-box-shadow: 0 0 30px #B8B8B8;
-    box-shadow: 0 0 30px #B8B8B8;
-    height: 100%;
-}
-
-#simple-wrap {
-	/*padding: 6px 10px;*/
-}
-
-
-#left-content {
-	padding-left: 20px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	width: 700px;
+#main-table {
+	border: 0;
 	height: 100%;
+	width: 960px;
 }
 
-#right-menu {
+#right-bar {
 	float: right;
 	background-color: #D9D9D9;
 	width: 200px;
@@ -358,76 +234,43 @@ ul.dropdown-vertical-rtl *.dir {
 	height: 100%;
 }
 
-#right-menu h2 {
-	font-size: 1.5em;
+#push {
+	height: 50px;
+	padding-bottom: 75px; /* must be same height as the footer */
 }
 
 #footer {
-	clear: both;
-	background-color: #CCCCCC;
-	color: #000000;
-	width: 100%;
-	margin: 0 auto;
-	height: 50px;
 	position: relative;
-	top: 50px;
+	margin-top: -75px; /* negative value of footer height */
+	height: 75px;
+	clear: both;
+	background: url('{T_THEME_PATH}/images/footer.png') repeat-x;
+} 
+
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;
 }
 
-#logo {
-	float: left;
-	width: auto;
-	padding: 10px 13px 0 10px;
+
+#left-content {
+	padding: 20px;
+	width: 760px;
+	height: 100%;
+	font-family: Verdana, Helvetica, Arial, sans-serif;
 }
 
-a#logo:hover {
-	text-decoration: none;
+#right-bar h2 {
+	font-size: 1.5em;
 }
 
-#search-box {
+#search {
+	float: right;
 	margin-top: 50px;
-}
-
-/* Search box - REPLACED BY A NICER INPUT BOX
---------------------------------------------- 
-#search-box {
-	color: #FFFFFF;
-	text-align: right;
-	margin-top: 20px;
-	white-space: nowrap;
-}
-
-#search-box #keywords {
-	width: 95px;
-	background-color: #FFF;
-}
-
-#search-box input {
-	border: 1px solid #b0b0b0;
-}
-
-#search-box input.button1 {
-	padding: 1px 5px;
-}
-
-#search-box li {
-	text-align: right;
-	margin-top: 4px;
-}
-
-#search-box img {
-	vertical-align: middle;
-	margin-right: 3px;
-} */
-
-
-/* Site description and logo */
-#site-description {
-	float: left;
-	width: 70%;
-}
-
-#site-description h1 {
-	margin-right: 0;
 }
 
 /* Round cornered boxes and backgrounds
@@ -569,7 +412,6 @@ ul.linklist li.rightside, p.rightside {
 ul.navlinks {
 	padding-bottom: 1px;
 	margin-bottom: 1px;
-/*	font-weight: bold; */
 }
 
 ul.leftside {
@@ -806,10 +648,10 @@ li.pagination {
 }
 
 .copyright {
-	padding: 10px;
 	text-align: center;
-	font-size: 1.2em;
+	font-size: 0.9em;
 	clear: both;
+	color: #FFF;
 }
 
 .small {
@@ -864,11 +706,6 @@ p.rules img {
 p.rules a {
 	vertical-align: middle;
 	clear: both;
-}
-
-#top {
-/*	position: absolute;
-	top: -20px;*/
 }
 
 .clear {
@@ -980,30 +817,3 @@ input.pretty:hover, input.pretty:focus {
 .awesome:hover {
 	background-color: #5C95E2;
 }
-
-/* Turns out Twitter has a widget thing for it, goodbye Twitter box :(  */
-/* The twitter box, scrollbar only appears if necessary */
-/*#twitter {
-	padding-top: 5px;
-	width: 170px;
-	height: 290px;
-	overflow: auto;
-	background-color: #8EC1DA;
-	margin: 0 auto;
-	border: 2px solid #FFFFFF;
-    -moz-border-radius: 10px; 
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    font-size: 1.2em;
-    color: #FFFFFF;
-    font-family: 'droid-serif';
-}
-#twitter strong {
-	font-size: 1.3em;
-	border-bottom: 1px dotted #FFFFFF;
-}
-
-#twitter p {
-	margin-top: 5px;
-	margin-bottom: 5px;
-}*/

@@ -1,0 +1,144 @@
+/* Reset */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+img {
+	border: 0;
+}
+
+body {
+	background-color: #89A1C3;
+}
+
+#wrap {
+	min-height: 100%;
+	width: 960px;
+	margin: 0 auto;
+}
+
+/* Dropdown menu wizardry. http://csswizardry.com/2011/02/creating-a-pure-css-dropdown-menu/ */
+#nav {
+	background-color: #3F4450;
+	float: left;
+	width: 100%;
+	list-style: none;
+	height: 35px;
+}
+
+#nav li {
+	float: left;
+	position: relative;
+	display: block;
+}
+
+#nav li a {
+	display: block;
+	padding-left: 10px;
+	padding-right: 50px;
+	line-height: 1.4em;
+	font-size: 1.4em;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.75); /* Text shadow to lift it a little */
+	height: 35px;
+}
+#nav li a:hover {
+	color:#fff;
+	background: #5A6273; /* Solid colour fall-back */
+	background: rgba(90,98,115,0.50); /* It'll look nice semi-transparent */
+	text-decoration: none;
+}
+
+/*--- DROPDOWN ---*/
+#nav ul {
+	list-style: none;
+	position: absolute;
+	left: -9999px; /* Hide off-screen when not needed (this is more accessible than display:none;) */
+	opacity: 0; /* Set initial state to transparent */
+	/*-webkit-transition:0.05s linear opacity; *//* Make the dropdown fade-in in Webkit */
+}
+
+#nav ul li {
+	float: none;
+}
+
+#nav ul a {
+	white-space: nowrap; /* Stop text wrapping and creating multi-line dropdown items */
+	display: block;
+}
+
+#nav li:hover ul { /* Display the dropdown on hover */
+	left: 0; /* Bring back on-screen when needed */
+	opacity: 1; /* Fade to opaque */
+	font-size: 0.7em;
+}
+
+#nav li:hover a { /* Set styles for top level when dropdown is hovered */
+	background: #5A6273; /* Solid colour fall-back */
+	background: rgba(90,98,115,0.50); /* It'll look nice semi-transparent */
+	text-decoration: none;
+}
+
+#nav li:hover ul a { /* Override some top level styles when dropdown is hovered */
+	text-decoration: none;
+}
+
+#nav li:hover ul li a:hover{ /* Set styles for dropdown when items are hovered */
+	background: #4C5361; /* Solid colour fall-back */
+}
+
+#main {
+	clear: both;
+	/*overflow: auto;*/
+	background-color: #FFFFFF;
+	color: #000;
+	width: 960px;
+	height: 500px;
+	position: relative;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+#main-table {
+	border: 0;
+	height: 100%;
+	width: 960px;
+}
+
+#left-content {
+	width: 760px;
+}
+
+#right-bar {
+	width: 200px;
+	background-color: #D9D9D9;
+}
+
+#push {
+	height: 50px;
+	padding-bottom: 75px; /* must be same height as the footer */
+}
+
+#footer {
+	position: relative;
+	margin-top: -75px; /* negative value of footer height */
+	height: 75px;
+	clear: both;
+	background: url('board/styles/prosilver_se/theme/images/footer.png') repeat-x;
+} 
+
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;
+}

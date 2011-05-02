@@ -1,0 +1,26 @@
+			<div class="navbar"><!-- the blue thing with rounded corners -->
+    	    		<div class="inner">
+    	    			<span class="corners-top"><span></span></span>
+        
+    	    			<ul class="linklist navlinks">
+    	    				<li class="icon-home"><a href="{U_INDEX}" accesskey="h">{L_INDEX}</a> <!-- BEGIN navlinks --> <strong>&#8249;</strong> <a href="{navlinks.U_VIEW_FORUM}">{navlinks.FORUM_NAME}</a><!-- END navlinks --></li>
+    	          			<!-- <li class="rightside"><a href="#" onclick="fontsizeup(); return false;" onkeypress="return fontsizeup(event);" class="fontsize" title="{L_CHANGE_FONT_SIZE}">{L_CHANGE_FONT_SIZE}</a></li> --> <!-- i don't like this feature so bye -->
+    	    				<!-- IF U_EMAIL_TOPIC --><li class="rightside"><a href="{U_EMAIL_TOPIC}" title="{L_EMAIL_TOPIC}" class="sendemail">{L_EMAIL_TOPIC}</a></li><!-- ENDIF -->
+    	    				<!-- IF U_EMAIL_PM --><li class="rightside"><a href="{U_EMAIL_PM}" title="{L_EMAIL_PM}" class="sendemail">{L_EMAIL_PM}</a></li><!-- ENDIF -->
+    	    				<!-- IF U_PRINT_TOPIC --><li class="rightside"><a href="{U_PRINT_TOPIC}" title="{L_PRINT_TOPIC}" accesskey="p" class="print">{L_PRINT_TOPIC}</a></li><!-- ENDIF -->
+    	    				<!-- IF U_PRINT_PM --><li class="rightside"><a href="{U_PRINT_PM}" title="{L_PRINT_PM}" accesskey="p" class="print">{L_PRINT_PM}</a></li><!-- ENDIF -->
+    	    			</ul>
+        
+    	    			<span class="corners-bottom"><span></span></span>
+    	    		</div>
+    	    	</div>
+        
+    	  		<a name="start_here"></a>
+      		
+				<!-- IF S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) -->
+				<div id="information" class="rules">
+    	    		<div class="inner"><span class="corners-top"><span></span></span>
+    	    			<strong>{L_INFORMATION}:</strong> {L_BOARD_DISABLED}
+    	    		<span class="corners-bottom"><span></span></span></div>
+    	    	</div>
+    	    	<!-- ENDIF -->
