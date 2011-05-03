@@ -763,7 +763,6 @@ p.rules a {
 
 .markdown ul {
 	font-family: 'Georgia', serif;
-	font-size: 1.5em;
 	padding-left: 20px;
 }
 
@@ -774,7 +773,7 @@ p.rules a {
 	text-transform: none;
 }
 
-.markdown p {
+.markdown p, .markdown ul {
 	font-size: 1.5em;
 	color: #444;
 }
@@ -795,6 +794,16 @@ p.rules a {
 .markdown blockquote {
 	font-family: 'Georgia', serif;
 	font-size: 1.4em;
+}
+
+/* for the payment policy page mostly */
+
+.markdown table {
+	font-size: 1.5em;
+	font-family: 'Georgia', serif;
+	background-color: #D9D9D9;
+	width: 100%;
+	border: 2px #000 solid;
 }
 
 /* for the secretariat images */
