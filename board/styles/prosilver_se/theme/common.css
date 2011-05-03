@@ -761,8 +761,7 @@ p.rules a {
 	border-bottom: 2px #D9D9D9 solid;
 }
 
-.markdown ul {
-	font-family: 'Georgia', serif;
+.markdown ul, .markdown ol {
 	padding-left: 20px;
 }
 
@@ -773,7 +772,7 @@ p.rules a {
 	text-transform: none;
 }
 
-.markdown p, .markdown ul {
+.markdown p, .markdown ul, .markdown ol {
 	font-size: 1.5em;
 	color: #444;
 }
