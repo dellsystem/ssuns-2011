@@ -1828,7 +1828,8 @@ class user extends session
 		}
 
 		// Is board disabled and user not an admin or moderator?
-		if ($config['board_disable'] && !defined('IN_LOGIN') && !$auth->acl_gets('a_', 'm_') && !$auth->acl_getf_global('m_'))
+		// If we're looking at a custom page, ignore the board disabled option
+		if (!defined('NOT_IN_PHPBB') && $config['board_disable'] && !defined('IN_LOGIN') && !$auth->acl_gets('a_', 'm_') && !$auth->acl_getf_global('m_'))
 		{
 			if ($this->data['is_bot'])
 			{

@@ -2,6 +2,10 @@
 define('IN_PHPBB', true);
 $phpbb_root_path = './board/';
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
+
+// To get rid of the "board disabled" message for custom pages
+define('NOT_IN_PHPBB', true);
+
 include($phpbb_root_path . 'common.' . $phpEx);
 
 // Start session management
