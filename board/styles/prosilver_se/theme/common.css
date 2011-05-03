@@ -777,6 +777,19 @@ p.rules a {
 	color: #444;
 }
 
+/* For the conference itinerary page mostly */
+.markdown dl {
+	font-size: 1.5em;
+}
+
+.markdown dt {
+	float: left;
+	width: 110px;
+}
+
+.markdown dd {
+}
+
 .markdown blockquote {
 	font-family: 'Georgia', serif;
 	font-size: 1.4em;
