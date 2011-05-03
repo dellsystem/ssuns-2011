@@ -272,13 +272,14 @@ body:before {
 }
 
 #logo {
+	/*display: inline-block;*/
 	float: left;
 }
 
 #search {
 	position: relative;
 	left: 70px;
-	top: 55px;
+	top: 70px;
 }
 
 /* Round cornered boxes and backgrounds
