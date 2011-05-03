@@ -746,16 +746,16 @@ p.rules a {
 	font-size: 2.5em;
 	color: #000;
 	padding-bottom: 0.2em;
-	border-bottom: 1px #333333 dotted;
+	border-bottom: 4px #D9D9D9 solid;
+	width: 100%;
 	margin-bottom: 10px;
+	margin-top: 0px;
 	letter-spacing: 0.05em; 
 	font-family: 'Georgia', serif;
 }
 
 .markdown p {
 	font-size: 1.5em;
-	/* Because Deep wants a serif font */
-	/* Taken from the DDMAL page lol */
 	color: #444;
 }
 
@@ -841,3 +841,5 @@ input.pretty:hover, input.pretty:focus {
 .awesome:hover {
 	background-color: #5C95E2;
 }
+
+/* this is the worst css file ever */
