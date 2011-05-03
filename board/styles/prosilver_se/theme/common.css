@@ -159,19 +159,21 @@ p.right {
 
 /* Make only the first children a fixed width */
 #nav > li {
-	width: 160px;
+	width: 120px;
 	font-weight: regular;
+	text-align: center;
 }
 
 /* Make all the dropdown elements a fixed width ... IE hack (works fine in most other browsers) */
 #nav li ul {
 	width: 190px\9;
+	text-align: left; /* to counter-act the center align above which shouldn't really be applied anyway */
 }
 
 #nav li a {
 	display: block;
 	padding-left: 10px;
-	padding-right: 50px;
+	padding-right: 10px;
 	line-height: 1.8em;
 	font-size: 1.8em;
 	color: #fff;
