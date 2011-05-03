@@ -90,15 +90,16 @@
 
 <div id="wrap">
 	<div id="header">
-		<a href="{ROOT_PATH}../index.php"><img src="{ROOT_PATH}images/logo.png" alt="logo" /></a>
+		<div id="logo"><a href="{ROOT_PATH}../index.php"><img src="{ROOT_PATH}images/logo.png" alt="logo" /></a></div>
        	<div id="search">
 	       	<form action="{U_SEARCH}" method="post">
 	       		<fieldset>
-	       			<input name="keywords" id="keywords" type="text" maxlength="128" title="{L_SEARCH_KEYWORDS}" class="pretty search-box" value="<!-- IF SEARCH_WORDS-->{SEARCH_WORDS}<!-- ELSE -->{L_SEARCH_MINI}<!-- ENDIF -->" onclick="if(this.value=='{LA_SEARCH_MINI}')this.value='';" onblur="if(this.value=='')this.value='{LA_SEARCH_MINI}';" /> 
+	       			<input name="keywords" id="keywords" type="text" maxlength="128" title="{L_SEARCH_KEYWORDS}" class="pretty" value="<!-- IF SEARCH_WORDS-->{SEARCH_WORDS}<!-- ELSE -->{L_SEARCH_MINI}<!-- ENDIF -->" onclick="if(this.value=='{LA_SEARCH_MINI}')this.value='';" onblur="if(this.value=='')this.value='{LA_SEARCH_MINI}';" /> 
 	       			<!-- <input class="button2" value="{L_SEARCH}" type="submit" /> --> <!-- add some other submit thing later --> {S_SEARCH_HIDDEN_FIELDS}
 	       		</fieldset>
 	       	</form>
 	    </div>
+	    <div style="display: block"></div>
 	    <!-- INCLUDE menu.html -->
 	</div><!-- closes header -->
 	<div id="main">

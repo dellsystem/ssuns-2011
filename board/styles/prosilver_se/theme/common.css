@@ -8,6 +8,9 @@
 html, body {
 	height: 100%;
 	font-size: 10px;
+	background-image: url("{T_THEME_PATH}/images/dove.png");
+	background-repeat: no-repeat;
+	background-position: top center;
 }
 
 h1 {
@@ -268,9 +271,14 @@ body:before {
 	font-size: 1.5em;
 }
 
+#logo {
+	float: left;
+}
+
 #search {
-	float: right;
-	margin-top: 50px;
+	position: relative;
+	left: 70px;
+	top: 55px;
 }
 
 /* Round cornered boxes and backgrounds
@@ -649,7 +657,7 @@ li.pagination {
 
 .copyright {
 	text-align: center;
-	font-size: 0.9em;
+	font-size: 1.3em;
 	clear: both;
 	color: #FFF;
 }
@@ -740,6 +748,7 @@ p.rules a {
 	font-size: 1.7em;
 	clear: both;
 	padding-top: 20px;
+	text-transform: none;
 }
 
 /* for the secretariat images */

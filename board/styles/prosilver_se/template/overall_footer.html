@@ -11,11 +11,11 @@
         	<form method="post" action="{S_LOGIN_ACTION}">
         		<br /><br />
         		<p>
-        			<label for="username" class="hidden-label">Username</label><input type="text" name="username" id="username" value="Username" onclick="if(this.value=='Username')this.value='';" class="pretty" />
+        			<label for="username" class="hidden-label">Username</label><input type="text" name="username" id="username" value="Username" onclick="if(this.value=='Username')this.value='';" onblur="if(this.value=='')this.value='Username';" class="pretty" />
         		</p>
         		<p>
         			<!-- i hope no one's password is 4everalone -->
-        			<label for="password" class="hidden-label">Password</label><input type="password" value="4everalone" onclick="if(this.value=='4everalone')this.value='';" name="password" id="password" class="pretty" />
+        			<label for="password" class="hidden-label">Password</label><input type="password" value="4everalone" onclick="if(this.value=='4everalone')this.value='';" name="password" id="password" onblur="if(this.value=='')this.value='4everalone';" class="pretty" />
         		</p>
         		<p>
         			 <input type="submit" name="login" class="awesome" value="Login" />
