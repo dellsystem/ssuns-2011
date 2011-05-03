@@ -141,6 +141,7 @@ p.right {
 
 /* Dropdown menu wizardry. http://csswizardry.com/2011/02/creating-a-pure-css-dropdown-menu/ */
 #nav {
+	font-family: 'Georgia';
 	background-color: #3F4450;
 	float: left;
 	width: 100%;
@@ -154,6 +155,17 @@ p.right {
 	float: left;
 	position: relative;
 	display: block;
+}
+
+/* Make only the first children a fixed width */
+#nav > li {
+	width: 160px;
+	font-weight: regular;
+}
+
+/* Make all the dropdown elements a fixed width ... IE hack (works fine in most other browsers) */
+#nav li ul {
+	width: 190px\9;
 }
 
 #nav li a {
@@ -178,8 +190,6 @@ p.right {
 	list-style: none;
 	position: absolute;
 	left: -9999px; /* Hide off-screen when not needed (this is more accessible than display:none;) */
-	opacity: 0; /* Set initial state to transparent */
-	/*-webkit-transition:0.05s linear opacity; *//* Make the dropdown fade-in in Webkit */
 }
 
 #nav ul li {
@@ -193,7 +203,6 @@ p.right {
 
 #nav li:hover ul { /* Display the dropdown on hover */
 	left: 0; /* Bring back on-screen when needed */
-	opacity: 1; /* Fade to opaque */
 	font-size: 0.8em;
 }
 
@@ -662,6 +671,7 @@ li.pagination {
 	font-size: 1.3em;
 	clear: both;
 	color: #FFF;
+	font-family: 'Georgia', serif;
 }
 
 .small {
@@ -727,8 +737,11 @@ p.rules a {
 }
 
 /* For custom pages only */
+
+.markdown {
+	font-family: 'Georgia', serif;
+}
 .markdown h1 {
-   	font-family: 'droid-serif';
    	font-weight: normal;
 	font-size: 2.5em;
 	color: #000;
@@ -736,13 +749,13 @@ p.rules a {
 	border-bottom: 1px #333333 dotted;
 	margin-bottom: 10px;
 	letter-spacing: 0.05em; 
+	font-family: 'Georgia', serif;
 }
 
 .markdown p {
 	font-size: 1.5em;
 	/* Because Deep wants a serif font */
 	/* Taken from the DDMAL page lol */
-	font-family: "Baskerville", "Garamond", "Times New Roman", serif;
 	color: #444;
 }
 
