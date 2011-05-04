@@ -172,8 +172,8 @@ p.right {
 
 #nav li a {
 	display: block;
-	padding-left: 5px;
-	padding-right: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
 	line-height: 1.8em;
 	font-size: 1.8em;
 	color: #fff;
