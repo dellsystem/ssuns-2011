@@ -141,7 +141,7 @@ p.right {
 
 /* Dropdown menu wizardry. http://csswizardry.com/2011/02/creating-a-pure-css-dropdown-menu/ */
 #nav {
-	font-family: 'Georgia';
+	font-family: 'Georgia', 'Liberation Serif', serif; /* opera uses deja vu serif wtf? */
 	background-color: #3F4450;
 	float: left;
 	width: 100%;
@@ -172,8 +172,8 @@ p.right {
 
 #nav li a {
 	display: block;
-	padding-left: 7px;
-	padding-right: 7px;
+	padding-left: 5px;
+	padding-right: 5px;
 	line-height: 1.8em;
 	font-size: 1.8em;
 	color: #fff;
@@ -245,7 +245,7 @@ p.right {
 	background-color: #D9D9D9;
 	width: 200px;
 	text-align: center;
-	font-family: 'Georgia', serif;
+	font-family: 'Georgia', 'Liberation Serif', serif;
 	height: 100%;
 }
 
@@ -673,7 +673,7 @@ li.pagination {
 	font-size: 1.3em;
 	clear: both;
 	color: #FFF;
-	font-family: 'Georgia', serif;
+	font-family: 'Georgia', 'Liberation Serif', serif;
 }
 
 .small {
@@ -741,7 +741,7 @@ p.rules a {
 /* For custom pages only */
 
 .markdown {
-	font-family: 'Georgia', serif;
+	font-family: 'Georgia', 'Liberation Serif', serif;
 }
 .markdown h1 {
    	font-weight: normal;
@@ -753,11 +753,11 @@ p.rules a {
 	margin-bottom: 10px;
 	margin-top: 0px;
 	letter-spacing: 0.05em; 
-	font-family: 'Georgia', serif;
+	font-family: 'Georgia', 'Liberation Serif', serif;
 }
 
 .markdown h2 {
-	font-family: 'Georgia', serif;
+	font-family: 'Georgia', 'Liberation Serif', serif;
 	border-bottom: 2px #D9D9D9 solid;
 }
 
@@ -791,7 +791,7 @@ p.rules a {
 }
 
 .markdown blockquote {
-	font-family: 'Georgia', serif;
+	font-family: 'Georgia', 'Liberation Serif', serif;
 	font-size: 1.4em;
 }
 
@@ -799,7 +799,7 @@ p.rules a {
 
 .markdown table {
 	font-size: 1.5em;
-	font-family: 'Georgia', serif;
+	font-family: 'Georgia', 'Liberation Serif', serif;
 	background-color: #D9D9D9;
 	width: 100%;
 	border: 2px #000 solid;
@@ -831,7 +831,7 @@ input.pretty {
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	font-size: 1.2em;
-	font-family: 'Georgia', serif;
+	font-family: 'Georgia', 'Liberation Serif', serif;
 	text-shadow: 0px 0px 1px rgba(0,0,0,0.5);
 }
 
@@ -864,7 +864,7 @@ input.pretty:hover, input.pretty:focus {
     border-bottom: 1px solid rgba(0,0,0,0.25);
     position: relative;
     cursor: pointer;
-    font-family: 'Georgia', serif;
+    font-family: 'Georgia', 'Liberation Serif', serif;
     background-color: #2B79C2; /* since we really only need blue */
     font-size: 1.2em;
     font-weight: bold;
