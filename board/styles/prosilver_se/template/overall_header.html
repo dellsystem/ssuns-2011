@@ -72,6 +72,9 @@
 	</script>
 	<script type="text/javascript" src="{T_TEMPLATE_PATH}/styleswitcher.js"></script>
 	<script type="text/javascript" src="{T_TEMPLATE_PATH}/forum_fn.js"></script>
+    <!-- whoo jQuery (for form handling in register-a-school, and the banner -->
+    <script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{T_TEMPLATE_PATH}/banner.js"></script>
 
 	<link href="{T_THEME_PATH}/print.css" rel="stylesheet" type="text/css" media="print" title="printonly" />
 	<link href="{T_STYLESHEET_LINK}" rel="stylesheet" type="text/css" media="screen, projection" />
@@ -114,6 +117,15 @@
 		
 				<!-- IF OUTSIDE_OF_FORUM -->
         			<div class="markdown">
+                    <!-- banner shit -->
+                    <div id="banners">
+                        <div id="banner"><a href="committees"><img src="{ROOT_PATH}images/banner-committees.png" alt="SSUNS Committees" /></a></div><div id="banners-right">
+                            <div><p>Committees</p></div>
+                            <div class="double-border"><p>Theme</p></div>
+                            <div><p>What's new</p></div>
+                        </div>
+                    </div>
+                    <br />
         		<!-- ELSE -->
 					<!-- INCLUDE forum_header.html -->
     	    	<!-- ENDIF -->
