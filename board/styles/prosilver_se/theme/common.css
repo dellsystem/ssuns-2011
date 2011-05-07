@@ -903,7 +903,7 @@ input.pretty:hover, input.pretty:focus {
     display: inline-block;
     width: 200px;
     height: 200px;
-    background-color: #3F4450;
+    background-color: #5A6273;
 }
 
 #banners-right div {
@@ -920,15 +920,19 @@ input.pretty:hover, input.pretty:focus {
 	text-shadow: 2px 2px 2px rgba(0,0,0,0.75); /* Text shadow to lift it a little */
 }
 
+/* The banner that is currently shown, or soon to be shown (?) */
+#banners-right p:hover, #banners-right .hovered {
+    background-color: #747E94;
+}
+
 /* Pretend they're links (because they sort of are) */
 #banners-right p:hover {
-    background-color: #5A6273;
     cursor: pointer;
 }
 
 /* Stupid way to do it but idk if IE would support other methods
 Ensures that there are only 2 border things*/
-.double-border {
+#banner-theme {
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
 }
