@@ -36,7 +36,6 @@ $(document).ready(function() {
             
                 changeBanner(newBanner);
                 currentBanner = (currentBanner + 1) % 3;
-                console.log('new banner: ' +currentBanner);
                 rotateBanners();
             }
         }, 4000);
