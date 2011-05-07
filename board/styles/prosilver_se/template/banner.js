@@ -9,6 +9,12 @@ $(document).ready(function() {
         $('#banner img').attr('src', 'board/images/' + newBanner + '.png');
         // Fuck the alt tag
         $('#banner img').attr('alt', 'SSUNS banner');
+
+        // Stupid way to make sure the others aren't hovered over
+        $('#banners-right').children('div').attr('class', '');
+
+        // Make this banner menu item thing appear hovered over
+        $('#' + newBanner).attr('class', 'hovered');
     }
 
     // Handles the clicking shit
