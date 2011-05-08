@@ -8,7 +8,7 @@ $(document).ready(function() {
         // First get the href attribute
         var newHref;
         if (newBanner == 'banner-committees') {
-            newHref = 'committees';
+            newHref = 'committee-list';
         } else if (newBanner == 'banner-theme') {
             newHref = 'theme';
         } else {
