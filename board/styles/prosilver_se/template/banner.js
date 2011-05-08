@@ -5,7 +5,17 @@ $(document).ready(function() {
 
     // Takes care of the banner changing crap
     function changeBanner(newBanner) {
-        $('#banner a').attr('href', newBanner);
+        // First get the href attribute
+        var newHref;
+        if (newBanner == 'banner-committees') {
+            newHref = 'committees';
+        } else if (newBanner == 'banner-theme') {
+            newHref = 'theme';
+        } else {
+            // What's new page
+            newHref = 'whats-new';
+        }
+        $('#banner a').attr('href', newHref);
         $('#banner img').attr('src', 'board/images/' + newBanner + '.png');
         // Fuck the alt tag
         $('#banner img').attr('alt', 'SSUNS banner');
