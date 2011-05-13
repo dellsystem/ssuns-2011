@@ -21,8 +21,9 @@ $sql = "SELECT * FROM custom_pages
 $result = $db->sql_query($sql);
 $page = $db->sql_fetchrow($result);
 
+// See if the page needs a different template
 $template->set_filenames(array(
-	'body' => 'template_body.html',
+	'body' => ($page['page_template'] == '') ? 'cp_default.html' : $page['page_template'],
 ));
 
 // If no page is found, display the page-not-found stuff

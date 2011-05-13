@@ -12,6 +12,7 @@
 		<th>Page title</th>
 		<th>Page name (URL)</th>
 		<th>Last modified</th>
+		<th>Template file</th>
 		<th colspan="3">Options</th>
 	</tr>
 	</thead>
@@ -22,6 +23,7 @@
 			<td><strong>{pages.PAGE_TITLE}</strong></td>
 			<td>{pages.PAGE_NAME}</td>
 			<td>{pages.LAST_MODIFIED}</td>
+			<td><!-- IF pages.TEMPLATE_FILE --><strong>{pages.TEMPLATE_FILE}</strong><!-- ELSE -->cp_default.html<!-- ENDIF --></td>
 			<td><strong><a href="{pages.U_EDIT}">Edit</a></strong></td>
 			<td>Delete*</td>
 			<td><strong><a href="{pages.U_PAGE}" target="_blank">View</a></strong></td>
