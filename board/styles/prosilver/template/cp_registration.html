@@ -1,0 +1,131 @@
+<!-- INCLUDE overall_header.html -->
+
+<script src="{T_TEMPLATE_PATH}/registration.js"></script>
+
+{PAGE_CONTENT}
+
+<!-- form stuff goes here -->
+<!-- weird style overriding shit -->
+
+<form method="post" action="">
+	<h2>I. School details</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label for="name_of_school">Name of school</label></dt>
+				<dd><input type="text" size="40" name="name_of_school" id="name_of_school" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="first_time">Will this be your first time attending SSUNS?</label></dt>
+				<dd>
+					<label><input type="radio" name="first_time" value="1" id="first_time_yes" />Yes</label>
+					<label><input type="radio" name="first_time" value="0" id="first_time_no" />No</label>
+				</dd>
+			</dl>
+			<!-- should be hidden unless the user clicks Yes above. But keep it in the document in case JS is disabled -->
+			<dl id="how_hear">
+				<dt><label for="how_hear">How did you hear about SSUNS?</label></dt>
+				<dd><select name="how_hear">
+					<option value="brochure">Brochure</option>
+					<option value="letter">Letter</option>
+					<option value="website">Website</option>
+					<option value="other">Other</option><!-- needs a please specify option ugh useless jQuery here we go -->
+				</select></dd>
+			</dl>
+			<dl>
+				<dt><label for="fac_ad_name">Faculty advisor name</label></dt>
+				<dd><input type="text" size="40" name="fac_ad_name" id="fac_ad_name" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="fac_ad_email">Faculty advisor email</label></dt>
+				<dd><input type="text" size="40" name="fac_ad_email" id="fac_ad_email" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="where_school">Where is your school or educational institution located?</label></dt>
+				<dd><select name="where_school">
+					<option value="canada" selected="selected">Canada</option>
+					<option value="usa">United States</option>
+					<option value="other">Other</option><!-- again, sigh -->
+				</select></dd>
+			</dl>
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<!-- separating sections -->
+	<h2>II. Contact details</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label for="name_of_school">Name of school</label></dt>
+				<dd><input type="text" size="40" name="name_of_school" id="name_of_school" /></dd>
+			</dl>
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<!-- separating sections -->
+	<h2>III. Delegation information</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label for="name_of_school">Name of school</label></dt>
+				<dd><input type="text" size="40" name="name_of_school" id="name_of_school" /></dd>
+			</dl>
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<!-- separating sections -->
+	<h2>IV. Country selection</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label for="name_of_school">Name of school</label></dt>
+				<dd><input type="text" size="40" name="name_of_school" id="name_of_school" /></dd>
+			</dl>
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<!-- separating sections -->
+	<h2>V. Specialised Agencies and Crises</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label for="name_of_school">Name of school</label></dt>
+				<dd><input type="text" size="40" name="name_of_school" id="name_of_school" /></dd>
+			</dl>
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<!-- separating sections -->
+	<h2>V. Previous Model United Nations experience</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label for="name_of_school">Name of school</label></dt>
+				<dd><input type="text" size="40" name="name_of_school" id="name_of_school" /></dd>
+			</dl>
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<br />
+	<p>Please check your answers blah blah</p>
+	
+	<!-- the end finally -->
+	<div class="panel bg2"> 
+		<div class="inner"><span class="corners-top"><span></span></span> 
+		<fieldset class="submit-buttons"> 
+			<input type="reset" name="reset" value="Reset" class="button1" />&nbsp;
+			<input type="submit" accesskey="s" name="post" value="Submit" class="button1 default-submit-action" />&nbsp;
+ 
+		</fieldset> 
+ 
+		<span class="corners-bottom"><span></span></span></div> 
+	</div> 
+</form>
+
+<!-- INCLUDE overall_footer.html -->
