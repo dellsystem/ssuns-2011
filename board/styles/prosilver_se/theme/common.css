@@ -850,7 +850,7 @@ input.pretty:hover, input.pretty:focus {
 
 /* Awesome CSS3 buttons by ZURB Inc. http://www.zurb.com/blog_uploads/0000/0617/buttons-03.html */
 .awesome, .awesome:visited {
-    background: #222 url("{T_THEME_PATH}/images/alert-overlay.png") repeat-x; 
+    /*background: #fff url("{T_THEME_PATH}/images/alert-overlay.png") repeat-x; */
     display: inline-block; 
     padding: 5px 10px 6px; 
     color: #fff !important; /* for a tags */
@@ -865,7 +865,7 @@ input.pretty:hover, input.pretty:focus {
     position: relative;
     cursor: pointer;
     font-family: 'Georgia', 'Liberation Serif', serif;
-    background-color: #2B79C2; /* since we really only need blue */
+    background-color: #7287AB; /* since we really only need blue */
     font-size: 1.2em;
     font-weight: bold;
     line-height: 1.2em;
@@ -880,7 +880,7 @@ input.pretty:hover, input.pretty:focus {
 }
 
 .awesome:hover {
-	background-color: #5C95E2;
+	background-color: #93A9CF;
 }
 
 /* Banner shit */
@@ -903,7 +903,7 @@ input.pretty:hover, input.pretty:focus {
     display: inline-block;
     width: 200px;
     height: 200px;
-    background-color: #5A6273;
+    background-color: #7C92BA;
 }
 
 #banners-right div {
@@ -922,7 +922,7 @@ input.pretty:hover, input.pretty:focus {
 
 /* The banner that is currently shown, or soon to be shown (?) */
 #banners-right p:hover, #banners-right .hovered {
-    background-color: #747E94;
+    background-color: #93A9CF;
 }
 
 /* Pretend they're links (because they sort of are) */
