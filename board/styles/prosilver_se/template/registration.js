@@ -2,12 +2,12 @@
 // All the jQuery stuff for the registration form
 $(document).ready(function() {
 	// Hide the "how did you hear about ssuns" thing automatically
-    $('#how_hear').hide();
+    $('#how_hear_dl').hide();
     $('#first_time_yes').click(function() {
-    	$('#how_hear').show();
+    	$('#how_hear_dl').show();
     });
     $('#first_time_no').click(function() {
-    	$('#how_hear').hide();
+    	$('#how_hear_dl').hide();
     });
     
     $('#how_hear_other').hide();
@@ -15,6 +15,7 @@ $(document).ready(function() {
     $('#how_hear').change(function() {
     	if ($('#how_hear option:selected').val() == 'other') {
     		$('#how_hear_other').show();
+    		console.log('lol');
     	} else {
     		$('#how_hear_other').hide();
     	}

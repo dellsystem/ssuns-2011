@@ -7,7 +7,7 @@
 <!-- form stuff goes here -->
 <!-- weird style overriding shit -->
 
-<form method="post" action="">
+<form method="post" action="receipt.php">
 	<h2>I. School details</h2>
 	<div class="panel">
 		<div class="inner"><span class="corners-top"><span></span></span>
@@ -24,7 +24,7 @@
 				</dd>
 			</dl>
 			<!-- should be hidden unless the user clicks Yes above. But keep it in the document in case JS is disabled -->
-			<dl id="how_hear">
+			<dl id="how_hear_dl">
 				<dt><label for="how_hear">How did you hear about SSUNS?</label></dt>
 				<dd><select name="how_hear" id="how_hear">
 					<option value="brochure">Brochure</option>
@@ -48,7 +48,7 @@
 				<dd><select name="where_school" id="where_school">
 					<option value="canada" selected="selected">Canada</option>
 					<option value="usa">United States</option>
-					<option value="other">Other</option><!-- again, sigh -->
+					<option value="other">Other</option>
 				</select></dd>
 			</dl>
 		</fieldset>
@@ -1955,7 +1955,7 @@
 		<div class="inner"><span class="corners-top"><span></span></span> 
 		<fieldset class="submit-buttons"> 
 			<input type="reset" name="reset" value="Reset" class="button2" />&nbsp;
-			<input type="submit" accesskey="s" name="post" value="Submit" class="button1 default-submit-action" />&nbsp;
+			<input type="submit" accesskey="s" name="submit" value="Submit" class="button1 default-submit-action" />&nbsp;
  
 		</fieldset> 
  
