@@ -26,12 +26,14 @@
 			<!-- should be hidden unless the user clicks Yes above. But keep it in the document in case JS is disabled -->
 			<dl id="how_hear">
 				<dt><label for="how_hear">How did you hear about SSUNS?</label></dt>
-				<dd><select name="how_hear">
+				<dd><select name="how_hear" id="how_hear">
 					<option value="brochure">Brochure</option>
 					<option value="letter">Letter</option>
 					<option value="website">Website</option>
-					<option value="other">Other</option><!-- needs a please specify option ugh useless jQuery here we go -->
-				</select></dd>
+					<option value="other">Other (please specify)</option>
+					</select>
+					<input type="text" size="30" name="how_hear_other" id="how_hear_other" />
+				</dd>
 			</dl>
 			<dl>
 				<dt><label for="fac_ad_name">Faculty advisor name</label></dt>
@@ -1379,6 +1381,7 @@
 					<option value="28">Central African Republic</option>
 					<option value="29">Chad</option>
 					<option value="30">Chile</option>
+					<!-- lolcountries -->
 					<option value="31">China</option>
 					<option value="32">Colombia</option>
 					<option value="33">Congo (Republic of the)</option>
@@ -1866,12 +1869,13 @@
 	<h2>V. Specialised agencies and crises</h2>
 	<div class="panel">
 		<div class="inner"><span class="corners-top"><span></span></span>
-			<p style="font-size: 1.5em;">SSUNS will be simulating a diverse array of small and exciting specialised agencies and crises. Please indicate your first three preferences for the following committees should you be interested in participating in them. More information on the specific committee can be obtained from the <a href="committees-list">committees list</a>. Please be advised that due to its nature, the Ad-Hoc committee of the secretary general is application based. If you are interested in applying - wait, is there an application for each student?</p>
+			<p style="font-size: 1.5em;">SSUNS will be simulating a diverse array of small and exciting specialised agencies and crises. Please indicate your first three preferences for the following committees should you be interested in participating in them. More information on the specific committee can be obtained from the <a href="committee-list">committee list</a>. Please be advised that due to its nature, the Ad-Hoc Committee of the Secretary-General is application based. If you are interested in applying, indicate so below and fill in the application.</p>
 		<fieldset class="fields1 markdown">
 			<dl>
 				<dt><label for="com_choice_1">Choice 1 (top choice)</label></dt>
-				<dd><select name="com_choice_1">
+				<dd><select name="com_choice_1" id="com_choice_1">
 					<!-- Another array or committee lookup I guess -->
+					<option value="0">Choose a committee</option>
 					<option value="1">Royal Dutch Shell Board of Directors</option>
 					<option value="2">Charles de Gaulle's Cabinet</option>
 					<option value="3">Peace of Solferino</option>
@@ -1887,7 +1891,8 @@
 			</dl>
 			<dl>
 				<dt><label for="com_choice_2">Choice 2</label></dt>
-				<dd><select name="com_choice_2">
+				<dd><select name="com_choice_2" id="com_choice_2">
+					<option value="0">Choose a committee</option>
 					<option value="1">Royal Dutch Shell Board of Directors</option>
 					<option value="2">Charles de Gaulle's Cabinet</option>
 					<option value="3">Peace of Solferino</option>
@@ -1903,7 +1908,8 @@
 			</dl>
 			<dl>
 				<dt><label for="com_choice_3">Choice 3</label></dt>
-				<dd><select name="com_choice_3">
+				<dd><select name="com_choice_3" id="com_choice_3">
+					<option value="0">Choose a committee</option>
 					<option value="1">Royal Dutch Shell Board of Directors</option>
 					<option value="2">Charles de Gaulle's Cabinet</option>
 					<option value="3">Peace of Solferino</option>
@@ -1916,6 +1922,14 @@
 					<option value="10">Joint Crisis Committee: Somali Civil War (Rebels)</option>
 					<option value="11">Ad-Hoc Committee of the Secretry General</option>
 				</select></dd>
+			</dl>
+			<dl>
+				<dt><label for="apply_ad_hoc">Would you like to apply for the Ad-Hoc committee?</label></dt>
+				<dd><label><input type="radio" name="apply_ad_hoc" id="apply_ad_hoc_yes" value="1" /> Yes</label><label><input type="radio" name="apply_ad_hoc" value="0" id="apply_ad_hoc_no" />No</label></dd>
+			</dl>
+			<dl id="ad_hoc_application">
+				<dt><label for="ad_hoc_application_form">Ad-Hoc committee application</label></dt>
+				<dd><textarea name="ad_hoc_application_form" rows="5" cols="80"></textarea></dd>
 			</dl>
 		</fieldset>
 		<span class="corners-bottom"><span></span></span></div>
