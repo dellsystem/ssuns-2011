@@ -15,7 +15,6 @@ $(document).ready(function() {
     $('#how_hear').change(function() {
     	if ($('#how_hear option:selected').val() == 'other') {
     		$('#how_hear_other').show();
-    		console.log('lol');
     	} else {
     		$('#how_hear_other').hide();
     	}
@@ -47,15 +46,19 @@ $(document).ready(function() {
 	$('[id^=del_choice_]').change(function() {
 		// First make sure the selected one isn't 0 (it shouldn't be removed if it is)
 		var thisID = $(this).attr('id');
-		var selection = $(this).val();
+		//console.log($(this).val());
+		var selection = parseInt($(this).val(), 10);
+		//console.log('this ID: ' + thisID);
+		//console.log("selection: " + selection);
 		
 		// Now get the number from the ID
 		var selectNumber = parseInt(thisID.charAt(thisID.length-1), 10);
 		
 		// Now delete it from the other dropdown menus
 		if (selection > 0) {
-			$('[id^=del_choice_]').not('[id$=' + selectNumber + ']').each(function() {
+			$('[id^=del_choice_]').not('[id=del_choice_' + selectNumber + ']').each(function() {
 				$('#' + $(this).attr('id') + ' > option[value=' + selection + ']').hide();
+				//console.log('to hide: ' + $(this).attr('id') + ' > option[value=' + selection + ']');
 			});
 		}
 		
