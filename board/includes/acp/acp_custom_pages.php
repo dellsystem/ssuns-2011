@@ -64,6 +64,14 @@ class acp_custom_pages {
          		// Eventually this should be a dropdown menu - all the template files in the dir? prefixed with cp_
          		$new_template = request_var('page_template', '');
          		
+         		$sql_array = array(
+         			'page_title'	=> $new_title,
+         			'page_name'		=> $new_name,
+         			'page_content'	=> $new_content,
+         			'page_template'	=> $new_template,
+         			'last_modified'	=> time()
+         		);
+         		
          		if ( $new_title == '' || $new_name == '' || $new_content == '' ) {
          			trigger_error('None of the first three fields can be empty!' . adm_back_link($this->u_action), E_USER_WARNING);
          		}
@@ -74,8 +82,8 @@ class acp_custom_pages {
          		}
 
          		// Otherwise, might as well add the page ... ignore page_id, that autoincrements
-         		$sql = "INSERT INTO " . CUSTOM_PAGES_TABLE . " (page_title, page_content, page_name, last_modified, page_template)
-         				VALUES ('$new_title', '$new_content', '$new_name', " . time() . ", '$new_template')";
+         		$sql = "INSERT INTO " . CUSTOM_PAGES_TABLE . "
+         				" . $db->sql_build_array('INSERT', $sql_array);
          		$db->sql_query($sql);
          		
          		add_log('Added custom page /' . $new_name . adm_back_link($this->u_action));
@@ -102,18 +110,30 @@ class acp_custom_pages {
          	$result = $db->sql_query($sql);
          	$row = $db->sql_fetchrow($result);
          	
-         	// dunno what other way to check it lol
          	$page_nonexistent = ( intval($row['page_id']) == 0 ) ? true : false;
          	
          	// If we're submitting and the page exists (it should ...)
-         	if ( $submit && !$page_nonexistent ) {
+         	if ( $submit && !$page_nonexistent )
+         	{
+         	
+		     	// Use sql_build_array() to build the update statement
+		     	// Code reuse ... move this somewhere else later?
+		     	$sql_array = array(
+		     		'page_title'	=> $new_title,
+		     		'page_name'		=> $new_name,
+		     		'page_content'	=> $new_content,
+		     		'page_template'	=> $new_template,
+		     		'last_modified'	=> time()
+		     	);
+		     	
+		     	if ( $new_title == '' || $new_name == '' || $new_content == '' ) {
+		     		trigger_error('None of the first three fields can be empty!' . adm_back_link($this->u_action . '&amp;id=' . $id_to_edit), E_USER_WARNING);
+		     	}
+		     	
+		     	
 				// Update the table:
 				$sql = "UPDATE " . CUSTOM_PAGES_TABLE . "	
-						SET page_title = '$new_title',
-							page_name = '$new_name',
-							page_content = '$new_content',
-							last_modified = " . time() . ",
-							page_template = '$new_template'
+						SET " . $db->sql_build_array('UPDATE', $sql_array) . "
 						WHERE page_id = $id_to_edit";
 				$db->sql_query($sql);         	
          	
