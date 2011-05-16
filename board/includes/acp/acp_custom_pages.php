@@ -26,6 +26,7 @@ class acp_custom_pages {
    {
       global $db, $user, $auth, $template;
       global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
+      $submit = (isset($_POST['submit'])) ? true : false;
       switch($mode)
       {
          case 'overview':
@@ -55,7 +56,7 @@ class acp_custom_pages {
          	$this->tpl_name = 'acp_custom_pages_add';
          	
          	// Only really need to do stuff if we're submitting
-         	if ( isset($_POST['submit']) ) {
+         	if ( $submit ) {
          		// First check to make sure that none of the elements are empty
          		$new_title = request_var('page_title', '');
          		$new_name = request_var('page_name', '');
@@ -101,7 +102,7 @@ class acp_custom_pages {
          	$page_nonexistent = ( intval($row['page_id']) == 0 ) ? true : false;
          	
          	// If we're submitting and the page exists (it should ...)
-         	if ( isset($_POST['submit']) && !$page_nonexistent ) {
+         	if ( $submit && !$page_nonexistent ) {
 				// Update the table:
 				$sql = "UPDATE " . CUSTOM_PAGES_TABLE . "	
 						SET page_title = '" . $_POST['page_title'] . "',
