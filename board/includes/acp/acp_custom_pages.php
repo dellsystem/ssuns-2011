@@ -87,8 +87,12 @@ class acp_custom_pages {
          	// Why doesn't add use the same template file?
          	$this->tpl_name = 'acp_custom_pages_edit';
          	
-         	$id_to_edit = intval($_GET['id']);
-         	
+         	// Store form variables first
+         	$id_to_edit = request_var('id', 0);
+         	$new_title = request_var('page_title', '');
+         	$new_name = request_var('page_name', '');
+         	$new_content = request_var('page_content', '');
+         	$new_template = request_var('page_template', '');
         	
          	// First try to query the database looking for this page
          	$sql = "SELECT *
@@ -105,11 +109,11 @@ class acp_custom_pages {
          	if ( $submit && !$page_nonexistent ) {
 				// Update the table:
 				$sql = "UPDATE " . CUSTOM_PAGES_TABLE . "	
-						SET page_title = '" . $_POST['page_title'] . "',
-							page_name = '" . $_POST['page_name'] . "',
-							page_content = '" . $_POST['page_content'] . "',
+						SET page_title = '$new_title',
+							page_name = '$new_name',
+							page_content = '$new_content',
 							last_modified = " . time() . ",
-							page_template = '" . request_var('page_template', '') . "'
+							page_template = '$new_template'
 						WHERE page_id = $id_to_edit";
 				$db->sql_query($sql);         	
          	
