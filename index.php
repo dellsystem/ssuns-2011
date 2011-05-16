@@ -15,9 +15,9 @@ $user->setup();
 
 page_header('');
 
-$page_name = ( strlen($_GET['name']) > 0 ) ? $_GET['name'] : 'index';
+$page_name = request_var('name', 'index');
 $sql = "SELECT * FROM custom_pages
-	WHERE page_name = '" . $page_name . "'";
+	WHERE page_name = '" . $db->sql_escape($page_name) . "'";
 $result = $db->sql_query($sql);
 $page = $db->sql_fetchrow($result);
 
