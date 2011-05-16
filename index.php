@@ -15,7 +15,11 @@ $user->setup();
 
 page_header('');
 
+// The below causes the page name to default to index only if there is no name parameter passed
 $page_name = request_var('name', 'index');
+// In case the name parameter passed is empty, it should default to index as well:
+$page_name = (strlen($page_name) > 0) ? $page_name : 'index';
+
 $sql = "SELECT * FROM custom_pages
 	WHERE page_name = '" . $db->sql_escape($page_name) . "'";
 $result = $db->sql_query($sql);
