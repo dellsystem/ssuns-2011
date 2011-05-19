@@ -1,0 +1,130 @@
+	<h2>I. School details</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label>Name of school</label></dt>
+				<dd>{NAME_OF_SCHOOL}</dd>
+			</dl>
+			<dl>
+				<dt><label>Will this be your first time attending SSUNS?</label></dt>
+				<dd>{FIRST_TIME}</dd>
+			</dl>
+			<!-- IF FIRST_TIME == 'Yes' -->
+			<dl>
+				<dt><label>How did you hear about SSUNS?</label></dt>
+				<dd>{HOW_HEAR}<!-- IF HOW_HEAR == 'Other' --> ({HOW_HEAR_OTHER}) <!-- ENDIF --></dd>
+			</dl>
+			<!-- ENDIF -->
+			<dl>
+				<dt><label>Faculty advisor name</label></dt>
+				<dd>{FAC_AD_NAME}</dd>
+			</dl>
+			<dl>
+				<dt><label>Faculty advisor email</label></dt>
+				<dd>{FAC_AD_EMAIL}</dd>
+			</dl>
+			<dl>
+				<dt><label for="where_school">Where is your school or educational institution located?</label></dt>
+				<dd>{WHERE_SCHOOL}</dd>
+			</dl>
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	
+	<h2>II. Contact details</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label>Mailing address</label></dt>
+				<dd>{MAILING_ADDRESS}</dd>
+			</dl>
+			<dl>
+				<dt><label>City</label></dt>
+				<dd>{CITY}</dd>
+			</dl>
+			<dl>
+				<dt><label>Province or state</label></dt>
+				<dd>{PROVINCE_OR_STATE}</dd>
+			</dl>
+			<!-- IF WHERE_SCHOOL == 'Other' -->
+			<dl>
+				<dt><label for="country">Country</label></dt>
+				<dd>{COUNTRY}</dd>
+			</dl>
+			<!-- ENDIF -->
+			<dl>
+				<dt><label>Postal or zip code</label></dt>
+				<dd>{POSTAL_OR_ZIP_CODE}</dd>
+			</dl>
+			<dl>
+				<dt><label>Phone number</label></dt>
+				<dd>{PHONE_NUMBER}</dd>
+			</dl>
+			<dl>
+				<dt><label>Fax number</label></dt>
+				<dd>{FAX_NUMBER}</dd>
+			</dl>
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<h2>III. Delegation information</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label>Number of delegates</label></dt>
+				<dd>{NUMBER_OF_DELEGATES}</dd>
+			</dl>
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<h2>IV. Country selection</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<fieldset class="fields1 markdown">
+		<!-- BEGIN del -->
+			<dl>
+				<dt><label>{del.LABEL}</label></dt>
+				<dd>{del.CHOICE}</dd>
+			</dl>
+		<!-- END del-->
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<h2>V. Specialised agencies and crises</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<fieldset class="fields1 markdown">
+		<!-- BEGIN com -->
+			<dl>
+				<dt><label>{com.LABEL}</label></dt>
+				<dd>{com.CHOICE}</dd>
+			</dl>
+		<!-- END com-->
+			<dl>
+				<dt><label>Would you like to apply for the Ad-Hoc Committee?</label></dt>
+				<dd>{APPLY_AD_HOC}</dd>
+			</dl>
+		<!-- IF APPLY_AD_HOC == 'Yes' -->
+			<dl>
+				<dt><label>Application:</label></dt>
+				<dd>{AD_HOC_APPLICATION}</dd>
+			</dl>
+		<!-- ENDIF -->
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<h2>VI. Previous Model United Nations experience</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label>Previous experience</label></dt>
+				<dd>{PREVIOUS_EXPERIENCE}</dd>
+			</dl>
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<br />

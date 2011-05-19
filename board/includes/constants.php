@@ -274,6 +274,6 @@ define('ZEBRA_TABLE',				$table_prefix . 'zebra');
 
 // Additional tables
 define('CUSTOM_PAGES_TABLE',		'custom_pages');
-
+define('SCHOOLS_CONTACT_TABLE',		'schools_contact');
 
 ?>

@@ -5,6 +5,7 @@ RewriteCond %{REQUEST_URI} !index.php$
 RewriteCond %{REQUEST_URI} !receipt.php$
 RewriteCond %{REQUEST_URI} !sandbox.html$
 RewriteCond %{REQUEST_URI} !sandbox.css$
+RewriteCond %{REQUEST_URI} !sandbox.php$
 RewriteCond %{REQUEST_URI} !montreal.jpg$
 RewriteCond %{REQUEST_URI} !board/(.*)
 RewriteRule ^(.*)$ /ssuns/index.php?name=$1 [L]
