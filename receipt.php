@@ -86,16 +86,9 @@ page_header('');
 // Show the receipt body if submitted, but show the cp_registration page if in preview mode
 if ($preview)
 {
-	$sql = "SELECT * FROM custom_pages
-		WHERE page_name = 'register-a-school'";
-	$result = $db->sql_query($sql);
-	$page = $db->sql_fetchrow($result);
 	
 	$template->set_filenames(array(
 		'body'	=> 'cp_registration.html',
-	));
-	$template->assign_vars(array(
-		'PAGE_CONTENT'	=> $page['page_content'],
 	));
 }
 else
