@@ -24,7 +24,7 @@ $delegate_fee = 85;
 $total_cost = $delegation_fee + ($delegate_fee * $number_of_delegates);
 
 // Now if there are no errors, proceed with updating the database
-if (!$errors)
+if (!$errors && !$preview)
 {
 	// First get the region ... either INTL, CAN, or US
 	switch ($where_school)
