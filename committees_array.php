@@ -10,9 +10,9 @@ $committees = array(
 	"Shakespeare's Julius Caesar",
 	"Allende's Cabinet: 1973 Chilean coup d'etat",
 	"Her Majesty's Royal Secret Service:MI-6",
-	'Joint Crisis Committee: Somali Civil War',
+	'Joint Crisis Committee: Somali Civil War (Government)',
 	'Joint Crisis Committee: Somali Civil War (Rebels)',
-	'Ad-Hoc Committee of the Secretry General',
+	'Ad-Hoc Committee of the Secretary-General',
 );
 
 ?>
