@@ -74,6 +74,7 @@ if (!$errors && !$preview)
 		'committee_choice_3'	=> $com_choice_3,
 		'apply_ad_hoc'			=> $apply_ad_hoc,
 		//'ad_hoc_application'	=> $ad_hoc_application_form,
+		'ad_hoc_application'		=> '',
 		'previous_experience'	=> $previous_experience,
 	);
 
@@ -119,7 +120,6 @@ $template->assign_vars(array(
 	'FAX_NUMBER'			=> $fax_number,
 	'APPLY_AD_HOC'			=> ($apply_ad_hoc) ? 'Yes' : 'No',
 	//'AD_HOC_APPLICATION'	=> $ad_hoc_application_form,
-	'AD_HOC_APPLICATION'	=> '',
 	'PREVIOUS_EXPERIENCE'	=> $previous_experience,
 	'TOTAL_COST'			=> $total_cost,
 	'DELEGATION_FEE'		=> $delegation_fee,
