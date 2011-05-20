@@ -34,7 +34,7 @@ $inputs = array(
 	'com_choice_2' 			=> 0,
 	'com_choice_3' 			=> 0,
 	'apply_ad_hoc'			=> 0, 
-	'ad_hoc_application_form' => '',
+	//'ad_hoc_application_form' => '',
 	'previous_experience'	=> '',
 );
 
@@ -53,7 +53,7 @@ $nice_names = array(
 	'postal_or_zip_code' 	=> 'postal or zip code',
 	'phone_number'			=> 'phone number',
 	'fax_number'			=> 'fax number',
-	'ad_hoc_application_form' => 'ad-hoc application form',
+	//'ad_hoc_application_form' => 'ad-hoc application form',
 	'previous_experience'	=> 'previous experience',
 );
 
@@ -91,11 +91,11 @@ foreach ($inputs as $key => $value)
 	else
 	{
 		// Should be a string
-		// The only ones that are allowed to be empty are: how_hear_other (if how_hear != other), country (if where_school != other), and ad_hoc_application_form (if apply_ad_hoc == 0)
+		// The only ones that are allowed to be empty are: how_hear_other (if how_hear != other), country (if where_school != other)
 		if (empty($$key))
 		{
 			// Situations where there is no error:
-			if (($key == 'how_hear_other' && ($how_hear != 'other' || $first_time == 0)) || ($key == 'country' && $where_schol != 'other') || ($key == 'ad_hoc_application_form' && $apply_ad_hoc == 0))
+			if (($key == 'how_hear_other' && ($how_hear != 'other' || $first_time == 0)) || ($key == 'country' && $where_schol != 'other'))
 			{
 				// Do nothing lol
 			}
