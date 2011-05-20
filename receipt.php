@@ -119,6 +119,7 @@ $template->assign_vars(array(
 	'FAX_NUMBER'			=> $fax_number,
 	'APPLY_AD_HOC'			=> ($apply_ad_hoc) ? 'Yes' : 'No',
 	//'AD_HOC_APPLICATION'	=> $ad_hoc_application_form,
+	'AD_HOC_APPLICATION'	=> '',
 	'PREVIOUS_EXPERIENCE'	=> $previous_experience,
 	'TOTAL_COST'			=> $total_cost,
 	'DELEGATION_FEE'		=> $delegation_fee,
