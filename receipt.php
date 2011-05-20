@@ -80,6 +80,20 @@ if (!$errors && !$preview)
 
 	$sql = 'INSERT INTO ' . SCHOOLS_CONTACT_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_array);
 	$db->sql_query($sql);
+	
+	include($phpbb_root_path . 'includes/functions_messenger.php');
+	$messenger = new messenger(false);
+	// Now send off an email to the faculty advisor informing him/her of the registration
+	$messenger->template('registration_pending');
+	$messenger->to($fac_ad_email, $fac_ad_name);
+	$messenger->subject('Confirmation of receipt of registration for SSUNS');
+	$messenger->from("it@ssuns.org");
+
+	$messenger->assign_vars(array(
+		'FAC_AD_NAME'			=> $fac_ad_name)
+	);
+
+	$messenger->send();
 }
 
 page_header('');
