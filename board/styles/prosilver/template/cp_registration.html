@@ -7,12 +7,14 @@
 <h1>Registration preview<!-- IF ERRORS --> - Errors <!-- ENDIF --></h1>
 <!-- IF ERRORS -->
 	<p>{ERRORS}</p>
-	<p>Please fix the errors before submitting.</p>
+	<p>Please fix the errors before submitting. <a href="javascript: history.go(-1)">Click here to go back to the form.</a></p>
 <!-- ENDIF -->
 <!-- INCLUDE registration_preview.html -->
 <!-- ENDIF -->
 
 <form method="post" action="receipt.php">
+	<!-- terrible terrible workaround for making the below hidden i apologise but this is supposed to be up soon and i'm very tired -->
+	<div <!-- IF IN_PREVIEW -->style="display: none"<!-- ENDIF -->>
 	<h2>I. School details</h2>
 	<div class="panel">
 		<div class="inner"><span class="corners-top"><span></span></span>
@@ -2233,6 +2235,7 @@
 		</fieldset>
 		<span class="corners-bottom"><span></span></span></div>
 	</div>
+	</div><!-- closes the "hidden" div -->
 	<br />
 	<p>Please check your answers before submitting, as you will not be able to change your answers once you've pressed submit. You may preview your answers before submitting by pressing the Preview button.</p>
 	
