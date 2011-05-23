@@ -27,8 +27,8 @@ class acp_custom_pages_info {
             'modes'        => array(
             	// Uses the same auth as board for now, probably not worth it to change it
                 'overview'      => array('title' => 'Custom pages overview', 'auth' => 'acl_a_board', 'cat' => array('')),
-                'add'			=> array('title' => 'Add a new custom page', 'auth' => 'acl_a_board', 'cat' => array('')),
-                'edit'			=> array('title' => 'Edit a custom page', 'auth' => 'acl_a_board', 'cat' => array('')),
+                'pages'			=> array('title' => 'Add a new custom page', 'auth' => 'acl_a_board', 'cat' => array('')),
+                'menu'			=> array('title' => 'Edit a custom page', 'auth' => 'acl_a_board', 'cat' => array('')),
             ),
         );
     }

@@ -1,10 +1,11 @@
 <!-- INCLUDE overall_header.html -->
 
-<h1>Page overview</h1>
+<h1>{L_CUSTOM_PAGES_OVERVIEW}</h1>
 
-<p>Here you can view all the custom pages and edit them etc</p>
+<p>{L_CUSTOM_PAGES_OVERVIEW_EXPLAIN}</p>
 
 <table cellspacing="1">
+	<caption>{L_CUSTOM_PAGES_RECENT}</caption>
 	<col class="col1" /><col class="col1" /><col class="col1" /><col class="col1" /><col class="col2" /><col class="col2" /><col class="col2" />
 	<thead>
 	<tr>
@@ -25,11 +26,13 @@
 			<td>{pages.LAST_MODIFIED}</td>
 			<td><!-- IF pages.TEMPLATE_FILE --><strong>{pages.TEMPLATE_FILE}</strong><!-- ELSE -->cp_default.html<!-- ENDIF --></td>
 			<td><strong><a href="{pages.U_EDIT}">Edit</a></strong></td>
-			<td>Delete*</td>
+			<td><strong><a href="{pages.U_DELETE}">Delete</a></strong></td>
 			<td><strong><a href="{pages.U_PAGE}" target="_blank">View</a></strong></td>
 		</tr>
 		<!-- END pages -->
 	</tbody>
 </table>
+
+{MENU}
 
 <!-- INCLUDE overall_footer.html -->

@@ -16,40 +16,41 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-/* CUSTOM PAGES ACP MODULE - dellsystem */
-
 class acp_custom_pages {
    var $u_action;
    var $new_config;
    
    function main($id, $mode)
    {
-      global $db, $user, $auth, $template;
-      global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
-      $submit = (isset($_POST['submit'])) ? true : false;
-      switch($mode)
-      {
-         case 'overview':
-            $this->page_title = 'Custom pages overview';
-            $this->tpl_name = 'acp_custom_pages_overview';
+		global $phpbb_root_path, $db, $phpEx, $auth, $user, $template, $config;
+		
+		$user->add_lang('mods/custom-pages/acp');
+     	$submit = (isset($_POST['submit'])) ? true : false;
+		switch($mode)
+		{
+			case 'overview':
+				$this->page_title = 'CUSTOM_PAGES_OVERVIEW';
+				$this->tpl_name = 'acp_custom_pages_overview';
             
-            // Do a SQL query to fetch all the custom pages (just the titles etc, no content)
-            $sql = "SELECT page_id, page_title, page_name, last_modified, page_template
-            		FROM " . CUSTOM_PAGES_TABLE . "
-            		ORDER BY page_id ASC";
-           	$result = $db->sql_query($sql);
+		        // Do a SQL query to fetch the 5 most recently added custom pages (just the titles etc, no content)
+		        $sql = "SELECT page_id, page_title, page_name, last_modified, page_template
+		        		FROM " . CUSTOM_PAGES_TABLE . "
+		        		ORDER BY last_modified DESC
+		        		LIMIT 5";
+		       	$result = $db->sql_query($sql);
            	
-			while ( $row = $db->sql_fetchrow($result) ) {
-				$template->assign_block_vars('pages', array(
-					'PAGE_ID' 		=> $row['page_id'],
-					'PAGE_TITLE' 	=> $row['page_title'],
-					'TEMPLATE_FILE' => $row['page_template'],
-					'PAGE_NAME'		=> $row['page_name'],
-					'LAST_MODIFIED'	=> $user->format_date($row['last_modified']),
-					'U_EDIT'		=> append_sid("{$phpbb_admin_path}index.$phpEx", 'i=custom_pages&mode=edit&id=' . $row['page_id']),
-					'U_PAGE'		=> $phpbb_root_path . '../' . $row['page_name'])
-				);
-			}
+				while ( $row = $db->sql_fetchrow($result) ) {
+					$template->assign_block_vars('pages', array(
+						'PAGE_ID' 		=> $row['page_id'],
+						'PAGE_TITLE' 	=> $row['page_title'],
+						'TEMPLATE_FILE' => $row['page_template'],
+						'PAGE_NAME'		=> $row['page_name'],
+						'LAST_MODIFIED'	=> $user->format_date($row['last_modified']),
+						'U_EDIT'		=> append_sid("{$phpbb_admin_path}index.$phpEx", 'i=custom_pages&mode=edit&id=' . $row['page_id']),
+						'U_DELETE'		=> append_sid("{$phpbb_admin_path}index.$phpEx", 'i=custom_pages&mode=delete&id=' . $row['page_id']),
+						'U_PAGE'		=> $phpbb_root_path . '../' . $row['page_name'])
+					);
+				}
             break;
          case 'add':
          	$this->page_title = 'Add a new custom page';
@@ -151,6 +152,35 @@ class acp_custom_pages {
          		'PAGE_TEMPLATE'     => $row['page_template'],
          		'PAGE_NONEXISTENT'	=> $page_nonexistent,)
          	);
+         	break;
+         case 'delete':
+         	$id_to_delete = request_var('id', 0);
+         	
+         	// Do the confirm box thing whatever before deleting
+			if (confirm_box(true))
+			{
+				// If we need to delete a layer, the delete get var will be > 0 (will be the ID)
+				$sql = "DELETE FROM " . DYNAMO_LAYERS_TABLE . "
+						WHERE dynamo_layer_id = $delete_get";
+				$db->sql_query($sql);
+			
+				// Now set the associated items to an item ID of 0 (uncategorised)
+				$sql = "UPDATE " . DYNAMO_ITEMS_TABLE . "
+						SET dynamo_item_layer = 0
+						WHERE dynamo_item_layer = $delete_get";
+				$db->sql_query($sql);
+				 
+				trigger_error($user->lang['ACP_DYNAMO_DELETED_LAYER'] . adm_back_link($this->u_action));
+			}
+			else
+			{
+				$s_hidden_fields = build_hidden_fields(array(
+					'submit'    => true,
+					)
+				);
+				
+				confirm_box(false, $user->lang['ACP_DYNAMO_DELETE_LAYER'], $s_hidden_fields);
+			}
          	break;
       	}
      }
