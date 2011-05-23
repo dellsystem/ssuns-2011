@@ -1,0 +1,81 @@
+/* Dropdown menu wizardry. http://csswizardry.com/2011/02/creating-a-pure-css-dropdown-menu/ */
+#menu {
+	font-family: 'Georgia', 'Liberation Serif', serif;
+	background-color: #3F4450;
+	float: left;
+	width: 100%;
+	list-style: none;
+	height: 35px;
+	z-index: 9001;
+	position: relative;
+}
+
+#menu li {
+	float: left;
+	position: relative;
+	display: block;
+}
+
+/* Make only the first children a fixed width */
+#menu > li {
+	width: 120px;
+	font-weight: none;
+	text-align: center;
+}
+
+/* Make all the dropdown elements a fixed width ... IE hack (works fine in most other browsers) */
+#menu li ul {
+	width: 190px\9;
+	text-align: left; /* to counter-act the center align above which shouldn't really be applied anyway */
+}
+
+#menu li a {
+	display: block;
+	padding-left: 10px;
+	padding-right: 10px;
+	line-height: 1.8em;
+	font-size: 1.8em;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.75); /* Text shadow to lift it a little */
+	height: 35px;
+}
+#menu li a:hover {
+	color:#fff;
+	background: #5A6273; /* Solid colour fall-back */
+	text-decoration: none;
+}
+
+/*--- DROPDOWN ---*/
+#menu ul {
+	list-style: none;
+	position: absolute;
+	left: -9999px; /* Hide off-screen when not needed (this is more accessible than display:none;) */
+}
+
+#menu ul li {
+	float: none;
+}
+
+#menu ul a {
+	white-space: nowrap; /* Stop text wrapping and creating multi-line dropdown items */
+	display: block;
+}
+
+#menu li:hover ul { /* Display the dropdown on hover */
+	left: 0; /* Bring back on-screen when needed */
+	font-size: 0.8em;
+}
+
+#menu li:hover a { /* Set styles for top level when dropdown is hovered */
+	background: #5A6273; /* Solid colour fall-back */
+	text-decoration: none;
+}
+
+#menu li:hover ul a { /* Override some top level styles when dropdown is hovered */
+	text-decoration: none;
+}
+
+#menu li:hover ul li a:hover{ /* Set styles for dropdown when items are hovered */
+	background: #4C5361; /* Solid colour fall-back */
+}
