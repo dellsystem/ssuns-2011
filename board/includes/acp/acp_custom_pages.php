@@ -1,9 +1,9 @@
 <?php
 /**
 *
-* @package acp
-* @version $Id$
-* @copyright (c) 2005 phpBB Group
+* @package Custom Pages MOD
+* @version $Id: acp_custom_pages.php ilostwaldo@gmail.com$
+* @copyright (c) 2011 dellsystem (www.dellsystem.me)
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 */
@@ -58,9 +58,9 @@ class acp_custom_pages {
          	// Only really need to do stuff if we're submitting
          	if ( $submit ) {
          		// First check to make sure that none of the elements are empty
-         		$new_title = request_var('page_title', '');
+         		$new_title = utf8_normalize_nfc(request_var('page_title', ''));
          		$new_name = request_var('page_name', '');
-         		$new_content = request_var('page_content', '');
+         		$new_content = utf8_normalize_nfc(request_var('page_content', '', true));
          		// Eventually this should be a dropdown menu - all the template files in the dir? prefixed with cp_
          		$new_template = request_var('page_template', '');
          		
@@ -97,9 +97,9 @@ class acp_custom_pages {
          	
          	// Store form variables first
          	$id_to_edit = request_var('id', 0);
-         	$new_title = request_var('page_title', '');
+         	$new_title = utf8_normalize_nfc(request_var('page_title', ''));
          	$new_name = request_var('page_name', '');
-         	$new_content = request_var('page_content', '');
+         	$new_content = utf8_normalize_nfc(request_var('page_content', ''));
          	$new_template = request_var('page_template', '');
         	
          	// First try to query the database looking for this page
