@@ -20,7 +20,7 @@ $page_name = request_var('name', 'index');
 // In case the name parameter passed is empty, it should default to index as well:
 $page_name = (strlen($page_name) > 0) ? $page_name : 'index';
 
-$sql = "SELECT * FROM custom_pages
+$sql = "SELECT * FROM " . CUSTOM_PAGES_TABLE . "
 	WHERE page_name = '" . $db->sql_escape($page_name) . "'";
 $result = $db->sql_query($sql);
 $page = $db->sql_fetchrow($result);
