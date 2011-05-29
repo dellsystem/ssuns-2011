@@ -20,6 +20,30 @@ class acp_registration {
    var $u_action;
    var $new_config;
    
+   // For creating the new user - from http://www.laughing-buddha.net/php/lib/password
+	function generate_random_password($length = 10)
+	{
+		$password = '';
+		$possible_chars = '0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+_=ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$possible_length = strlen($possible_chars);
+		
+		$i = 0;
+		while ($i < $length)
+		{
+			// Choose a random character
+			$char = substr($possible, mt_rand(0, $maxlength-1), 1);
+			
+			// Have we already used this character?
+			if (!strstr($password, $char))
+			{ 
+		   		// No, so it's OK to add it onto the end of whatever we've already got...
+		    	$password .= $char;
+		    	$i++;
+		    }
+		}
+		return $password;
+	}
+   
    function main($id, $mode)
    {
 		global $phpbb_root_path, $db, $phpEx, $auth, $user, $template, $config;
@@ -41,46 +65,18 @@ class acp_registration {
 					$result = $db->sql_query($sql);
 					$row = $db->sql_fetchrow($result);
 					
-					// Assuming the school name hasn't been changed ... could be problematic one day
-					$school_name = $row['school_name'];
-					
 					// If we're submitting
 					if ($submit)
 					{
-						$is_approved = request_var('is_approved', '');
-						// Check if we're newly approving the user
-						$approved_text = '';
-						if ($is_approved == 'on' && $row['is_approved'] == 0)
-						{
-							$approved_text = 'and approved ';
-							// Add it to the log
-							add_log('admin', 'LOG_APPROVE_SCHOOL', $row['school_name']);
-							// meh language constants
-							// First create a new user for that school
-							// Then send out the approval email
-							include($phpbb_root_path . 'includes/functions_messenger.php');
-							$messenger = new messenger(false);
-							
-							// Now send off an email to the faculty advisor informing him/her of the registration
-							$messenger->template('registration_approved');
-							$messenger->to($row['fac_ad_email'], $row['fac_ad_name']);
-							$messenger->subject('SSUNS registration approved');
-							$messenger->from("it@ssuns.org");
-
-							$messenger->assign_vars(array(
-								'FAC_AD_NAME'			=> $fac_ad_name,
-								'SCHOOL_NAME'			=> $row['school_name'],
-								'SCHOOL_USERNAME'		=> 'not yet lol',
-								'SCHOOL_PASSWORD'		=> 'me neither lol')
-							);
-
-							$messenger->send();
-						}
+						$is_approved = request_var('is_approved', ''); // will be "on" if selected
+						$school_name = utf8_normalize_nfc(request_var('school_name', '', true));
+						$fac_ad_name = utf8_normalize_nfc(request_var('fac_ad_name', '', true));
+						$fac_ad_email = utf8_normalize_nfc(request_var('fac_ad_email', '', true));
 						
 						$sql_array = array(
-							'school_name'			=> utf8_normalize_nfc(request_var('school_name', '', true)),
-							'fac_ad_name'			=> utf8_normalize_nfc(request_var('school_name', '', true)),
-							'fac_ad_email'			=> utf8_normalize_nfc(request_var('fac_ad_email', '', true)),
+							'school_name'			=> $school_name,
+							'fac_ad_name'			=> $fac_ad_name,
+							'fac_ad_email'			=> $fac_ad_email,
 							'address'				=> utf8_normalize_nfc(request_var('address', '', true)),
 							'city'					=> utf8_normalize_nfc(request_var('city', '', true)),
 							'province'				=> request_var('province', ''),
@@ -102,8 +98,59 @@ class acp_registration {
 							'committee_choice_3'	=> request_var('committee_choice_3', 0),
 							'apply_ad_hoc'			=> request_var('apply_ad_hoc', 0),
 							'previous_experience'	=> utf8_normalize_nfc(request_var('previous_experience', '')),
-							'is_approved'			=> request_var('is_approved', 0),
+							'is_approved'			=> ($is_approved == 'on' || $row['is_approved'] > 0) ? 1 : 0,
 						);
+						
+						// Check if we're newly approving the user
+						$approved_text = '';
+						if ($is_approved == 'on' && $row['is_approved'] == 0)
+						{
+							$approved_text = 'and approved ';
+							$password = generate_random_password();
+							// Add it to the log
+							add_log('admin', 'LOG_APPROVE_SCHOOL', $school_name);
+							// meh language constants
+							// First create a new user for that school
+							$user_row = array(
+								'username'              => $school_name,
+								'user_password'         => phpbb_hash($password),
+								'user_email'            => $fac_ad_email,
+								'group_id'              => (int) $group_id,
+								'user_timezone'         => (float) $timezone,
+								'user_dst'              => $is_dst,
+								'user_lang'             => $language,
+								'user_type'             => $user_type,
+								'user_actkey'           => $user_actkey,
+								'user_ip'               => $user_ip,
+								'user_regdate'          => $registration_time,
+								'user_inactive_reason'  => $user_inactive_reason,
+								'user_inactive_time'    => $user_inactive_time,
+							);
+
+							// all the information has been compiled, add the user
+							// tables affected: users table, profile_fields_data table, groups table, and config table.
+							$user_id = user_add($user_row);
+							
+							// Then send out the approval email
+							include($phpbb_root_path . 'includes/functions_messenger.php');
+							$messenger = new messenger(false);
+
+							// Now send off an email to the faculty advisor informing him/her of the registration
+							$messenger->template('registration_approved');
+							$messenger->to($fac_ad_name, $fac_ad_email);
+							$messenger->subject('SSUNS registration approved');
+							$messenger->from("it@ssuns.org");
+
+							$messenger->assign_vars(array(
+								'FAC_AD_NAME'			=> $fac_ad_name,
+								'SCHOOL_NAME'			=> $school_name,
+								'SCHOOL_USERNAME'		=> $school_name,
+								'SCHOOL_PASSWORD'		=> $password)
+							);
+
+							$messenger->send();
+						}
+						
 						
 						// Now do the SQL update for the table (ONLY DO IT NOW, OTHERWISE $row['is_approved'] IS FUCKED
 						$sql = "UPDATE " . SCHOOLS_CONTACT_TABLE . "
@@ -115,11 +162,11 @@ class acp_registration {
 						trigger_error("Successfully edited " . $approved_text . "school." . adm_back_link($this->u_action)); 
 					}
 					
-					$this->page_title = 'Editing ' . $school_name;
+					$this->page_title = 'Editing ' . $row['school_name'];
 					$this->tpl_name = 'acp_registration_edit';
 					
 					$template->assign_vars(array(
-						'SCHOOL_NAME'		=> $school_name,
+						'SCHOOL_NAME'		=> $row['school_name'],
 						'FAC_AD_NAME'		=> $row['fac_ad_name'],
 						'FAC_AD_EMAIL'		=> $row['fac_ad_email'],
 						'ADDRESS'			=> $row['address'],
@@ -196,7 +243,7 @@ class acp_registration {
 					$this->tpl_name = 'acp_registration';
 				
 					// Shows you all the schools
-					$sql = "SELECT school_id, school_name, country, registration_time, number_of_delegates
+					$sql = "SELECT school_id, school_name, country, registration_time, number_of_delegates, is_approved
 							FROM " . SCHOOLS_CONTACT_TABLE . "
 							ORDER BY registration_time DESC";
 					$result = $db->sql_query($sql);

@@ -26,7 +26,7 @@
 			<td>{schools.COUNTRY}</td>
 			<td>{schools.REGISTRATION_TIME}</td>
 			<td>{schools.NUMBER_OF_DELEGATES}</td>
-			<td><!-- IF schools.IS_APPROVED -->Approved<!-- ELSE --><strong>Not approved</strong><!-- ENDIF --></td>
+			<td><!-- IF schools.IS_APPROVED > 0 -->Approved<!-- ELSE --><strong>Not approved</strong><!-- ENDIF --></td>
 			<td><strong><a href="{schools.U_EDIT}">Edit</a></strong></td>
 			<td><strong><a href="{schools.U_DELETE}">Delete</a></strong></td>
 		</tr>
