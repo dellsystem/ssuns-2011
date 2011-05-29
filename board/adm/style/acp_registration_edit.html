@@ -1,0 +1,95 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{PAGE_TITLE}</h1>
+
+<p>Editing details for a school</p>
+
+<form method="post" action="{U_ACTION}">
+<fieldset>
+	<legend>School details</legend>
+	<dl>
+		<dt><label for="school_name">School name:</label></dt>
+		<dd><input name="school_name" type="text" id="school_name" value="{SCHOOL_NAME}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="fac_ad_name">Faculty advisor name:</label></dt>
+		<dd><input name="fac_ad_name" type="text" id="fac_ad_name" value="{FAC_AD_NAME}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="fac_ad_email">Faculty advisor email:</label></dt>
+		<dd><input name="fac_ad_email" type="text" id="fac_ad_email" value="{FAC_AD_EMAIL}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="address">Address:</label></dt>
+		<dd><input name="address" type="text" id="address" value="{ADDRESS}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="city">City:</label></dt>
+		<dd><input name="city" type="text" id="city" value="{CITY}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="province">Province:</label></dt>
+		<dd><input name="province" type="text" id="province" value="{PROVINCE}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="postal_code">Postal code:</label></dt>
+		<dd><input name="postal_code" type="text" id="postal_code" value="{POSTAL_CODE}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="country">Country:</label></dt>
+		<dd><input name="country" type="text" id="country" value="{COUNTRY}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="first_time">How did you hear about SSUNS:</label></dt>
+		<dd><!-- IF FIRST_TIME -->{HOW_HEAR}<!-- ELSE -->Not this school's first time<!-- ENDIF --></dd>
+	</dl>
+	<dl>
+		<dt><label for="phone_number">Phone number:</label></dt>
+		<dd><input name="phone_number" type="text" id="phone_number" value="{PHONE_NUMBER}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="fax_number">Fax number:</label></dt>
+		<dd><input name="fax_number" type="text" id="fax_number" value="{FAX_NUMBER}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="number_of_delegates">Number of delegates:</label></dt>
+		<dd><input name="number_of_delegates" type="text" id="number_of_delegates" value="{NUMBER_OF_DELEGATES}" /></dd>
+	</dl>
+	<dl>
+		<dt><label>Registration time:</label></dt>
+		<dd>{REGISTRATION_DATE}</dd>
+	</dl>
+	<!-- BEGIN country -->
+	<dl>
+		<dt><label for="country_choice_{country.NUMBER}">Country choice {country.NUMBER}</label></dt>
+		<dd>{country.DROPDOWN}</dd>
+	</dl>
+	<!-- END country -->
+	<!-- BEGIN committee -->
+	<dl>
+		<dt><label for="committee_choice_{country.NUMBER}">Committee choice {committee.NUMBER}</label><dt>
+		<dd>{committee.DROPDOWN}</dd>
+	</dl>
+	<!-- END committee -->
+	<dl>
+		<dt><label for="apply_ad_hoc">Apply for the ad-hoc committe</label></dt>
+		<dd><input type="text" name="apply_ad_hoc" id="apply_ad_hoc" value="{APPLY_AD_HOC}" />
+	</dl>
+	<dl>
+		<dt><label for="previous_experience">Previous experience</label></dt>
+		<dd><textarea id="previous_experience" name="previous_experience" rows="10" cols="50">{PREVIOUS_EXPERIENCE}</textarea></dd>
+	</dl>
+	<dl>
+		<dt><label>Approval status:</label></dt>
+		<dd><!-- IF IS_APPROVED -->Already approved<!-- ELSE -->Not approved - tick to approve <input type="checkbox" name="is_approved" /><!-- ENDIF --></dd>
+	</dl>
+</fieldset>
+
+<fieldset class="submit-buttons">
+	<legend>Submit</legend>
+	<input class="button1" type="submit" id="submit" name="submit" value="Submit" />&nbsp;
+	<input class="button2" type="reset" id="reset" name="reset" value="Reset" />
+</fieldset>
+</form>
+
+<!-- INCLUDE overall_footer.html -->

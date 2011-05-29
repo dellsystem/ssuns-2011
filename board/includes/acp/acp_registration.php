@@ -28,27 +28,139 @@ class acp_registration {
 		switch($mode)
 		{
 			case 'overview':
-				$this->page_title = 'SSUNS registration management';
-				$this->tpl_name = 'acp_registration';
+				$edit_id = request_var('edit', 0);
+				$delete_id = request_var('delete', 0);
+				$approve_id = request_var('approve', 0);
 				
-				// Shows you all the schools
-				$sql = "SELECT school_id, school_name, country, registration_time, number_of_delegates
-						FROM " . SCHOOLS_CONTACT_TABLE . "
-						ORDER BY registration_time DESC";
-				$result = $db->sql_query($sql);
+				if ($edit_id > 0) {
 				
-				while ($row = $db->sql_fetchrow($result)) {
-					$template->assign_block_vars('schools', array(
-						'ID'					=> $row['school_id'],
-						'NAME'					=> $row['school_name'],
-						'COUNTRY'				=> $row['country'],
-						'REGISTRATION_TIME'		=> $user->format_date($row['registration_time']),
+					// Editing something
+					$sql = "SELECT *
+							FROM " . SCHOOLS_CONTACT_TABLE . "
+							WHERE school_id = $edit_id";
+					$result = $db->sql_query($sql);
+					$row = $db->sql_fetchrow($result);
+					
+					$school_name = $row['school_name'];
+					
+					// If we're submitting
+					if ($submit)
+					{
+						$is_approved = request_var('is_approved', '');
+						// Check if we're newly approving the user
+						$approved_text = '';
+						if ($is_approved == 'on' && $row['is_approved'] == 0)
+						{
+							$approved_text = 'and approved ';
+							// First create a new user for that school
+							// Then send out the approval email
+						}
+						
+						// Now do the SQL update for the table (ONLY DO IT NOW, OTHERWISE $row['is_approved'] IS FUCKED
+						// use sql_build_array
+						// fuck it do it later
+						trigger_error("Successfully edited " . $approved_text . "school." . adm_back_link($this->u_action)); 
+					}
+					
+					$this->page_title = 'Editing ' . $school_name;
+					$this->tpl_name = 'acp_registration_edit';
+					
+					$template->assign_vars(array(
+						'SCHOOL_NAME'		=> $school_name,
+						'FAC_AD_NAME'		=> $row['fac_ad_name'],
+						'FAC_AD_EMAIL'		=> $row['fac_ad_email'],
+						'ADDRESS'			=> $row['address'],
+						'CITY'				=> $row['city'],
+						'PROVINCE'			=> $row['province'],
+						'POSTAL_CODE'		=> $row['postal_code'],
+						'FIRST_TIME'		=> $row['first_time'],
+						'HOW_HEAR'			=> $row['how_hear'],
+						'COUNTRY'			=> $row['country'],
+						'PHONE_NUMBER'		=> $row['phone_number'],
+						'FAX_NUMBER'		=> $row['fax_number'],
+						'REGION'			=> $row['region'],
+						'REGISTRATION_DATE'	=> $user->format_date($row['registration_time']),
 						'NUMBER_OF_DELEGATES'	=> $row['number_of_delegates'],
-						'IS_APPROVED'			=> $row['is_approved'],
-						'U_EDIT'				=> $this->u_action . '&amp;edit=' . $row['school_id'],
-						'U_DELETE'				=> $this->u_action . '&amp;delete=' . $row['school_id'],
-						'U_APPROVE'				=> $this->u_action . '&amp;approve=' . $row['school_id'])
+						'APPLY_AD_HOC'		=> $row['apply_ad_hoc'],
+						'PREVIOUS_EXPERIENCE'	=> $row['previous_experience'],
+						'IS_APPROVED'		=> $row['is_approved'])
 					);
+					
+					include_once($phpbb_root_path . '../delegations_array.php');
+					include_once($phpbb_root_path . '../committees_array.php');
+					
+					// Now figure out the country choices etc
+					for ($i = 1; $i <= 10; $i++)
+					{
+						$dropdown = '<select name="country_choice_' . $i . '">';
+						$j = 0;
+						foreach ($delegations as $delegation)
+						{
+							// skip over the first one because it's just ''
+							if ($j > 0)
+							{
+								$this_country_choice = 'country_choice_' . $i;
+								
+								$selected = ($j == $row[$this_country_choice]) ? 'selected="selected"' : '';
+								$dropdown .= '<option value="' . $j . '" ' . $selected . '>' . $delegation . '</option>';
+							}
+							$j++;
+						}
+						$dropdown .= '</select>';
+						$template->assign_block_vars('country', array(
+							'NUMBER'		=> $i,
+							'DROPDOWN'		=> $dropdown,
+						));
+					}
+					
+					// Same for the committee choices
+					for ($i = 1; $i <= 3; $i++)
+					{
+						$dropdown = '<select name="committee_choice_' . $i . '">';
+						$j = 0;
+						foreach ($committees as $committee)
+						{
+							// skip over the first one because it's just ''
+							if ($j > 0)
+							{
+								$this_committee_choice = 'committee_choice_' . $i;
+								
+								$selected = ($j == $row[$this_committee_choice]) ? 'selected="selected"' : '';
+								$dropdown .= '<option value="' . $j . '" ' . $selected . '>' . $committee . '</option>';
+							}
+							$j++;
+						}
+						$dropdown .= '</select>';
+						$template->assign_block_vars('committee', array(
+							'NUMBER'		=> $i,
+							'DROPDOWN'		=> $dropdown,
+						));
+					}
+				} else if ($delete_id > 0) {
+				} else if ($approve_id > 0) {
+				} else {
+					$this->page_title = 'SSUNS registration management';
+					$this->tpl_name = 'acp_registration';
+				
+					// Shows you all the schools
+					$sql = "SELECT school_id, school_name, country, registration_time, number_of_delegates
+							FROM " . SCHOOLS_CONTACT_TABLE . "
+							ORDER BY registration_time DESC";
+					$result = $db->sql_query($sql);
+				
+					while ($row = $db->sql_fetchrow($result)) {
+						$template->assign_block_vars('schools', array(
+							'ID'					=> $row['school_id'],
+							'NAME'					=> $row['school_name'],
+							'COUNTRY'				=> $row['country'],
+							'REGISTRATION_TIME'		=> $user->format_date($row['registration_time']),
+							'NUMBER_OF_DELEGATES'	=> $row['number_of_delegates'],
+							'IS_APPROVED'			=> $row['is_approved'],
+							'U_EDIT'				=> $this->u_action . '&amp;edit=' . $row['school_id'],
+							'U_DELETE'				=> $this->u_action . '&amp;delete=' . $row['school_id'],
+							'U_APPROVE'				=> $this->u_action . '&amp;approve=' . $row['school_id'])
+						);
+					}
 				}
             break;
       	}
