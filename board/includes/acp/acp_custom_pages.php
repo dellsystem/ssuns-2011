@@ -36,7 +36,8 @@ class acp_custom_pages {
 		        $sql = "SELECT page_id, page_title, page_name, last_modified, page_template
 		        		FROM " . CUSTOM_PAGES_TABLE . "
 		        		ORDER BY last_modified DESC
-		        		LIMIT 5";
+		        		";
+//		        		LIMIT 5";
 		       	$result = $db->sql_query($sql);
            	
 				while ( $row = $db->sql_fetchrow($result) ) {
@@ -59,7 +60,7 @@ class acp_custom_pages {
          	// Only really need to do stuff if we're submitting
          	if ( $submit ) {
          		// First check to make sure that none of the elements are empty
-         		$new_title = utf8_normalize_nfc(request_var('page_title', ''));
+         		$new_title = utf8_normalize_nfc(request_var('page_title', ''), true);
          		$new_name = request_var('page_name', '');
          		$new_content = utf8_normalize_nfc(request_var('page_content', '', true));
          		// Eventually this should be a dropdown menu - all the template files in the dir? prefixed with cp_
@@ -98,9 +99,9 @@ class acp_custom_pages {
          	
          	// Store form variables first
          	$id_to_edit = request_var('id', 0);
-         	$new_title = utf8_normalize_nfc(request_var('page_title', ''));
+         	$new_title = utf8_normalize_nfc(request_var('page_title', '', true));
          	$new_name = request_var('page_name', '');
-         	$new_content = utf8_normalize_nfc(request_var('page_content', ''));
+         	$new_content = utf8_normalize_nfc(request_var('page_content', '', true));
          	$new_template = request_var('page_template', '');
         	
          	// First try to query the database looking for this page
