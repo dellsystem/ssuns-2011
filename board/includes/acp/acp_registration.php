@@ -19,30 +19,7 @@ if (!defined('IN_PHPBB'))
 class acp_registration {
    var $u_action;
    var $new_config;
-   
-   // For creating the new user - from http://www.laughing-buddha.net/php/lib/password
-	function generate_random_password($length = 10)
-	{
-		$password = '';
-		$possible_chars = '0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+_=ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-		$possible_length = strlen($possible_chars);
-		
-		$i = 0;
-		while ($i < $length)
-		{
-			// Choose a random character
-			$char = substr($possible, mt_rand(0, $maxlength-1), 1);
-			
-			// Have we already used this character?
-			if (!strstr($password, $char))
-			{ 
-		   		// No, so it's OK to add it onto the end of whatever we've already got...
-		    	$password .= $char;
-		    	$i++;
-		    }
-		}
-		return $password;
-	}
+  
    
    function main($id, $mode)
    {
@@ -56,7 +33,8 @@ class acp_registration {
 				$delete_id = request_var('delete', 0);
 				$approve_id = request_var('approve', 0);
 				
-				if ($edit_id > 0) {
+				if ($edit_id > 0)
+				{
 				
 					// Editing something
 					$sql = "SELECT *
@@ -106,7 +84,7 @@ class acp_registration {
 						if ($is_approved == 'on' && $row['is_approved'] == 0)
 						{
 							$approved_text = 'and approved ';
-							$password = generate_random_password();
+							$password = $this->generate_random_password();
 							// Add it to the log
 							add_log('admin', 'LOG_APPROVE_SCHOOL', $school_name);
 							// meh language constants
@@ -115,20 +93,21 @@ class acp_registration {
 								'username'              => $school_name,
 								'user_password'         => phpbb_hash($password),
 								'user_email'            => $fac_ad_email,
-								'group_id'              => (int) $group_id,
-								'user_timezone'         => (float) $timezone,
-								'user_dst'              => $is_dst,
-								'user_lang'             => $language,
-								'user_type'             => $user_type,
-								'user_actkey'           => $user_actkey,
-								'user_ip'               => $user_ip,
-								'user_regdate'          => $registration_time,
-								'user_inactive_reason'  => $user_inactive_reason,
-								'user_inactive_time'    => $user_inactive_time,
+								'group_id'              => 9, // Hardcoded for now because the Schools group is 9
+								'user_timezone'         => '-5', // Whatever
+								'user_dst'              => 0,
+								'user_lang'             => 'en',
+								'user_type'             => USER_NORMAL,
+								'user_actkey'           => '',
+								'user_ip'               => '', // Don't have anything for this
+								'user_regdate'          => time(),
+								'user_inactive_reason'  => '',
+								'user_inactive_time'    => time(), // not sure if need
 							);
 
 							// all the information has been compiled, add the user
 							// tables affected: users table, profile_fields_data table, groups table, and config table.
+							include($phpbb_root_path . 'includes/functions_user.php');
 							$user_id = user_add($user_row);
 							
 							// Then send out the approval email
@@ -137,7 +116,7 @@ class acp_registration {
 
 							// Now send off an email to the faculty advisor informing him/her of the registration
 							$messenger->template('registration_approved');
-							$messenger->to($fac_ad_name, $fac_ad_email);
+							$messenger->to($fac_ad_email, $fac_ad_name);
 							$messenger->subject('SSUNS registration approved');
 							$messenger->from("it@ssuns.org");
 
@@ -264,6 +243,29 @@ class acp_registration {
 				}
             break;
       	}
+	}
+	   // For creating the new user - from http://www.laughing-buddha.net/php/lib/password
+	function generate_random_password($length = 10)
+	{
+		$password = '';
+		$possible_chars = '0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+_=ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$possible_length = strlen($possible_chars);
+		
+		$i = 0;
+		while ($i < $length)
+		{
+			// Choose a random character
+			$char = substr($possible_chars, mt_rand(0, $possible_length-1), 1);
+			
+			// Have we already used this character?
+			if (!strstr($password, $char))
+			{ 
+		   		// No, so it's OK to add it onto the end of whatever we've already got...
+		    	$password .= $char;
+		    	$i++;
+		    }
+		}
+		return $password;
 	}
 }
 
