@@ -215,9 +215,30 @@ class acp_registration {
 							'DROPDOWN'		=> $dropdown,
 						));
 					}
-				} else if ($delete_id > 0) {
-				} else if ($approve_id > 0) {
-				} else {
+				}
+				else if ($delete_id > 0)
+				{
+					// Do the confirm box thing whatever before deleting
+					if (confirm_box(true))
+					{
+						$sql = "DELETE FROM " . SCHOOLS_CONTACT_TABLE . "
+								WHERE school_id = $delete_id";
+						$db->sql_query($sql);
+						 
+						trigger_error('Successfully deleted school' . adm_back_link($this->u_action));
+					}
+					else
+					{
+						$s_hidden_fields = build_hidden_fields(array(
+							'submit'    => true,
+							)
+						);
+				
+						confirm_box(false, 'Are you sure to want to delete this school?', $s_hidden_fields);
+					}
+				}
+				else
+				{
 					$this->page_title = 'SSUNS registration management';
 					$this->tpl_name = 'acp_registration';
 				
