@@ -760,6 +760,10 @@ input.pretty:hover, input.pretty:focus {
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px; 
 }
 
+.placeholder {
+	color: #222222;
+}
+
 /* you know, when you want to put in a label for accessibility but don't want it showing */
 .hidden-label {
 	display: none;

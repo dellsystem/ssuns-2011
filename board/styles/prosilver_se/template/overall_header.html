@@ -23,6 +23,7 @@
 
 	<script type="text/javascript">
 	// <![CDATA[
+		
 		var jump_page = '{LA_JUMP_PAGE}:';
 		var on_page = '{ON_PAGE}';
 		var per_page = '{PER_PAGE}';
@@ -75,6 +76,8 @@
     <!-- whoo jQuery (for form handling in register-a-school, and the banner -->
     <script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <script type="text/javascript" src="{T_TEMPLATE_PATH}/banner.js"></script>
+    <!-- for placeholders in inputs -->
+    <script type="text/javascript" src="{T_TEMPLATE_PATH}/placeholder.js"></script>
 
 	<link href="{T_THEME_PATH}/print.css" rel="stylesheet" type="text/css" media="print" title="printonly" />
 	<link href="{T_STYLESHEET_LINK}" rel="stylesheet" type="text/css" media="screen, projection" />
@@ -97,7 +100,7 @@
        	<div id="search">
 	       	<form action="{U_SEARCH}" method="post">
 	       		<fieldset>
-	       			<input name="keywords" id="keywords" type="text" maxlength="128" title="{L_SEARCH_KEYWORDS}" class="pretty" value="<!-- IF SEARCH_WORDS-->{SEARCH_WORDS}<!-- ELSE -->{L_SEARCH_MINI}<!-- ENDIF -->" onclick="if(this.value=='{LA_SEARCH_MINI}')this.value='';" onblur="if(this.value=='')this.value='{LA_SEARCH_MINI}';" /> 
+	       			<input name="keywords" id="keywords" type="text" maxlength="128" title="{L_SEARCH_KEYWORDS}" class="pretty" value="<!-- IF SEARCH_WORDS-->{SEARCH_WORDS}<!-- ENDIF -->" placeholder="Search ..." /> 
 	       			<!-- <input class="button2" value="{L_SEARCH}" type="submit" /> --> <!-- add some other submit thing later --> {S_SEARCH_HIDDEN_FIELDS}
 	       		</fieldset>
 	       	</form>
