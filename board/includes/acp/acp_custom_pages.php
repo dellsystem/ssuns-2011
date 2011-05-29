@@ -88,7 +88,7 @@ class acp_custom_pages {
          				" . $db->sql_build_array('INSERT', $sql_array);
          		$db->sql_query($sql);
          		
-         		add_log('Added custom page /' . $new_name . adm_back_link($this->u_action));
+         		add_log('admin', 'Added custom page /' . $new_name);
          		trigger_error('Your page has been successfully added' . adm_back_link($this->u_action));
          	}
          	break;

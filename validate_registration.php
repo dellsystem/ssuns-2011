@@ -61,7 +61,15 @@ foreach ($inputs as $key => $value)
 {
 	// This is a built-in phpBB method, see the online documentation if you need to modify this
 	// 0 casts it to an int, '' to a string, etc
-	$$key = request_var($key, $value);
+	if ($value == 0)
+	{
+		$$key = request_var($key, $value);
+	}
+	else
+	{
+		// If it's a string just support other characters etc
+		$$key = utf8_normalize_nfc(request_var($key, $value, true));
+	}
 }
 
 // Now do the validation

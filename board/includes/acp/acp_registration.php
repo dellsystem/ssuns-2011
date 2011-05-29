@@ -41,6 +41,7 @@ class acp_registration {
 					$result = $db->sql_query($sql);
 					$row = $db->sql_fetchrow($result);
 					
+					// Assuming the school name hasn't been changed ... could be problematic one day
 					$school_name = $row['school_name'];
 					
 					// If we're submitting
@@ -52,13 +53,65 @@ class acp_registration {
 						if ($is_approved == 'on' && $row['is_approved'] == 0)
 						{
 							$approved_text = 'and approved ';
+							// Add it to the log
+							add_log('admin', 'LOG_APPROVE_SCHOOL', $row['school_name']);
+							// meh language constants
 							// First create a new user for that school
 							// Then send out the approval email
+							include($phpbb_root_path . 'includes/functions_messenger.php');
+							$messenger = new messenger(false);
+							
+							// Now send off an email to the faculty advisor informing him/her of the registration
+							$messenger->template('registration_approved');
+							$messenger->to($row['fac_ad_email'], $row['fac_ad_name']);
+							$messenger->subject('SSUNS registration approved');
+							$messenger->from("it@ssuns.org");
+
+							$messenger->assign_vars(array(
+								'FAC_AD_NAME'			=> $fac_ad_name,
+								'SCHOOL_NAME'			=> $row['school_name'],
+								'SCHOOL_USERNAME'		=> 'not yet lol',
+								'SCHOOL_PASSWORD'		=> 'me neither lol')
+							);
+
+							$messenger->send();
 						}
 						
+						$sql_array = array(
+							'school_name'			=> utf8_normalize_nfc(request_var('school_name', '', true)),
+							'fac_ad_name'			=> utf8_normalize_nfc(request_var('school_name', '', true)),
+							'fac_ad_email'			=> utf8_normalize_nfc(request_var('fac_ad_email', '', true)),
+							'address'				=> utf8_normalize_nfc(request_var('address', '', true)),
+							'city'					=> utf8_normalize_nfc(request_var('city', '', true)),
+							'province'				=> request_var('province', ''),
+							'postal_code'			=> request_var('postal_code', ''),
+							'country'				=> utf8_normalize_nfc(request_var('country', '', true)),
+							'number_of_delegates'	=> request_var('number_of_delegates', 0),
+							'country_choice_1'		=> request_var('country_choice_1', 0),
+							'country_choice_2'		=> request_var('country_choice_2', 0),
+							'country_choice_3'		=> request_var('country_choice_3', 0),
+							'country_choice_4'		=> request_var('country_choice_4', 0),
+							'country_choice_5'		=> request_var('country_choice_5', 0),
+							'country_choice_6'		=> request_var('country_choice_6', 0),
+							'country_choice_7'		=> request_var('country_choice_7', 0),
+							'country_choice_8'		=> request_var('country_choice_8', 0),
+							'country_choice_9'		=> request_var('country_choice_9', 0),
+							'country_choice_10'		=> request_var('country_choice_10', 0),
+							'committee_choice_1'	=> request_var('committee_choice_1', 0),
+							'committee_choice_2'	=> request_var('committee_choice_2', 0),
+							'committee_choice_3'	=> request_var('committee_choice_3', 0),
+							'apply_ad_hoc'			=> request_var('apply_ad_hoc', 0),
+							'previous_experience'	=> utf8_normalize_nfc(request_var('previous_experience', '')),
+							'is_approved'			=> request_var('is_approved', 0),
+						);
+						
 						// Now do the SQL update for the table (ONLY DO IT NOW, OTHERWISE $row['is_approved'] IS FUCKED
-						// use sql_build_array
-						// fuck it do it later
+						$sql = "UPDATE " . SCHOOLS_CONTACT_TABLE . "
+								SET " . $db->sql_build_array('UPDATE', $sql_array) . "
+								WHERE school_id = $edit_id";
+         				$db->sql_query($sql);
+         				
+						add_log('admin', 'LOG_EDIT_SCHOOL', $row['school_name']);
 						trigger_error("Successfully edited " . $approved_text . "school." . adm_back_link($this->u_action)); 
 					}
 					

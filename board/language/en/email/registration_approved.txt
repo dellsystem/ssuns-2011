@@ -1,1 +1,27 @@
-lol not written yet
+Dear {FAC_AD_NAME},
+
+Welcome to SSUNS 2011! You are receiving this email because our Chargee d'Affaires, Sumaira Mazhar, has verified and confirmed the SSUNS 2011 registration form you submitted for {SCHOOL_NAME}. If you have received this message in error, please email it@ssuns.org so we can send it to the correct person as soon as possible.
+
+We hope you found the online registration process fairly straightforward. However, the online aspect of SSUNS 2011 doesn't end here. As a registered delegation, you will have access to our password-protected delegation management section, where you will be able to send in and edit delegate names and positions, numbers, country requests, submit and view position papers, even view customised research pages.
+
+Each school registered at the conference receives a username and password. The username and password for your school are:
+
+Username: {SCHOOL_USERNAME}
+Password: {SCHOOL_PASSWORD}
+
+PLEASE RECORD THIS INFORMATION FOR FUTURE REFERENCE, OR PRINT OUT THIS EMAIL FOR YOUR RECORDS.
+
+The login system is still under construction at the moment, but once it is complete, you will be able to login from any part of the site, using the sidebar on the right.
+
+If you have any questions, do not hesitate to contact any of the SSUNS staff. You can all relevant email addresses at www.ssuns.org. For any username/password problems, please email it@ssuns.org.
+
+Please make note of the SSUNS mailing address below and send all of your correspondence, including cheques, to the same.
+
+Secondary Schools' United Nations Symposium
+Succursale Place du Parc
+P.O. Box 13
+Montreal, QC H2X 4A3
+Thanks once again for registering for SSUNS. We all look forward to meeting you and your delegation in November.
+
+Sincerely,
+The SSUNS 2011 Secretariat
