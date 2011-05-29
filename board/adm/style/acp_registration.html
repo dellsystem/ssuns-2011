@@ -4,4 +4,35 @@
 
 <p>Here you can manage and approve people who registered for SSUNS etc</p>
 
+<table cellspacing="1">
+	<caption>List of schools</caption>
+	<col class="col1" /><col class="col1" /><col class="col1" /><col class="col1" /><col class="col1" /><col class="col2" /><col class="col2" /><col class="col2" />
+	<thead>
+	<tr>
+		<th>School ID</th>
+		<th>School name</th>
+		<th>Country</th>
+		<th>Registration time</th>
+		<th>Number of delegates</th>
+		<th>Approval status</th>
+		<th colspan="3">Options</th>
+	</tr>
+	</thead>
+	<tbody>
+		<!-- BEGIN schools -->
+		<tr>
+			<td>{schools.ID}</td>
+			<td><strong>{schools.NAME}</strong></td>
+			<td>{schools.COUNTRY}</td>
+			<td>{schools.REGISTRATION_TIME}</td>
+			<td>{schools.NUMBER_OF_DELEGATES}</td>
+			<td><!-- IF schools.IS_APPROVED -->Approved<!-- ELSE --><strong>Not approved</strong><!-- ENDIF --></td>
+			<td><strong><a href="{schools.U_EDIT}">Edit</a></strong></td>
+			<td><strong><a href="{schools.U_DELETE}">Delete</a></strong></td>
+			<td><!-- IF schools.IS_APPROVED --><!-- ELSE --><strong><a href="{schools.U_APPROVE}">Approve</a></strong><!-- ENDIF --></td>
+		</tr>
+		<!-- END schools -->
+	</tbody>
+</table>
+
 <!-- INCLUDE overall_footer.html -->
