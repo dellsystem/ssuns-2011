@@ -269,7 +269,7 @@ class acp_registration {
 	function generate_random_password($length = 10)
 	{
 		$password = '';
-		$possible_chars = '0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+_=ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$possible_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$possible_length = strlen($possible_chars);
 		
 		$i = 0;
