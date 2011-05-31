@@ -90,7 +90,7 @@ foreach ($inputs as $key => $value)
 			// Might as well break it here
 			break;
 		}
-		else if ($key == 'number_of_delegates' && ($$key > 35 || $$key < 1))
+		else if ($key == 'number_of_delegates' && ($$key > 40 || $$key < 1))
 		{
 			// Validate the number of delegates, too
 			$errors .= 'Invalid number of delegates<br />';
