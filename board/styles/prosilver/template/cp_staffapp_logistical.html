@@ -1,0 +1,107 @@
+<!-- INCLUDE overall_header.html -->
+
+<p><a href="#application-form">Jump to application form &raquo;</a></p>
+
+{PAGE_CONTENT}
+
+<h1 id="application-form">Application form</h1>
+
+<form method="post" action="staffapp.php">
+	<h2>Personal information</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label for="name">Name</label></dt>
+				<dd><input type="text" name="name" id="name" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="program">Program and year</label></dt>
+				<dd><input type="text" name="program" id="program" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="telephone">Telephone number</label></dt>
+				<dd><input type="text" name="telephone" id="telephone" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="email">Email</label></dt>
+				<dd><input type="text" name="email" id="email" /></dd>
+			</dl>
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<!-- separating sections etc -->
+	<h2>Coordinator and staff choices</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<p style="font-size: 1.5em;">Please select at least one preferred position.</p>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label for="position_1">Preferred position 1</label></dt>
+				<dd><select name="position_1" id="position_1"><option value="">Select a position ...</option><optgroup label="Coordinator choices"><option value="staff_room_coordinator">Staff room coordinator</option><option value="page_coordinator">Page coordinator</option><option value="drc_coordinator">Delegate resource centre coordinator</option><option value="gala_coordinator">Gala coordinator</option><option name="occ_coordinator">Opening/closing ceremonies coordinator</option><option value="environmental_coordinator">Environmental coordinator</option></optgroup><optgroup label="Staff choices"><option name="staff_room">Staff room</option><option name="page">Page</option><option name="gala">Gala</option><option name="occ">Opening/closing ceremonies</option><option name="environmental">Environmental</option></optgroup></select></dd>
+			</dl>
+			<dl>
+				<dt><label for="position_2">Preferred position 2</label></dt>
+				<dd><select name="position_2" id="position_2"><option value="">Select a position ...</option><optgroup label="Coordinator choices"><option value="staff_room_coordinator">Staff room coordinator</option><option value="page_coordinator">Page coordinator</option><option value="drc_coordinator">Delegate resource centre coordinator</option><option value="gala_coordinator">Gala coordinator</option><option name="occ_coordinator">Opening/closing ceremonies coordinator</option><option value="environmental_coordinator">Environmental coordinator</option></optgroup><optgroup label="Staff choices"><option name="staff_room">Staff room</option><option name="page">Page</option><option name="gala">Gala</option><option name="occ">Opening/closing ceremonies</option><option name="environmental">Environmental</option></optgroup></select></dd>
+			</dl>
+			<dl>
+				<dt><label for="position_3">Preferred position 3</label></dt>
+				<dd><select name="position_3" id="position_3"><option value="">Select a position ...</option><optgroup label="Coordinator choices"><option value="staff_room_coordinator">Staff room coordinator</option><option value="page_coordinator">Page coordinator</option><option value="drc_coordinator">Delegate resource centre coordinator</option><option value="gala_coordinator">Gala coordinator</option><option name="occ_coordinator">Opening/closing ceremonies coordinator</option><option value="environmental_coordinator">Environmental coordinator</option></optgroup><optgroup label="Staff choices"><option name="staff_room">Staff room</option><option name="page">Page</option><option name="gala">Gala</option><option name="occ">Opening/closing ceremonies</option><option name="environmental">Environmental</option></optgroup></select></dd>
+			</dl>
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<!-- separating sections etc -->
+	<h2>Availability and experience</h2>
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label for="attend_training">I am prepared to attend training sessions:</label></dt>
+				<dd><label><input type="radio" name="attend_training" value="1" />Yes</label><label><input type="radio" name="attend_training" value="0" />No</label></dd>
+			</dl>
+			<dl>
+				<dt><label for="attend_ssuns">I am able to attend SSUNS (November 10-13, 2011):</label></dt>
+				<dd><label><input type="radio" name="attend_ssuns" value="1" />Yes</label><label><input type="radio" name="attend_ssuns" value="0" />No</label></dd>
+			</dl>
+			<dl>
+				<dt><label for="leadership_experience">Leadership and/or event coordination experience:</label></dt>
+				<dd><textarea name="leadership_experience" id="leadership_experience" rows="5" cols="80"></textarea></dd>
+			</dl>
+		</fieldset>
+		<p style="font-size: 1.5em;">Why do you think you would be a good candidate for the coordinator positions selected above? (Please provide separate answers for each if you are applying for more than one position.)</p>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label for="good_candidate">Response:</label></dt>
+				<dd><textarea name="good_candidate" id="good_candidate" rows="5" cols="80"></textarea></dd>
+			</dl>
+		</fieldset>
+		<p style="font-size: 1.5em;">Do you have any Model UN experience? Do you have any related experience, such as classes taken, public speaking, debate, etc? Do you have any relevant computer skills?</p>
+		<fieldset class="fields1 markdown">
+			<dl>
+				<dt><label for="mun_experience">Response:</label></dt>
+				<dd><textarea name="mun_experience" id="mun_experience" rows="5" cols="80"></textarea></dd>
+			</dl>
+			<dl>
+				<dt><label for="anything_else">Is there anything else you would like to tell us?</label></dt>
+				<dd><textarea name="anything_else" id="anything_else" rows="5" cols="80"></textarea></dd>
+			</dl>
+		</fieldset>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+	<br />
+	<p>Thank you very much for your interest in SSUNS 2011! Positions will be released approximately a week after the deadline.</p>
+	<div class="panel bg2">
+		<div class="inner">
+			<span class="corners-top"><span></span></span>
+			<fieldset class="submit-buttons">
+				<input type="reset" accesskey="r" name="reset" value="Reset" class="button2" />&nbsp;
+				<input type="submit" accesskey="s" name="submit" value="Submit" class="button1 default-submit-action" />
+			</fieldset>
+			<span class="corners-bottom"><span></span></span>
+		</div>
+	</div>
+	<!-- separating sections etc -->
+</form>
+
+<!-- INCLUDE overall_footer.html -->
