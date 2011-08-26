@@ -273,7 +273,7 @@ define('WORDS_TABLE',				$table_prefix . 'words');
 define('ZEBRA_TABLE',				$table_prefix . 'zebra');
 
 // Additional tables
-define('CUSTOM_PAGES_TABLE',		$table_prefix . 'custom_pages');
+define('CUSTOM_PAGES_TABLE',		'custom_pages');
 define('MENU_TABLE',		$table_prefix . 'custom_pages_menu');
 define('SCHOOLS_CONTACT_TABLE',		'schools_contact');
 
