@@ -1,0 +1,14 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>Receipt of confirmation - <!-- IF ERRORS -->Errors<!-- ELSE --> Success<!-- ENDIF --></h1>
+
+<!-- IF SUBMIT -->
+	<!-- IF ERRORS == '' -->
+	<p>Thank you for your application. You will receive an email confirmation from us shortly.</p>
+	<!-- ENDIF -->
+	<p>{ERRORS}</p>
+<!-- ELSE -->
+<p>You have probably reached this page in error. I have nothing else to say.</p>
+<!-- ENDIF -->
+
+<!-- INCLUDE overall_footer.html -->

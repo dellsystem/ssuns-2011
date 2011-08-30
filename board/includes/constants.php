@@ -271,10 +271,12 @@ define('USERS_TABLE',				$table_prefix . 'users');
 define('WARNINGS_TABLE',			$table_prefix . 'warnings');
 define('WORDS_TABLE',				$table_prefix . 'words');
 define('ZEBRA_TABLE',				$table_prefix . 'zebra');
+define('LOGIN_ATTEMPT_TABLE',      $table_prefix . 'login_attempts');
 
 // Additional tables
 define('CUSTOM_PAGES_TABLE',		'custom_pages');
 define('MENU_TABLE',		$table_prefix . 'custom_pages_menu');
 define('SCHOOLS_CONTACT_TABLE',		'schools_contact');
+define('STAFF_APPS_TABLE',			'staff_apps');
 
 ?>
