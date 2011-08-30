@@ -90,7 +90,7 @@ if ($submit)
 		$is_logistical = false;
 
 		// Assume it's crisis committees if that one is filled out
-		if ($crisis_committee != '')
+		if ($crisis_committee_1 != '')
 		{
 			$choice_1 = $crisis_committee_1;
 			$choice_2 = $crisis_committee_2;
@@ -98,7 +98,6 @@ if ($submit)
 		}
 		else
 		{
-			// Assume director
 			$choice_1 = $director_committee_1;
 			$choice_2 = $director_committee_2;
 			$choice_3 = $director_committee_3;
