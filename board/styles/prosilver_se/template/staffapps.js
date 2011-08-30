@@ -1,7 +1,6 @@
 
 // All the jQuery stuff for the staff apps etc
 $(document).ready(function() {
-	console.log("sigh");
 	$('#crisis-image').click(function() {
 		// Show the fieldset but hide all the director-related select boxes
 		// Has to be done this way so that things at least work without js enabled
