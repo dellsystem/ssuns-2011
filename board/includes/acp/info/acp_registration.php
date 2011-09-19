@@ -27,6 +27,9 @@ class acp_registration_info
             'modes'        => array(
             	// Please work
                 'overview'      => array('title' => 'Overview', 'auth' => 'acl_a_schools', 'cat' => array('ssuns')),
+                'assign'		=> array('title' => 'Assignments', 'auth' => 'acl_a_schools', 'cat' => array('ssuns')),
+                'finances'		=> array('title' => 'Financial information', 'auth' => 'acl_a_schools', 'cat' => array('ssuns')),
+                'matrix'		=> array('title' => 'Country-committee matrix', 'auth' => 'acl_a_schools', 'cat' => array('ssuns')),
             ),
         );
     }

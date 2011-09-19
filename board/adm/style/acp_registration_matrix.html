@@ -1,0 +1,32 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{PAGE_TITLE}</h1>
+
+<p>Here you can view the country-committee matrix.</p>
+
+<table cellspacing="1">
+	<col class="col1" /><col class="col1" /><col class="col2" /><col class="col2" /><col class="col2" /><col class="col2" /><col class="col2" /><col class="col2" /><col class="col2" /><col class="col2" /><col class="col2" /><col class="col2" /><col class="col2" />
+	<thead>
+	<tr>
+		<th>ID</th>
+		<th>Country name</th>
+		<!-- BEGIN header -->
+		<th>{header.NAME} ({header.ID})</th>
+		<!-- END header -->
+		<th>Total</th>
+	</tr>
+	</thead>
+	<tbody>
+		<!-- BEGIN matrix -->
+		<tr>
+			<td>{matrix.ID}</td>
+			<td>{matrix.COUNTRY}</td>
+			<!-- BEGIN committees -->
+			<td>{committees.NUM_DELEGATES}</td>
+			<!-- END committees -->
+			<td>{matrix.TOTAL}</td>
+		</tr>
+		<!-- END matrix -->
+	</tbody>
+</table>
+<!-- INCLUDE overall_footer.html -->

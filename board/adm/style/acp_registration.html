@@ -6,16 +6,16 @@
 
 <table cellspacing="1">
 	<caption>List of schools</caption>
-	<col class="col1" /><col class="col1" /><col class="col1" /><col class="col1" /><col class="col1" /><col class="col2" /><col class="col2" /><col class="col2" />
+	<col class="col1" /><col class="col1" /><col class="col1" /><col class="col1" /><col class="col1" /><col class="col2" /><col class="col2" /><col class="col2" /><col class="col2" /><col class="col2" />
 	<thead>
 	<tr>
-		<th>School ID</th>
+		<th>ID</th>
 		<th>School name</th>
 		<th>Country</th>
 		<th>Registration time</th>
-		<th>Number of delegates</th>
-		<th>Approval status</th>
-		<th colspan="2">Options</th>
+		<th>Delegates</th>
+		<th>Status</th>
+		<th colspan="4">Options</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -26,8 +26,10 @@
 			<td>{schools.COUNTRY}</td>
 			<td>{schools.REGISTRATION_TIME}</td>
 			<td>{schools.NUMBER_OF_DELEGATES}</td>
-			<td><!-- IF schools.IS_APPROVED > 0 -->Approved<!-- ELSE --><strong>Not approved</strong><!-- ENDIF --></td>
+			<td><!-- IF schools.IS_APPROVED > 0 -->Approved<!-- IF schools.AMOUNT_OWED > 0 && schools.AMOUNT_OWED == schools.AMOUNT_PAID --> <strong>(paid)</strong> <!-- ENDIF --><!-- ELSE --><strong>Not approved</strong><!-- ENDIF --></td>
 			<td><strong><a href="{schools.U_EDIT}">Edit</a></strong></td>
+			<td><strong><a href="{schools.U_ASSIGN}">Assign</a></strong></td>
+			<td><strong><a href="{schools.U_FINANCES}">Finances</a></strong></td>
 			<td><strong><a href="{schools.U_DELETE}">Delete</a></strong></td>
 		</tr>
 		<!-- END schools -->

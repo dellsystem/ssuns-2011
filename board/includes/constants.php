@@ -275,8 +275,10 @@ define('LOGIN_ATTEMPT_TABLE',      $table_prefix . 'login_attempts');
 
 // Additional tables
 define('CUSTOM_PAGES_TABLE',		'custom_pages');
-define('MENU_TABLE',		$table_prefix . 'custom_pages_menu');
+define('MENU_TABLE',		$table_prefix . 'custom_pages_menu'); // is this even used?
 define('SCHOOLS_CONTACT_TABLE',		'schools_contact');
 define('STAFF_APPS_TABLE',			'staff_apps');
+define('ASSIGNMENTS_TABLE', 'country_assignments');
+define('CCM_TABLE', 'country_committee_matrix');
 
 ?>

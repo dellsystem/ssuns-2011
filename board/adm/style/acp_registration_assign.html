@@ -1,0 +1,41 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{PAGE_TITLE}</h1>
+
+<p>Here you can manage country and committee assignments for specific schools.</p>
+
+<form method="post" action="{U_ACTION}">
+<fieldset>
+	<legend>School details</legend>
+	<dl>
+		<dt><label>Number of delegates:</label></dt>
+		<dd>{NUMBER_OF_DELEGATES}</dd>
+	</dl>
+	<dl>
+		<dt><label>Country preferences:</label></dt>
+		<dd><ol><!-- BEGIN countries -->
+			<li>{countries.CHOICE}</li>
+		<!-- END countries --></ol></dd>
+	</dl>
+	<dl>
+		<dt><label>Committee preferences:</label></dt>
+		<dd><ol><!-- BEGIN committees -->
+			<li>{committees.CHOICE}</li>
+		<!-- END committees --></ol></dd>
+	</dl>
+	<dl>
+		<dt><label for="country_assignment_1">Country assignments</label></dt>
+		<dd><select name="country_assignment_1"><!-- BEGIN ca -->
+			<option value="{ca.ID}" data-num-delegates="{ca.NUM_DELEGATES}">{ca.TEXT} ({ca.NUM_DELEGATES})</option>
+		<!-- END ca --></select></dd>
+	</dl>
+</fieldset>
+
+<fieldset class="submit-buttons">
+	<legend>Submit</legend>
+	<input class="button1" type="submit" id="submit" name="submit" value="Submit" />&nbsp;
+	<input class="button2" type="reset" id="reset" name="reset" value="Reset" />
+</fieldset>
+</form>
+
+<!-- INCLUDE overall_footer.html -->
