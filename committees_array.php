@@ -15,4 +15,17 @@ $committees = array(
 	'Ad-Hoc Committee of the Secretary-General',
 );
 
+$ccm_committees = array(
+	'HIV',
+	'Suez Crisis',
+	'SPECPOL',
+	'UN Women',
+	'OECD',
+	'UNHRC',
+	'UNOSDP',
+	'OSCE',
+	'WIPO',
+	'UNSC'
+);
+
 ?>
