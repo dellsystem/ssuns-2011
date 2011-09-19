@@ -1,0 +1,33 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{PAGE_TITLE}</h1>
+
+<p>Here you can manage and approve staff applications.</p>
+
+<table cellspacing="1">
+	<caption>List of staff applications</caption>
+	<col class="col1" /><col class="col1" /><col class="col2" /><col class="col2" /><col class="col2" />
+	<thead>
+	<tr>
+		<th>ID</th>
+		<th>Applicant name</th>
+		<th colspan="2">Logistical or committees</th>
+		<th>Position</th>
+		<th>Options</th>
+	</tr>
+	</thead>
+	<tbody>
+		<!-- BEGIN staff -->
+		<tr>
+			<td>{staff.ID}</td>
+			<td><strong>{staff.NAME}</strong></td>
+			<td><!-- IF staff.IS_LOGISTICAL -->Logistical<!-- ENDIF --></td>
+			<td><!-- IF not staff.IS_LOGISTICAL -->Committees<!-- ENDIF --></td>
+			<td><!-- IF staff.POSITION --><strong>{staff.POSITION}</strong><!-- ELSE -->None<!-- ENDIF --></td>
+			<td><a href="{staff.U_ASSIGN}">Assign positions</a></td>
+		</tr>
+		<!-- END staff -->
+	</tbody>
+</table>
+
+<!-- INCLUDE overall_footer.html -->

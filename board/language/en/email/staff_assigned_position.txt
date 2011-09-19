@@ -1,0 +1,3 @@
+Dear {APPLICANT_NAME},
+
+You have been assigned {REAL_POSITION} for SSUNS 2011. If you have any questions please contact {CONTACT_PERSON}.

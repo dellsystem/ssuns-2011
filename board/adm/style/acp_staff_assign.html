@@ -1,0 +1,88 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{PAGE_TITLE}</h1>
+
+<p>Here you can manage the positions assigned to each staff applicant.</p>
+
+<form method="post" action="{U_ACTION}">
+<fieldset>
+	<legend>Personal information</legend>
+	<dl>
+		<dt>Name:</dt>
+		<dd>{APPLICANT_NAME}</dd>
+	</dl>
+	<dl>
+		<dt>Program and year:</dt>
+		<dd>{PROGRAM_YEAR}</dd>
+	</dl>
+	<dl>
+		<dt>Telephone number:</dt>
+		<dd>{TELEPHONE}</dd>
+	</dl>
+	<dl>
+		<dt>Email:</dt>
+		<dd>{APPLICANT_EMAIL}</dd>
+	</dl>
+</fieldset>
+<fieldset>
+	<legend>Availability and experience</legend>
+	<dl>
+		<dt>Prepared to attend training sessions:</dt>
+		<dd><!-- IF ATTEND_TRAINING -->Yes<!-- ELSE -->No<!-- ENDIF --></dd>
+	</dl>
+	<dl>
+		<dt>Able to attend SSUNS:</dt>
+		<dd><!-- IF ATTEND_SSUNS -->Yes<!-- ELSE -->No<!-- ENDIF --></dd>
+	</dl>
+	<!-- IF IS_LOGISTICAL -->
+	<dl>
+		<dt>Leadership experience:</dt>
+		<dd>{LEADERSHIP_EXPERIENCE}</dd>
+	</dl>
+	<dl>
+		<dt>Why a good candidate:</dt>
+		<dd>{GOOD_CANDIDATE}</dd>
+	</dl>
+	<!-- ENDIF -->
+	<dl>
+		<dt>MUN experience:</dt>
+		<dd>{MUN_EXPERIENCE}</dd>
+	</dl>
+	<dl>
+		<dt>Anything else:</dt>
+		<dd>{ANYTHING_ELSE}</dd>
+	</dl>
+</fieldset>
+<fieldset>
+	<legend>Committee choices</legend>
+	<dl>
+		<dt>First choice:</dt>
+		<dd>{FIRST_CHOICE}</dd>
+	</dl>
+	<dl>
+		<dt>Second choice:</dt>
+		<dd>{SECOND_CHOICE}</dd>
+	</dl>
+	<dl>
+		<dt>Third choice:</dt>
+		<dd>{THIRD_CHOICE}</dd>
+	</dl>
+	<!-- IF POSITION != I'' -->
+	<dl>
+		<dt><label>Assigned position:</label></dt>
+		<dd>{POSITION}</dd>
+	</dl>
+	<!-- ENDIF -->
+	<dl>
+		<dt><label for="position">Assign a <!-- IF POSITION -->new <!-- ENDIF --> position: (<!-- IF IS_LOGISTICAL -->logistical<!-- ELSE -->committees<!-- ENDIF -->)</label></dt>
+		<dd><select name="position" id="position"><!-- IF IS_LOGISTICAL --><option value="">Select a position ...</option><optgroup label="Coordinator choices"><option>Staff room coordinator</option><option>Page coordinator</option><option>Delegate resource centre coordinator</option><option>Gala coordinator</option><option>Opening/closing ceremonies coordinator</option><option>Environmental coordinator</option></optgroup><optgroup label="Staff choices"><option>Staff room</option><option>Page</option><option>Gala</option><option>Opening/closing ceremonies</option><option>Environmental</option></optgroup><!-- ELSE --><option value="">Select a committee ...</option><optgroup label="General Assemblies (GAs)"><option>UNGA: Special Session on HIV/AIDS</option><option>UNGA: Emergency Special Session on the Suez Crisis (1956)</option><option>4th Committee: Special Political and Decolonization (SPECPOL)</option></optgroup><optgroup label="Economic and Social Councils (ECOSOCs)"><option>UN Women</option><option>Organization for Economic Cooperation and Development (OECD)</option><option>United Nations Human Rights Council (UNHRC)</option><option>United Nations Commission on the Status of Women (UNCSW)</option><option>UN Office on Sport for Development and Peace (UNOSDP)</option></optgroup><optgroup label="Specialized Agencies (SAs)"><option>Royal Dutch Shell Board of Directors (RDS BoD)</option><option>Charles De Gaulle’s Cabinet (1958)</option><option>Organization for Security and Co-operation in Europe (OSCE)</option><option>Peace of Solferino</option><option>World Intellectual Property Organization (WIPO)</option><option>New York Times Editorial Board (NYT)</option><option>Indian Cabinet of Ministers</option></optgroup><optgroup label="Crisis Committees"><option>Caesar's Rome</option><option>Allende's Cabinet, 1973</option><option>Her Majesty’s Secret Service: MI-6</option><option>United Nations Security Council (UNSC)</option><option>Joint Crisis: Somali Civil War, 1991 (Rebels vs. Government)</option><option>Ad-Hoc Committee of the Secretary-General</option></optgroup><!-- ENDIF --></select></dd>
+	</dl>
+</fieldset>
+<fieldset class="submit-buttons">
+	<legend>Submit</legend>
+	<input class="button1" type="submit" id="submit" name="submit" value="Submit" />&nbsp;
+	<input class="button2" type="reset" id="reset" name="reset" value="Reset" />
+</fieldset>
+</form>
+
+<!-- INCLUDE overall_footer.html -->
