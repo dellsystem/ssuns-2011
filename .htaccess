@@ -1,26 +1,16 @@
 Options +FollowSymlinks
 RewriteEngine on
-# RewriteRule ^test/([^/]+) /ssuns/index.php?id=$1 [NC]
+# RewriteRule ^test/([^/]+) /2011/index.php?id=$1 [NC]
 RewriteCond %{REQUEST_URI} !index.php$
 RewriteCond %{REQUEST_URI} !receipt.php$
-RewriteCond %{REQUEST_URI} !sandbox.html$
-RewriteCond %{REQUEST_URI} !sandbox.css$
-RewriteCond %{REQUEST_URI} !sandbox.php$
-RewriteCond %{REQUEST_URI} !montreal.jpg$
+RewriteCond %{REQUEST_URI} !staffapp.php$
 RewriteCond %{REQUEST_URI} !board/(.*)
-RewriteRule ^(.*)$ /ssuns/index.php?name=$1 [L]
+RewriteCond %{REQUEST_URI} !files/(.*)
+RewriteRule ^(.*)$ /2011/index.php?name=$1 [L]
 
-# If requested resource exists as a file or directory, skip next two rules
-# RewriteCond /ssuns/%{DOCUMENT_ROOT}/$1 -f [OR]
-# RewriteCond /ssuns/%{DOCUMENT_ROOT}/$1 -d
-# RewriteRule (.*) - [S=2]
-#
-# Requested resource does not exist, do rewrite if it exists in /archive
-# RewriteCond %{DOCUMENT_ROOT}/archive/$1 -f [OR]
-# RewriteCond %{DOCUMENT_ROOT}/archive/$1 -d
-# RewriteRule (.*) /archive/$1 [L]
-#
-# Else rewrite requests for non-existent resources to /index.php
-#RewriteRule (.*) /ssuns/index.php?q=$1 [L]
+#ErrorDocument 404 /2011/404.html
 
-#ErrorDocument 404 /ssuns/404.html
+RewriteCond %{HTTP_HOST} ^2011.ssuns.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www.2011.ssuns.org$
+RewriteRule ^/?$ "http\:\/\/www\.ssuns\.org\/2011" [R=301,L]
+

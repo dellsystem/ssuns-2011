@@ -20,5 +20,5 @@ $(document).ready(function() {
 	});
 
 	$('#committees-fieldset').hide();
-	$('#hide-this-shit').hide(); // shows up if js is disabled, as a fallback
+	$('#hidden-radio-buttons').hide(); // shows up if js is disabled, as a fallback
 });

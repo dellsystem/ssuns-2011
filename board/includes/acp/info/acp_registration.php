@@ -25,8 +25,8 @@ class acp_registration_info
             'title'        => 'Registration',
             'version'    => '1.0.0',
             'modes'        => array(
-            	// Uses the same auth as board for now, probably not worth it to change it
-                'overview'      => array('title' => 'Overview', 'auth' => 'acl_a_board', 'cat' => array('')),
+            	// Please work
+                'overview'      => array('title' => 'Overview', 'auth' => 'acl_a_schools', 'cat' => array('ssuns')),
             ),
         );
     }
