@@ -1607,6 +1607,10 @@ function submit_pm($mode, $subject, &$data, $put_in_outbox = true)
 	// Send Notifications
 	if ($mode != 'edit')
 	{
+//-- mod: Prime Notify ------------------------------------------------------//
+		include ($phpbb_root_path . 'includes/prime_notify.' . $phpEx);
+		$prime_notify->setup_pm($data);
+//-- end: Prime Notify ------------------------------------------------------//
 		pm_notification($mode, $data['from_username'], $recipients, $subject, $data['message']);
 	}
 
@@ -1682,6 +1686,10 @@ function pm_notification($mode, $author, $recipients, $subject, $message)
 
 		$messenger->to($addr['email'], $addr['name']);
 		$messenger->im($addr['jabber'], $addr['name']);
+//-- mod: Prime Notify ------------------------------------------------------//
+		global $prime_notify;
+		$prime_notify->setup_pm_vars($messenger, $addr);
+//-- end: Prime Notify ------------------------------------------------------//
 
 		$messenger->assign_vars(array(
 			'SUBJECT'		=> htmlspecialchars_decode($subject),
