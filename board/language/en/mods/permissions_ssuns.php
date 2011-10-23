@@ -29,8 +29,10 @@ $lang['permission_cat']['ssuns'] = 'SSUNS';
 
 // Adding the permissions
 $lang = array_merge($lang, array(
-    'acl_a_staff'    => array('lang' => 'Can manage staff applications', 'cat' => 'ssuns'),
+    'acl_a_staff'    	=> array('lang' => 'Can manage staff applications', 'cat' => 'ssuns'),
     'acl_a_schools'		=> array('lang' => 'Can manage school registrations', 'cat' => 'ssuns'),
     'acl_a_cp'			=> array('lang' => 'Can manage custom pages', 'cat' => 'ssuns'),
+    'acl_u_faculty'		=> array('lang' => 'Can view UCP module (meant for faculty advisors)', 'cat' => 'ssuns'),
+    'acl_a_papers'		=> array('lang' => 'Can view position papers (team committees + Deep)', 'cat' => 'ssuns'),
 ));
 ?>
