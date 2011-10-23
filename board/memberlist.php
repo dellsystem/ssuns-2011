@@ -120,15 +120,14 @@ switch ($mode)
 		// Admin group id...
 		$sql = 'SELECT group_id
 			FROM ' . GROUPS_TABLE . "
-			WHERE group_name = 'ADMINISTRATORS'";
+			WHERE group_name = 'Secretariats'";
 		$result = $db->sql_query($sql);
 		$admin_group_id = (int) $db->sql_fetchfield('group_id');
 		$db->sql_freeresult($result);
 
 		// Get group memberships for the admin id ary...
 		$admin_memberships = group_memberships($admin_group_id, $admin_id_ary);
-
-		$admin_user_ids = array();
+		//print_r($admin_memberships);
 
 		if (!empty($admin_memberships))
 		{
@@ -194,7 +193,7 @@ switch ($mode)
 				}
 			}
 
-			$s_forum_select = '';
+			$s_forum_select = $committees = '';
 			$undisclosed_forum = false;
 
 			if (isset($forum_id_ary[$row['user_id']]) && !in_array($row['user_id'], $global_mod_id_ary))
@@ -207,6 +206,7 @@ switch ($mode)
 						{
 							if ($auth->acl_get('f_list', $forum_id))
 							{
+								$committees .= $forums[$forum_id] . ' ';
 								$s_forum_select .= '<option value="">' . $forums[$forum_id] . '</option>';
 							}
 							else
@@ -240,24 +240,28 @@ switch ($mode)
 			$rank_title = $rank_img = '';
 			get_user_rank($row['user_rank'], (($row['user_id'] == ANONYMOUS) ? false : $row['user_posts']), $rank_title, $rank_img, $rank_img_src);
 
-			$template->assign_block_vars($which_row, array(
-				'USER_ID'		=> $row['user_id'],
-				'FORUMS'		=> $s_forum_select,
-				'RANK_TITLE'	=> $rank_title,
-				'GROUP_NAME'	=> $group_name,
-				'GROUP_COLOR'	=> $row['group_colour'],
+			if ($group_name == 'Dais' || $which_row == 'admin')
+			{
+				$template->assign_block_vars($which_row, array(
+					'USER_ID'		=> $row['user_id'],
+					'FORUMS'		=> $s_forum_select,
+					'COMMITTEES'	=> $committees,
+					'RANK_TITLE'	=> $rank_title,
+					'GROUP_NAME'	=> $group_name,
+					'GROUP_COLOR'	=> $row['group_colour'],
 
-				'RANK_IMG'		=> $rank_img,
-				'RANK_IMG_SRC'	=> $rank_img_src,
+					'RANK_IMG'		=> $rank_img,
+					'RANK_IMG_SRC'	=> $rank_img_src,
 
-				'U_GROUP'			=> $u_group,
-				'U_PM'				=> ($config['allow_privmsg'] && $auth->acl_get('u_sendpm') && ($row['user_allow_pm'] || $auth->acl_gets('a_', 'm_') || $auth->acl_getf_global('m_'))) ? append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm&amp;mode=compose&amp;u=' . $row['user_id']) : '',
+					'U_GROUP'			=> $u_group,
+					'U_PM'				=> ($config['allow_privmsg'] && $auth->acl_get('u_sendpm') && ($row['user_allow_pm'] || $auth->acl_gets('a_', 'm_') || $auth->acl_getf_global('m_'))) ? append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm&amp;mode=compose&amp;u=' . $row['user_id']) : '',
 
-				'USERNAME_FULL'		=> get_username_string('full', $row['user_id'], $row['username'], $row['user_colour']),
-				'USERNAME'			=> get_username_string('username', $row['user_id'], $row['username'], $row['user_colour']),
-				'USER_COLOR'		=> get_username_string('colour', $row['user_id'], $row['username'], $row['user_colour']),
-				'U_VIEW_PROFILE'	=> get_username_string('profile', $row['user_id'], $row['username'], $row['user_colour']),
-			));
+					'USERNAME_FULL'		=> get_username_string('full', $row['user_id'], $row['username'], $row['user_colour']),
+					'USERNAME'			=> get_username_string('username', $row['user_id'], $row['username'], $row['user_colour']),
+					'USER_COLOR'		=> get_username_string('colour', $row['user_id'], $row['username'], $row['user_colour']),
+					'U_VIEW_PROFILE'	=> get_username_string('profile', $row['user_id'], $row['username'], $row['user_colour']),
+				));
+			}
 		}
 		$db->sql_freeresult($result);
 
