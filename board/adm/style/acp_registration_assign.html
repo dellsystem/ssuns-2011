@@ -1,5 +1,99 @@
 <!-- INCLUDE overall_header.html -->
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	// Find the highest id
+	var num_country_assignments = 1;
+	while ($('#country_assignment_' + num_country_assignments).length)
+	{
+		num_country_assignments++;
+	}
+	$('#add-country-assignment').click(function(event) {
+		// Change the name and ID
+		var new_name_id = 'country_assignment_' + num_country_assignments;
+		$('#add-country-assignment').before($('#country_assignment_1').clone().attr('id', new_name_id).attr('name', new_name_id));
+		// Change the selected option (may not be necessary)
+		$('#' + new_name_id + ' option[value="0"]').attr('selected', 'selected');
+		$('#' + new_name_id).after('<br />');
+		num_country_assignments++;
+		return false;
+	});
+
+	var numCharAssignments = 1;
+	while ($('#char_assignment_' + numCharAssignments).length) {
+		numCharAssignments++;
+	}
+	$('#add-char-assignment').click(function(event) {
+		var newNameID = 'char_assignment_' + numCharAssignments;
+		$('#add-char-assignment').before($('#char_assignment_1').clone().attr('id', newNameID).attr('name', newNameID));
+		$('#' + newNameID + ' option[value="0"]').attr('selected', 'selected');
+		$('#' + newNameID).after('<br />');
+		numCharAssignments++;
+		return false;
+	});
+
+	// Get the number of delegates assigned so far
+	var getNumAssigned = function() {
+		var totalDelegates = 0;
+		var countriesSoFar = [];
+		// Checks for duplicates and other assignments as well and reports an error message if that happens
+		for (var i = 1; i < num_country_assignments; i++)
+		{
+			var thisSelector = '#country_assignment_' + i;
+			var thisNumDelegates = parseInt($(thisSelector + ' option:selected').attr('data-num-delegates'), 10);
+			var thisCountry = $(thisSelector + ' option:selected').text();
+			var countryID = $(thisSelector).val();
+
+			// Check if it's already assigned
+			var alreadyAssigned = $(thisSelector + ' option:selected').attr('data-already-assigned');
+			if (countriesSoFar.indexOf(countryID) >= 0 || alreadyAssigned) { // returns -1 if not found etc
+				// Already there, show the "duplicate country" message
+				if (alreadyAssigned) {
+					$('#country-error strong').text(thisCountry + " has been assigned to another school (" + alreadyAssigned + ").");
+				} else {
+					$('#country-error strong').text("There is at least one duplicate country (not counted in the total). Please remove it.");
+					// Just a duplicate thing
+				}
+			} else if (countryID > 0) {
+				totalDelegates += thisNumDelegates;
+				countriesSoFar.push(countryID);
+				$('#country-error strong').text(''); // prone to bugs check it another time
+			}
+		}
+
+		// Now check the characters
+		var charsSoFar = [];
+		for (var i = 1; i < numCharAssignments; i++) {
+			var thisSelector = '#char_assignment_' + i;
+			var charID = $(thisSelector).val();
+			// Check if it's already assigned
+			var alreadyAssigned = $(thisSelector + ' option:selected').attr('data-already-assigned');
+			if (alreadyAssigned || charsSoFar.indexOf(charID) >= 0) {
+				if (alreadyAssigned) {
+					$('#character-error strong').text("This country has been assigned to another school (" + alreadyAssigned + ").");
+				} else {
+					$('#character-error strong').text("There is at least one duplicate character (not counted in the total). Please remove it.");
+				}
+			} else if (charID > 0) {
+				totalDelegates++;
+				// No errors
+				$('#character-error strong').text('');
+				charsSoFar.push(charID);
+			}
+		}
+		$('#num_assigned strong').text(totalDelegates);
+	};
+
+	// Check the total number initially, as well as upon select changes
+	getNumAssigned();
+	// Delegate <3
+	$('select').delegate('', 'change', function() {
+		getNumAssigned();
+	});
+});
+</script>
+
 <h1>{PAGE_TITLE}</h1>
 
 <p>Here you can manage country and committee assignments for specific schools.</p>
@@ -25,10 +119,33 @@
 	</dl>
 	<dl>
 		<dt><label for="country_assignment_1">Country assignments</label></dt>
-		<dd><select name="country_assignment_1"><!-- BEGIN ca -->
-			<option value="{ca.ID}" data-num-delegates="{ca.NUM_DELEGATES}">{ca.TEXT} ({ca.NUM_DELEGATES})</option>
-		<!-- END ca --></select></dd>
+		<dd><!-- BEGIN assignments -->
+			<select name="country_assignment_{assignments.ID}" id="country_assignment_{assignments.ID}">
+			<option value="0" data-num-delegates="0">Select a country ...</option>
+			<!-- BEGIN ca -->
+			<option value="{ca.ID}" data-num-delegates="{ca.NUM_DELEGATES}"{ca.SELECTED} data-already-assigned="{ca.ALREADY_ASSIGNED}">{ca.TEXT} ({ca.NUM_DELEGATES})</option>
+			<!-- END ca -->
+		</select><br />
+		<!-- END assignments --><a href="" id="add-country-assignment">Add another country</a><br />
+		<label id="country-error"><strong></strong></label>
+		</dd>
 	</dl>
+	<dl>
+		<dt><label for="char_assignment_1">Character assignments</label></dt>
+		<dd><!-- BEGIN char_assignments -->
+			<select name="char_assignment_{char_assignments.ID}" id="char_assignment_{char_assignments.ID}">
+			<option value="0">Select a character ...</option>
+			<!-- BEGIN groups -->
+			<optgroup label="{char_assignments.groups.COMMITTEE}">
+				<!-- BEGIN chars -->
+				<option value="{char_assignments.groups.chars.ID}"{char_assignments.groups.chars.SELECTED} data-already-assigned="{char_assignments.groups.chars.ALREADY_ASSIGNED}">{char_assignments.groups.chars.TEXT}</option>
+				<!-- END chars -->
+			</optgroup>
+			<!-- END groups -->
+			</select><br />
+			<!-- END char_assignments --><a href="" id="add-char-assignment">Add another character</a><br />
+			<label id="character-error"><strong></strong></label><br />
+			<label id="num_assigned"><br />Positions assigned so far: <strong>0</strong> (required: {NUMBER_OF_DELEGATES})</label><br />
 </fieldset>
 
 <fieldset class="submit-buttons">

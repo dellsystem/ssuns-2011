@@ -1,0 +1,31 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{PAGE_TITLE}</h1>
+
+<p>Edit the details of a character</p>
+
+<form method="post" action="{U_ACTION}">
+<fieldset>
+	<legend>Character details</legend>
+	<dl>
+		<dt><label>Committee:</label></dt>
+		<dd>{COMMITTEE}</dd>
+	</dl>
+	<dl>
+		<dt><label for="character_name">Character name:</label></dt>
+		<dd><input name="character_name" type="text" id="character_name" value="{CHARACTER_NAME}" size="80" /></dd>
+	</dl>
+	<dl>
+		<dt><label>Assigned student:</label></dt>
+		<dd>Dunno lol (school: {SCHOOL})</dd>
+	</dl>
+</fieldset>
+
+<fieldset class="submit-buttons">
+	<legend>Submit</legend>
+	<input class="button1" type="submit" id="submit" name="submit" value="Submit" />&nbsp;
+	<input class="button2" type="reset" id="reset" name="reset" value="Reset" />
+</fieldset>
+</form>
+
+<!-- INCLUDE overall_footer.html -->

@@ -1,0 +1,35 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{PAGE_TITLE}</h1>
+
+<p>Here you can manage country and committee assignments for specific schools.</p>
+
+<form method="post" action="{U_ACTION}">
+<fieldset>
+	<legend>School details</legend>
+	<dl>
+		<dt><label>Number of delegates:</label></dt>
+		<dd>{NUMBER_OF_DELEGATES}</dd>
+	</dl>
+	<dl>
+		<dt><label for="amount_owed">Amount owed:</label></dt>
+		<dd><input name="amount_owed" type="text" id="amount_owed" value="{AMOUNT_OWED}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="amount_paid">Amount paid:</label></dt>
+		<dd><input name="amount_paid" type="text" id="amount_paid" value="{AMOUNT_PAID}" /></dd>
+	</dl>
+	<dl>
+		<dt><label>Balance (amount owed - amount paid):</label></dt>
+		<dd>{REMAINING_OWED}</dd>
+	</dl>
+</fieldset>
+
+<fieldset class="submit-buttons">
+	<legend>Submit</legend>
+	<input class="button1" type="submit" id="submit" name="submit" value="Submit" />&nbsp;
+	<input class="button2" type="reset" id="reset" name="reset" value="Reset" />
+</fieldset>
+</form>
+
+<!-- INCLUDE overall_footer.html -->

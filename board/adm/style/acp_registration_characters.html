@@ -1,0 +1,16 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{PAGE_TITLE}</h1>
+
+<p>Here you can view the character list for each committee.</p>
+<!-- BEGIN committees -->
+<h2>{committees.NAME}</h2>
+	<!-- IF .committees.characters -->
+	<ul>
+	<!-- BEGIN characters -->
+		<li><a href="{committees.characters.U_EDIT}">{committees.characters.NAME}</a><!-- IF committees.characters.STUDENT --> - assigned to {committees.characters.STUDENT}<!-- ENDIF --></li>
+	<!-- END characters -->
+	</ul>
+	<!-- ENDIF -->
+<!-- END committees -->
+<!-- INCLUDE overall_footer.html -->

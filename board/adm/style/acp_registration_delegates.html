@@ -1,0 +1,33 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{PAGE_TITLE}</h1>
+
+<p>Here you can approve delegates and shit.</p>
+
+<table cellspacing="1">
+	<caption>Unapproved delegates</caption>
+	<col class="col1" /><col class="col1" /><col class="col1" /><col class="col1" /><col class="col1" /><col class="col2" />
+	<thead>
+	<tr>
+		<th>School name</th>
+		<th>Position</th>
+		<th>Committee</th>
+		<th>Delegate name</th>
+		<th>Delegate email</th>
+		<th>Options</th>
+	</tr>
+	</thead>
+	<tbody>
+		<!-- BEGIN delegates -->
+		<tr>
+			<td>{delegates.SCHOOL}</td>
+			<td>{delegates.POSITION}</td>
+			<td>{delegates.COMMITTEE}</td>
+			<td>{delegates.NAME}</td>
+			<td>{delegates.EMAIL}</td>
+			<td>{delegates.APPROVE_DELETE}</td>
+		</tr>
+		<!-- END delegates -->
+	</tbody>
+</table>
+<!-- INCLUDE overall_footer.html -->

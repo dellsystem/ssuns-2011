@@ -1,0 +1,32 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{PAGE_TITLE}</h1>
+
+<p>Here you can view uploaded position papers. NOT DONE YET.</p>
+
+<table cellspacing="1">
+	<col class="col1" /><col class="col1" /><col class="col1" /><col class="col2" /><col class="col2" /><col class="col2" />
+	<thead>
+	<tr>
+		<th>School</th>
+		<th>Committee</th>
+		<th>Position</th>
+		<th>Delegate name(s)</th>
+		<th>Timestamp</th>
+		<th>Download link</th>
+	</tr>
+	</thead>
+	<tbody>
+		<!-- BEGIN papers -->
+		<tr>
+			<td>{papers.SCHOOL}</td>
+			<td>{papers.COMMITTEE}</td>
+			<td>{papers.POSITION}</td>
+			<td>Too expensive to look up</td>
+			<td>{papers.TIMESTAMP}</td>
+			<td><a href="{papers.U_DOWNLOAD}">Download link</a></td>
+		</tr>
+		<!-- END papers -->
+	</tbody>
+</table>
+<!-- INCLUDE overall_footer.html -->

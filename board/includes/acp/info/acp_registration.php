@@ -30,6 +30,9 @@ class acp_registration_info
                 'assign'		=> array('title' => 'Assignments', 'auth' => 'acl_a_schools', 'cat' => array('ssuns')),
                 'finances'		=> array('title' => 'Financial information', 'auth' => 'acl_a_schools', 'cat' => array('ssuns')),
                 'matrix'		=> array('title' => 'Country-committee matrix', 'auth' => 'acl_a_schools', 'cat' => array('ssuns')),
+                'characters'	=> array('title' => 'Character lists', 'auth' => 'acl_a_schools', 'cat' => array('ssuns')),
+                'delegates'		=> array('title' => 'Delegate overview', 'auth' => 'acl_a_schools', 'cat' => array('ssuns')),
+                'papers'		=> array('title' => 'Position papers', 'auth' => 'acl_a_papers', 'cat' => array('ssuns')),
             ),
         );
     }
