@@ -1,0 +1,47 @@
+<!-- INCLUDE ucp_header.html -->
+
+<h2>{L_TITLE}</h2>
+
+<div class="panel">
+	<div class="inner"><span class="corners-top"><span></span></span>
+
+	<p>Here you can view country/committee assignments and financial information.</p>
+	<!-- IF AMOUNT_OWED == 0 && AMOUNT_PAID == 0 -->
+	<p>Financial information not yet available.</p>
+	<!-- ELSE -->
+	<p>Amount owed: {AMOUNT_OWED}</p>
+	<p>Amount paid: {AMOUNT_PAID}</p>
+	<!-- ENDIF -->
+	<h3>Your country assignments</h3>
+	<!-- IF NUM_ASSIGNED == 0 -->
+	<p>You have not yet been assigned any countries.</p>
+	<!-- ELSE -->
+	<ul style="margin-left: 20px;">
+	<!-- BEGIN countries -->
+		<li><strong>{countries.NAME}</strong> ({countries.NUM} positions)
+			<ul style="margin-left: 20px;">
+				<!-- BEGIN committees -->
+				<li>{committees.NAME} ({committees.NUM} positions)</li>
+				<!-- END committees -->
+			</ul>
+		</li>
+	<!-- END countries -->
+	</ul>
+	<!-- ENDIF -->
+
+	<h3>Your committee assignments</h3>
+	<!-- IF .characters -->
+	<ul style="margin-left: 20px;">
+		<!-- BEGIN characters -->
+		<li><strong>{characters.COMMITTEE}</strong> ({characters.CHAR})</li>
+		<!-- END characters -->
+	</ul>
+	<!-- ELSE -->
+	<p>You have not been assigned any committees.</p>
+	<!-- ENDIF -->
+
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+
+
+<!-- INCLUDE ucp_footer.html -->

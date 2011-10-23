@@ -1,0 +1,39 @@
+<!-- INCLUDE ucp_header.html -->
+
+<h2>{L_TITLE}</h2>
+
+<form method="post" action="" enctype="multipart/form-data">
+
+<div class="panel">
+	<div class="inner"><span class="corners-top"><span></span></span>
+	<p>Here you can upload position papers written by your delegates, in either .doc or .docx format. You may submit more than one position paper at a time - just upload the files and click the submit button at the bottom. Please contact <a href="mailto:it@ssuns.org">it@ssuns.org</a> if you have any questions or experience any errors.</p>
+	<p>Note that to be eligible for awards, it is essential that delegates submit their position papers before the final deadline.</p>
+	<p><strong>Optional deadline</strong>: Midnight on October 21 (optional - submit to receive feedback before the final deadline).</p>
+	<p><strong>Final deadline</strong>: November 2.</p>
+
+<!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->
+
+	<h3>Position papers</h3>
+	<!-- IF .positions -->
+	<fieldset>
+		<!-- BEGIN positions -->
+		<dl>
+			<dt><label>{positions.POSITION} - {positions.COMMITTEE}</label><br />{positions.NAME}</dt>
+			<dd><!-- IF positions.ALREADY -->Uploaded on {positions.TIMESTAMP}<!-- ELSE --><input type="file" name="{positions.INPUT_NAME}" /><!-- ENDIF --></dd>
+		</dl>
+		<!-- END positions -->
+	</fieldset>
+	<!-- ELSE -->
+	<p>You have no approved delegates. If you have not yet assigned delegates to positions, you can do so from the Assignments page under this tab.</p>
+	<!-- ENDIF -->
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+
+<fieldset class="submit-buttons">
+	{S_HIDDEN_FIELDS}<input type="reset" value="{L_RESET}" name="reset" class="button2" />&nbsp; 
+	<input type="submit" name="submit" value="{L_SUBMIT}" class="button1" />
+	{S_FORM_TOKEN}
+</fieldset>
+</form>
+
+<!-- INCLUDE ucp_footer.html -->

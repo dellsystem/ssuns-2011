@@ -1,0 +1,35 @@
+<!-- INCLUDE ucp_header.html -->
+
+<h2>{L_TITLE}</h2>
+
+<form method="post" action="">
+
+<div class="panel">
+	<div class="inner"><span class="corners-top"><span></span></span>
+	<p>Here you can assign committee positions to delegates. If you need to change an assignment after submitting (for example, because a delegate can no longer attend the conference), please contact <a href="mailto:it@ssuns.org">it@ssuns.org</a>. You do not need to provide all the delegate names and emails at once, but each name should be paired with an email.</p>
+
+<!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->
+
+	<h3>Assignments</h3>
+	<!-- IF .assignments -->
+	<fieldset>
+		<!-- BEGIN assignments -->
+		<dl>
+			<dt><label>{assignments.POSITION} - {assignments.COMMITTEE}</label></dt>
+			<dd><!-- IF assignments.ASSIGNEE -->{assignments.ASSIGNEE} ({assignments.ASSIGNEE_EMAIL}) - <strong>{assignments.STATUS}</strong><!-- ELSE --><input type="text" name="{assignments.NAME}_name" placeholder="Delegate name (first and last)" <!-- IF assignments.DEL_NAME -->value="{assignments.DEL_NAME}" <!-- ENDIF --> class="inputbox" /><input type="text" name="{assignments.NAME}_email" placeholder="Delegate's email (e.g. example@example.com)" <!-- IF assignments.DEL_EMAIL -->value="{assignments.DEL_EMAIL}" <!-- ENDIF -->class="inputbox" /><!-- ENDIF --></dd>
+		</dl>
+		<!-- END assignments -->
+	</fieldset>
+	<!-- ENDIF -->
+
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+
+<fieldset class="submit-buttons">
+	{S_HIDDEN_FIELDS}<input type="reset" value="{L_RESET}" name="reset" class="button2" />&nbsp; 
+	<input type="submit" name="submit" value="{L_SUBMIT}" class="button1" />
+	{S_FORM_TOKEN}
+</fieldset>
+</form>
+
+<!-- INCLUDE ucp_footer.html -->
