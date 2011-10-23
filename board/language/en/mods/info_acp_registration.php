@@ -27,6 +27,7 @@ $lang = array_merge($lang, array(
 	
 	// Log shit
 	'LOG_EDIT_SCHOOL'			=> '<strong>Altered school information</strong><br />» %s',
+	'LOG_FINANCES_SCHOOL'		=> '<strong>Altered school finances information</strong><br />» %s',
 	'LOG_APPROVE_SCHOOL'		=> '<strong>Approved school</strong><br />» %s',
 ));
 
