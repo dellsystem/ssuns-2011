@@ -71,14 +71,6 @@
 
 	// ]]>
 	</script>
-	<script type="text/javascript" src="{T_TEMPLATE_PATH}/styleswitcher.js"></script>
-	<script type="text/javascript" src="{T_TEMPLATE_PATH}/forum_fn.js"></script>
-    <!-- whoo jQuery (for form handling in register-a-school, and the banner -->
-    <script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-    <script type="text/javascript" src="{T_TEMPLATE_PATH}/banner.js"></script>
-    <!-- for placeholders in inputs -->
-    <script type="text/javascript" src="{T_TEMPLATE_PATH}/placeholder.js"></script>
-
 	<link href="{T_THEME_PATH}/print.css" rel="stylesheet" type="text/css" media="print" title="printonly" />
 	<link href="{T_STYLESHEET_LINK}" rel="stylesheet" type="text/css" media="screen, projection" />
 
@@ -89,6 +81,17 @@
 	<!-- IF S_CONTENT_DIRECTION eq 'rtl' -->
 		<link href="{T_THEME_PATH}/bidi.css" rel="stylesheet" type="text/css" media="screen, projection" />
 	<!-- ENDIF -->
+	<script type="text/javascript" src="{T_TEMPLATE_PATH}/styleswitcher.js"></script>
+	<script type="text/javascript" src="{T_TEMPLATE_PATH}/forum_fn.js"></script>
+    <!-- whoo jQuery (for form handling in register-a-school, and the banner -->
+    <script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <!-- seriously fuck you IE -->
+    <!-- IF OUTSIDE_OF_FORUM -->
+    <script type="text/javascript" src="{T_TEMPLATE_PATH}/banner.js"></script>
+    <!-- ENDIF -->
+    <!-- for placeholders in inputs -->
+    <script type="text/javascript" src="{T_TEMPLATE_PATH}/placeholder.js"></script>
+
 
 </head>
 
