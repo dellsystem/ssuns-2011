@@ -1,6 +1,6 @@
 Dear {FAC_AD_NAME},
 
-Welcome to SSUNS 2011! You are receiving this email because our Chargee d'Affaires, Sumaira Mazhar, has verified and confirmed the SSUNS 2011 registration form you submitted for {SCHOOL_NAME}. If you have received this message in error, please email it@ssuns.org so we can send it to the correct person as soon as possible.
+Welcome to SSUNS 2011! You are receiving this email because our Chargée d'Affaires, Sumaira Mazhar, has verified and confirmed the SSUNS 2011 registration form you submitted for {SCHOOL_NAME}. If you have received this message in error, please email it@ssuns.org so we can send it to the correct person as soon as possible.
 
 We hope you found the online registration process fairly straightforward. However, the online aspect of SSUNS 2011 doesn't end here. As a registered delegation, you will have access to our password-protected delegation management section, where you will be able to send in and edit delegate names, positions, numbers and country requests; submit and view position papers; and even view customised research pages.
 

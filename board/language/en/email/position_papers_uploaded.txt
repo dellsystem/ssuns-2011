@@ -1,0 +1,12 @@
+Hello {USERNAME},
+
+This is a confirmation email in response to your position paper submission for the optional October 21st deadline.
+
+Your records indicate that you have uploaded {NUM_UPLOADED} position papers:
+
+<!-- BEGIN papers-->
+{papers.NAME} - {papers.POSITION} ({papers.COMMITTEE})
+<!-- END papers-->
+
+Best regards,
+The SSUNS 2011 Secretariat

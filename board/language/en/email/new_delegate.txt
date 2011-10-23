@@ -1,0 +1,16 @@
+Dear {NAME},
+
+Welcome to SSUNS 2011! You are receiving this email because our Chargée d'Affaires, Sumaira Mazhar, has approved the delegate assignment submitted for you by your school ({SCHOOL}). You can use the following username and password to log on to the discussion boards, located at www.ssuns.org/2011/board/:
+
+Username: {NAME}
+Password: {PASSWORD}
+
+Note that you have been assigned the following:
+
+Committee: {COMMITTEE}
+{COUNTRY_CHARACTER}
+
+After logging in, you will be able to change your password through the User control panel. Feel free to use the discussion boards to get to know other delegates and ask questions about the conference.
+
+Sincerely,
+The SSUNS 2011 Secretariat

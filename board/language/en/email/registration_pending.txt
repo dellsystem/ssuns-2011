@@ -1,6 +1,6 @@
 Dear {FAC_AD_NAME},
 
-This is a confirmation email to verify that we have received your application for SSUNS 2011. Our Chargée d’Affaires, Sumaira Mazhar (schools@ssuns.org) will be in touch with further details you once we have approved your application.
+This is a confirmation email to verify that we have received your application for SSUNS 2011. Our Chargée d’Affaires, Sumaira Mazhar (schools@ssuns.org) will be in touch with further details once we have approved your application.
 
 Thank you for registering, and please contact it@ssuns.org or reply to this email if you have any problems or questions with the registration procedure.
 
