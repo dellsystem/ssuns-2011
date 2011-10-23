@@ -275,10 +275,13 @@ define('LOGIN_ATTEMPT_TABLE',      $table_prefix . 'login_attempts');
 
 // Additional tables
 define('CUSTOM_PAGES_TABLE',		'custom_pages');
-define('MENU_TABLE',		$table_prefix . 'custom_pages_menu'); // is this even used?
+//define('MENU_TABLE',				$table_prefix . 'custom_pages_menu'); // is this even used?
 define('SCHOOLS_CONTACT_TABLE',		'schools_contact');
 define('STAFF_APPS_TABLE',			'staff_apps');
-define('ASSIGNMENTS_TABLE', 'country_assignments');
-define('CCM_TABLE', 'country_committee_matrix');
-
+define('ASSIGNMENTS_TABLE', 		'country_assignments');
+define('CCM_TABLE', 				'country_committee_matrix');
+define('CHARACTERS_TABLE', 			'character_matrix');
+define('COM_ASSIGNMENTS_TABLE', 	'committee_assignments');
+define('DELEGATES_TABLE',			'delegate_assignments');
+define('POSITION_PAPERS_TABLE',		'position_papers');
 ?>
