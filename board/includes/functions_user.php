@@ -142,6 +142,30 @@ function user_update_name($old_name, $new_name)
 	$cache->destroy('sql', MODERATOR_CACHE_TABLE);
 }
 
+// For creating the new user - from http://www.laughing-buddha.net/php/lib/password
+function generate_random_password($length = 10)
+{
+	$password = '';
+	$possible_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	$possible_length = strlen($possible_chars);
+	
+	$i = 0;
+	while ($i < $length)
+	{
+		// Choose a random character
+		$char = substr($possible_chars, mt_rand(0, $possible_length-1), 1);
+		
+		// Have we already used this character?
+		if (!strstr($password, $char))
+		{ 
+	   		// No, so it's OK to add it onto the end of whatever we've already got...
+	    	$password .= $char;
+	    	$i++;
+	    }
+	}
+	return $password;
+}
+
 /**
 * Adds an user
 *
@@ -326,6 +350,107 @@ function user_add($user_row, $cp_data = false)
 	}
 
 	return $user_id;
+}
+
+// Adds a delegate. Updates the delegates table with the user id and makes the delegates group the default group
+function delegate_add($delegate_id)
+{
+	global $db, $user, $auth, $config, $phpbb_root_path;
+	// First do a query to get the name and email of the delegate lol
+	// Also the school, committee, position etc because we need that for the custom profile field
+	$sql = "SELECT d.delegate_name, d.delegate_email, d.school_id, d.position_id, d.is_country, s.school_name
+			FROM " . DELEGATES_TABLE . " AS d
+			JOIN " . SCHOOLS_CONTACT_TABLE . " AS s
+			ON s.school_id = d.school_id
+			WHERE delegate_id = $delegate_id";
+	$result = $db->sql_query($sql);
+	$row = $db->sql_fetchrow($result);
+	$email = $row['delegate_email'];
+	$name = $row['delegate_name'];
+	$school = $row['school_name'];
+	$position = $row['position_id'];
+	$is_country = $row['is_country'];
+	$password = generate_random_password();
+	$user_row = array(
+		'username'              => $name,
+		'user_password'         => phpbb_hash($password),
+		'user_email'            => $email,
+		'group_id'              => 32, // the delegates group
+		'user_timezone'         => '-5', // Whatever
+		'user_dst'              => 0,
+		'user_lang'             => 'en',
+		'user_type'             => USER_NORMAL,
+		'user_actkey'           => '',
+		'user_ip'               => '', // Don't have anything for this lol
+		'user_regdate'          => time(),
+		'user_inactive_reason'  => '',
+		'user_inactive_time'    => time(), // not sure if need
+	);
+
+	// Now get the other custom profile information ...
+	// Committee name, delegation name (country or character)
+	if ($is_country)
+	{
+		$sql = "SELECT country_id, committee_id
+				FROM " . CCM_TABLE . "
+				WHERE id = $position";
+		$result = $db->sql_query($sql);
+		$row = $db->sql_fetchrow($result);
+		$committee_id = $row['committee_id'];
+		$country_id = $row['country_id'];
+	}
+	else
+	{
+		$sql = "SELECT character_name, committee_id
+				FROM " . CHARACTERS_TABLE . "
+				WHERE character_id = $position";
+		$result = $db->sql_query($sql);
+		$row = $db->sql_fetchrow($result);
+		$committee_id = $row['committee_id'];
+		$character_name = $row['character_name'];
+	}
+	include($phpbb_root_path . '../delegations_array.php');
+	include($phpbb_root_path . '../committees_array.php');
+	$committee = ($is_country) ? $ccm_committees[$committee_id] : $committees[$committee_id];
+	$country_character = ($is_country) ? $delegations[$country_id] : $character_name;
+	// Add the user ...
+	$cp_data = array(
+		'pf_committee'		=> $committee,
+		'pf_position'		=> $country_character,
+		'pf_school'			=> $school,
+	);
+	$user_id = user_add($user_row, $cp_data);
+
+	// Now update the delegate table ...
+	$sql = "UPDATE " . DELEGATES_TABLE . "
+			SET user_id = $user_id
+			WHERE delegate_id = $delegate_id";
+	$db->sql_query($sql);
+
+	// Send off an email ...
+	// Then send out the approval email
+	include($phpbb_root_path . 'includes/functions_messenger.php');
+	$messenger = new messenger(false);
+
+	// Now send off an email to the faculty advisor informing him/her of the registration
+	$messenger->template('new_delegate');
+	$messenger->to($email, $name);
+	$messenger->subject('SSUNS discussion board account');
+	$messenger->from("it@ssuns.org");
+
+	$messenger->assign_vars(array(
+		'NAME'			=> $name,
+		'SCHOOL'		=> $school,
+		'COUNTRY_CHARACTER'	=> $country_character,
+		'COMMITTEE'		=> $committee,
+		'PASSWORD'		=> $password)
+	);
+
+	// Should send a copy to it@ssuns.org as well
+	$messenger->bcc('it@ssuns.org');
+	$messenger->send();
+
+	return $name;
 }
 
 /**
