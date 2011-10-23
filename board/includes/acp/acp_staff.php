@@ -103,7 +103,7 @@ class acp_staff {
 					$this->tpl_name = 'acp_staff_overview';
 					$sql = "SELECT id, name, is_logistical, position
 							FROM " . STAFF_APPS_TABLE . "
-							ORDER BY position ASC";
+							ORDER BY is_logistical, position DESC";
 					$result = $db->sql_query($sql);
 
 					while ($row = $db->sql_fetchrow($result)) {
