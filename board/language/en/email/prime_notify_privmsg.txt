@@ -1,0 +1,13 @@
+Subject: New Private Message: {SUBJECT}
+
+Hello {USERNAME}, you have received a new private message to your account on "{SITENAME}". You can view your new message by clicking on the following link: {U_INBOX}
+_____________________________________________________________________
+
+From: {AUTHOR_NAME}
+Subject: {SUBJECT}
+Message:
+{MESSAGE}
+_____________________________________________________________________
+
+You have requested that you be notified on this event; remember that you can always choose not to be notified of new messages by changing the appropriate setting in your profile.
+{EMAIL_SIG}

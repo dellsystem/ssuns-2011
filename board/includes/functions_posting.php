@@ -1204,6 +1204,10 @@ function user_notification($mode, $subject, $topic_title, $forum_name, $forum_id
 			AND w.notify_status = " . NOTIFY_YES . '
 			AND u.user_type IN (' . USER_NORMAL . ', ' . USER_FOUNDER . ')
 			AND u.user_id = w.user_id';
+//-- mod: Prime Notify ------------------------------------------------------//
+	global $prime_notify;
+	$prime_notify->alter_post_sql($sql);
+//-- end: Prime Notify ------------------------------------------------------//
 	$result = $db->sql_query($sql);
 
 	while ($row = $db->sql_fetchrow($result))
@@ -1219,6 +1223,9 @@ function user_notification($mode, $subject, $topic_title, $forum_name, $forum_id
 			'method'		=> $row['user_notify_type'],
 			'allowed'		=> false
 		);
+//-- mod: Prime Notify ------------------------------------------------------//
+		$prime_notify->setup_post_template($notify_rows[$row['user_id']], $row);
+//-- end: Prime Notify ------------------------------------------------------//
 	}
 	$db->sql_freeresult($result);
 
@@ -1237,6 +1244,9 @@ function user_notification($mode, $subject, $topic_title, $forum_name, $forum_id
 				AND fw.notify_status = " . NOTIFY_YES . '
 				AND u.user_type IN (' . USER_NORMAL . ', ' . USER_FOUNDER . ')
 				AND u.user_id = fw.user_id';
+//-- mod: Prime Notify ------------------------------------------------------//
+		$prime_notify->alter_post_sql($sql);
+//-- end: Prime Notify ------------------------------------------------------//
 		$result = $db->sql_query($sql);
 
 		while ($row = $db->sql_fetchrow($result))
@@ -1252,7 +1262,10 @@ function user_notification($mode, $subject, $topic_title, $forum_name, $forum_id
 				'method'		=> $row['user_notify_type'],
 				'allowed'		=> false
 			);
-		}
+//-- mod: Prime Notify ------------------------------------------------------//
+			$prime_notify->setup_post_template($notify_rows[$row['user_id']], $row);
+//-- end: Prime Notify ------------------------------------------------------//
+ 		}
 		$db->sql_freeresult($result);
 	}
 
@@ -1330,7 +1343,9 @@ function user_notification($mode, $subject, $topic_title, $forum_name, $forum_id
 					'U_STOP_WATCHING_TOPIC'	=> generate_board_url() . "/viewtopic.$phpEx?uid={$addr['user_id']}&f=$forum_id&t=$topic_id&unwatch=topic",
 					'U_STOP_WATCHING_FORUM'	=> generate_board_url() . "/viewforum.$phpEx?uid={$addr['user_id']}&f=$forum_id&unwatch=forum",
 				));
-
+//-- mod: Prime Notify ------------------------------------------------------//
+				$prime_notify->setup_post_vars($messenger, $addr['lang'], $email_template);
+//-- end: Prime Notify ------------------------------------------------------//
 				$messenger->send($addr['method']);
 			}
 		}
@@ -2585,6 +2600,10 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 	// Send Notifications
 	if (($mode == 'reply' || $mode == 'quote' || $mode == 'post') && $post_approval)
 	{
+//-- mod: Prime Notify ------------------------------------------------------//
+		include ($phpbb_root_path . 'includes/prime_notify.' . $phpEx);
+		$prime_notify->setup_post($data);
+//-- end: Prime Notify ------------------------------------------------------//
 		user_notification($mode, $subject, $data['topic_title'], $data['forum_name'], $data['forum_id'], $data['topic_id'], $data['post_id']);
 	}
 

@@ -1,0 +1,9 @@
+<!-- IF S_PRIME_NOTIFY_POST_CONTENT -->
+	<dl>
+		<dt><label for="notify_content1">{L_PRIME_NOTIFY_POST_CONTENT}:</label><br /><span>{L_PRIME_NOTIFY_POST_CONTENT_EXPLAIN}</span></dt>
+		<dd>
+			<label for="notify_content1"><input type="radio" name="notify_content" id="notify_content1" value="1"<!-- IF S_NOTIFY_POST_CONTENT --> checked="checked"<!-- ENDIF --> /> {L_YES}</label> 
+			<label for="notify_content0"><input type="radio" name="notify_content" id="notify_content0" value="0"<!-- IF not S_NOTIFY_POST_CONTENT --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+		</dd>
+	</dl>
+<!-- ENDIF -->

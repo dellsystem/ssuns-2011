@@ -659,6 +659,10 @@ function approve_post($post_id_list, $id, $mode)
 
 		foreach ($post_info as $post_id => $post_data)
 		{
+//-- mod: Prime Notify ------------------------------------------------------//
+			include ($phpbb_root_path . 'includes/prime_notify.' . $phpEx);
+			$prime_notify->setup_post($post_data);
+//-- end: Prime Notify ------------------------------------------------------//
 			if ($post_id == $post_data['topic_first_post_id'] && $post_id == $post_data['topic_last_post_id'])
 			{
 				// Forum Notifications

@@ -1,0 +1,16 @@
+Subject: Topic Reply Notification - "{TOPIC_TITLE}"
+
+Hello {USERNAME}, the topic "{TOPIC_TITLE}" at "{SITENAME}" has received a new reply since your last visit. You can view this post by clicking on the following link: {U_NEWEST_POST}
+_____________________________________________________________________
+Topic: {TOPIC_TITLE}
+Author: {AUTHOR}
+Message:
+{MESSAGE}
+_____________________________________________________________________
+
+If you want to view the topic, click the following link:
+{U_TOPIC}
+
+{VISIT_MSG}If you no longer wish to watch this topic, either click the "Unsubscribe topic" link found in the forum above, or click the following link:
+{U_STOP_WATCHING_TOPIC}
+{EMAIL_SIG}

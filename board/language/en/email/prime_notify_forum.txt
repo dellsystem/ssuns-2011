@@ -1,0 +1,13 @@
+Subject: Forum Notification - {FORUM_NAME}
+
+Hello {USERNAME}, the forum "{FORUM_NAME}" at "{SITENAME}" has received a new reply since your last visit. You can view the forum by clicking on the following link: {U_FORUM}
+_____________________________________________________________________
+Topic: {TOPIC_TITLE}
+Author: {AUTHOR}
+Message:
+{MESSAGE}
+_____________________________________________________________________
+
+{VISIT_MSG}If you no longer wish to watch this forum, either click the "Unsubscribe forum" link found in the forum above, or click the following link:
+{U_STOP_WATCHING_FORUM}
+{EMAIL_SIG}
