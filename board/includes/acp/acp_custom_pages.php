@@ -47,8 +47,8 @@ class acp_custom_pages {
 						'TEMPLATE_FILE' => $row['page_template'],
 						'PAGE_NAME'		=> $row['page_name'],
 						'LAST_MODIFIED'	=> $user->format_date($row['last_modified']),
-						'U_EDIT'		=> append_sid("{$phpbb_admin_path}index.$phpEx", 'i=custom_pages&mode=edit&id=' . $row['page_id']),
-						'U_DELETE'		=> append_sid("{$phpbb_admin_path}index.$phpEx", 'i=custom_pages&mode=delete&id=' . $row['page_id']),
+						'U_EDIT'		=> $this->u_action . '&amp;mode=edit&amp;id=' . $row['page_id'],
+						'U_DELETE'		=> $this->u_action . '&amp;mode=delete&amp;id=' . $row['page_id'],
 						'U_PAGE'		=> $phpbb_root_path . '../' . $row['page_name'])
 					);
 				}
@@ -88,7 +88,7 @@ class acp_custom_pages {
          				" . $db->sql_build_array('INSERT', $sql_array);
          		$db->sql_query($sql);
          		
-         		add_log('admin', 'Added custom page /' . $new_name);
+         		add_log('Added custom page /' . $new_name . adm_back_link($this->u_action));
          		trigger_error('Your page has been successfully added' . adm_back_link($this->u_action));
          	}
          	break;
