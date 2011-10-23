@@ -108,6 +108,7 @@ ul.cplist {
 ----------------------------------------*/
 #tabs {
 	line-height: normal;
+	height: 25px !important;
 	margin: 20px 0 -1px 7px;
 	min-width: 570px;
 }

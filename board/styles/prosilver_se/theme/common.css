@@ -139,6 +139,88 @@ p.right {
 	margin: 0 auto;
 }
 
+/* Dropdown menu wizardry. http://csswizardry.com/2011/02/creating-a-pure-css-dropdown-menu/ */
+#nav {
+	font-family: 'Georgia', 'Liberation Serif', serif; /* opera uses deja vu serif wtf? */
+	background-color: #3F4450;
+	float: left;
+	width: 100%;
+	list-style: none;
+	height: 35px;
+	z-index: 9001;
+	position: relative;
+}
+
+#nav li {
+	float: left;
+	position: relative;
+	display: block;
+}
+
+/* Make only the first children a fixed width */
+#nav > li {
+	width: 120px;
+	font-weight: none;
+	text-align: center;
+}
+
+/* Make all the dropdown elements a fixed width ... IE hack (works fine in most other browsers) */
+#nav li ul {
+	width: 190px\9;
+	text-align: left; /* to counter-act the center align above which shouldn't really be applied anyway */
+}
+
+#nav li a {
+	display: block;
+	padding-left: 10px;
+	padding-right: 10px;
+	line-height: 1.8em;
+	font-size: 1.8em;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.75); /* Text shadow to lift it a little */
+	height: 35px;
+}
+#nav li a:hover {
+	color:#fff;
+	background: #5A6273; /* Solid colour fall-back */
+	text-decoration: none;
+}
+
+/*--- DROPDOWN ---*/
+#nav ul {
+	list-style: none;
+	position: absolute;
+	left: -9999px; /* Hide off-screen when not needed (this is more accessible than display:none;) */
+}
+
+#nav ul li {
+	float: none;
+}
+
+#nav ul a {
+	white-space: nowrap; /* Stop text wrapping and creating multi-line dropdown items */
+	display: block;
+}
+
+#nav li:hover ul { /* Display the dropdown on hover */
+	left: 0; /* Bring back on-screen when needed */
+	font-size: 0.8em;
+}
+
+#nav li:hover a { /* Set styles for top level when dropdown is hovered */
+	background: #5A6273; /* Solid colour fall-back */
+	text-decoration: none;
+}
+
+#nav li:hover ul a { /* Override some top level styles when dropdown is hovered */
+	text-decoration: none;
+}
+
+#nav li:hover ul li a:hover{ /* Set styles for dropdown when items are hovered */
+	background: #4C5361; /* Solid colour fall-back */
+}
+
 #main {
 	clear: both;
 	/*overflow: auto;*/
@@ -760,10 +842,6 @@ input.pretty:hover, input.pretty:focus {
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px; 
 }
 
-.placeholder {
-	color: #222222;
-}
-
 /* you know, when you want to put in a label for accessibility but don't want it showing */
 .hidden-label {
 	display: none;
@@ -816,16 +894,25 @@ input.pretty:hover, input.pretty:focus {
 
 #banner {
     vertical-align: top;
+    /*float: left;*/
     display: inline-block;
     width: 560px;
     height: 200px;
+    /* fuck you IE i hate you */
+    zoom: 1;
+    *display: inline;
 }
 
 #banners-right {
+	/*float: left;
+	margin-left: 560px;*/
     display: inline-block;
     width: 200px;
     height: 200px;
     background-color: #7C92BA;
+    /* fuck you IE i hate you */
+    zoom: 1;
+    *display: inline;
 }
 
 #banners-right div {
@@ -863,3 +950,7 @@ Ensures that there are only 2 border things*/
 	i might end up moving related sections into separate files
 	but even then that won't really fix how terrible it is
  */
+ 
+input:-moz-placeholder {
+	color: #999;
+}
