@@ -1,0 +1,143 @@
+<!-- INCLUDE overall_header.html -->
+
+<!-- IF U_CONFIG -->
+	<a name="maincontent"></a>
+
+	<h1>{L_ACP_PRIVMSGS_MOD_CONFIG}</h1>
+
+	<p>{L_ACP_PRIVMSGS_MOD_CONFIG_EXPLAIN}</p>
+
+	<!-- IF DEBUG_MESSAGE --><p><strong>{L_ACP_PRIVMSGS_MOD_DEBUG_MSG}</strong> {DEBUG_MESSAGE}</p><!-- ENDIF -->
+	<!-- IF ERROR_MESSAGE --><p><span style="color: #dd0000;"><strong>{L_ACP_PRIVMSGS_MOD_ERROR} {ERROR_MESSAGE}</strong></span></p><!-- ENDIF -->
+
+	<form id="privmsgs_config" method="post" action="{U_CONFIG}">
+		<fieldset>
+			<legend>{L_ACP_PRIVMSGS_MOD_CONFIG}</legend>
+			<dl>
+				<dt><label>{L_ACP_PRIVMSGS_MOD_PER_PAGE}:</label><br /><span>{L_ACP_PRIVMSGS_MOD_PER_PAGE_EXPLAIN}</span></dt>
+				<dd><input type="text" class="input" name="per_page" value="{PER_PAGE}" /></dd>
+			</dl>
+			<dl>
+				<dt><label>{L_ACP_PRIVMSGS_MOD_SHOW_TXT}:</label><br /><span>{L_ACP_PRIVMSGS_MOD_SHOW_TXT_EXPLAIN}</span></dt>
+				<dd><label><input type="radio" class="radio" name="show_txt" value="y" {SHOW_TXT_CHECKED_YES} /> {L_YES}</label>
+					<label><input type="radio" class="radio" name="show_txt" value="n" {SHOW_TXT_CHECKED_NO} /> {L_NO}</label>
+				</dd>
+			</dl>
+			<dl>
+				<dt><label>{L_ACP_PRIVMSGS_MOD_FILTER}:</label><br /><span>{L_ACP_PRIVMSGS_MOD_FILTER_EXPLAIN}</span></dt>
+				<dd><input type="text" class="input" name="filter" value="{FILTER}" /></dd>
+			</dl>
+		</fieldset>
+
+		<fieldset class="submit-buttons">
+			{S_FORM_TOKEN}
+			<input type="submit" name="submit" value="{L_SUBMIT}" id="submit" class="button1" />
+		</fieldset>
+	</form>
+<!-- ELSE -->
+
+<a name="maincontent"></a>
+
+<h1>{L_ACP_PRIVMSGS_MOD_PAGETITLE}</h1>
+
+<p>{L_ACP_PRIVMSGS_MOD_EXPLAIN}</p>
+
+<!-- IF DEBUG_MESSAGE --><p><strong>{L_ACP_PRIVMSGS_MOD_DEBUG_MSG}</strong> {DEBUG_MESSAGE}</p><!-- ENDIF -->
+<!-- IF ERROR_MESSAGE --><p><span style="color: #dd0000;"><strong>{L_ACP_PRIVMSGS_MOD_ERROR} {ERROR_MESSAGE}</strong></span></p><!-- ENDIF -->
+
+<form id="privmsgs" method="post" action="{U_ACTION}">
+
+<div class="clearfix"></div>
+
+<table style="background-color: transparent; border: 0;">
+<tbody>
+<tr>
+	<td style="text-align: left; color: #115098;">
+		{L_ACP_PRIVMSGS_MOD_SEARCH_LABEL} <input class="inputbox autowidth" type="text" name="search_str" id="search_str" size="30" value="{U_SEARCH_STR}" title="{L_ACP_PRIVMSGS_MOD_SEARCH_EXPLAIN}" /> <input class="button2" type="submit" name ="search_btn" value="{L_GO}" />
+	</td>
+<!-- IF PAGINATION -->
+	<td class="pagination">
+		<a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}">{S_ON_PAGE}</a> &bull; <span>{PAGINATION}</span>
+	</td>
+<!-- ENDIF -->
+</tr>
+</tbody>
+</table>
+
+<table cellspacing="1">
+<thead>
+<tr>
+	<th>{L_ACP_PRIVMSGS_MOD_MSG_ID}</th>
+	<th>{L_ACP_PRIVMSGS_MOD_FROM}</th>
+	<th>{L_ACP_PRIVMSGS_MOD_TO}</th>
+	<th>{L_ACP_PRIVMSGS_MOD_DATETIME}</th>
+	<th>{L_ACP_PRIVMSGS_MOD_SUBJECT}</th>
+    <th>{L_ACP_PRIVMSGS_MOD_MARK}</th>
+</tr>
+</thead>
+<tbody>
+<!-- IF not .messages -->
+<tr>
+	<td class="row1" colspan="6" style="text-align: center;">{L_ACP_PRIVMSGS_MOD_NO_MESSAGES}</td>
+</tr>
+<!-- ENDIF -->
+<!-- BEGIN messages -->
+<!-- IF messages.S_ROW_COUNT is even --><tr class="row1"><!-- ELSE --><tr class="row2"><!-- ENDIF -->
+	<td style="vertical-align: top;">{messages.MSG_ID}</td>
+	<td style="vertical-align: top;">{messages.FROM}</td>
+	<td style="vertical-align: top;">{messages.TO}</td>
+	<td style="vertical-align: top;">{messages.DATE}</td>
+	<td style="vertical-align: top;"><a href="" title="{L_ACP_PRIVMSGS_MOD_VIEW_MSG_TEXT}" onclick="return showMessage('{messages.SUBJECT_JS_STR}','{messages.TEXT_JS_STR}','{S_POPUP_TITLE}','{S_POPUP_CLOSE}');">{messages.SUBJECT}</a></td>
+	<td>&nbsp;<input type="checkbox" class="radio" name="mark[]" value="{messages.MSG_ID}" />&nbsp;</td>
+</tr>
+<!-- IF S_SHOW_MESSAGE_TEXT -->
+	<!-- IF messages.S_ROW_COUNT is even --><tr class="row1"><!-- ELSE --><tr class="row2"><!-- ENDIF -->
+		<td style="" colspan="5"><div style="height: 48px; overflow: auto; background-color: #dddddd;"><table style="margin: 0; padding: 0; background-color: #dddddd; border: 0;"><tr style="margin: 0; padding: 0;"><td style="font-size: 8pt; margin: 0; padding: 0;">{messages.TEXT}</td></tr></table></div></td>
+		<td>&nbsp;</td>
+	</tr>
+<!-- ENDIF -->
+<!-- END messages -->
+</tbody>
+</table>
+
+<fieldset class="display-options">
+	{L_ACP_PRIVMSGS_MOD_SHOWTEXT} <select name="showtext">{S_SHOWTEXT}</select> &nbsp;{L_SORT_BY}: <select name="sortkey">{S_SORT_KEY}</select> <select name="sortdir">{S_SORT_DIR}</select> <!-- IF PAGINATION -->&nbsp;{L_ACP_PRIVMSGS_MOD_MSGS_PER_PAGE} <input class="inputbox autowidth" type="text" name="messages_per_page" id="messages_per_page" size="3" value="{MESSAGES_PER_PAGE}" /><!-- ENDIF -->
+	<input class="button2" type="submit" name ="sort" value="{L_GO}" />
+
+	<table style="background-color: transparent; width: auto; border: 0; margin: 0 auto;">
+		<tr>
+			<td style="vertical-align: top; font-size: 1em; padding-top: 8px;">{L_ACP_PRIVMSGS_MOD_CONVERSATION} </td>
+			<td style="vertical-align: top; font-size: 1em;"><input class="inputbox autowidth" type="text" name="all_by_user" id="all_by_user" size="20" value="{U_ALL_BY_USER}" />
+				<br />[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</td>
+			<td style="vertical-align: top; font-size: 1em; padding-top: 8px;">{L_ACP_PRIVMSGS_MOD_AND} </td>
+			<td style="vertical-align: top; font-size: 1em;"><input class="inputbox autowidth" type="text" name="all_to_user" id="all_to_user" size="20" value="{U_ALL_TO_USER}" />
+				<br />[ <a href="{U_FIND_TONAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</td>
+			<td style="vertical-align: top; font-size: 1em;"><input class="button2" type="submit" name ="by_user" value="{L_GO}" /></td>
+		</tr>
+	</table>
+</fieldset>
+
+<hr />
+
+<!-- IF PAGINATION -->
+	<div class="pagination">
+		<a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}">{S_ON_PAGE}</a> &bull; <span>{PAGINATION}</span>
+	</div>
+<!-- ENDIF -->
+
+<fieldset class="quick">
+	Action: <select name="action">{S_PRIVMSGS_OPTIONS}</select>
+	<input class="button2" type="submit" name="submit" value="{L_ACP_PRIVMSGS_MOD_SUBMIT}" />
+	<p class="small"><a href="#" onclick="marklist('privmsgs', 'mark', true); return false;">{L_MARK_ALL}</a> &bull; <a href="#" onclick="marklist('privmsgs', 'mark', false); return false;">{L_UNMARK_ALL}</a></p>
+	{S_FORM_TOKEN}
+</fieldset>
+
+</form>
+
+<!-- ENDIF -->
+
+<div style="font-size: 0.75em; text-align: center;">
+	{L_ACP_PRIVMSGS_MOD_PAGEFOOTER} {S_VERSION} &copy; 2010 <a href="mailto:twosheds@twosheds.com">TwoSheds</a>
+</div>	
+
+<!-- INCLUDE overall_footer.html -->
