@@ -2,18 +2,18 @@
 
 <h1>{PAGE_TITLE}</h1>
 
-<p>Here you can view uploaded position papers. NOT DONE YET.</p>
+<p>Here you can view uploaded position papers. {NUM_PAPERS} have been uploaded so far.</p>
 
 <table cellspacing="1">
 	<col class="col1" /><col class="col1" /><col class="col1" /><col class="col2" /><col class="col2" /><col class="col2" />
 	<thead>
 	<tr>
-		<th>School</th>
-		<th>Committee</th>
-		<th>Position</th>
-		<th>Delegate name(s)</th>
-		<th>Timestamp</th>
-		<th>Download link</th>
+		<th style="width: 15%;">School</th>
+		<th style="width: 15%;">Committee</th>
+		<th style="width: 25%;">Position</th>
+		<th style="width: 17%;">Timestamp</th>
+		<th style="width: 18%;">Give feedback</th>
+		<th style="width: 10%;">Download link</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -22,8 +22,8 @@
 			<td>{papers.SCHOOL}</td>
 			<td>{papers.COMMITTEE}</td>
 			<td>{papers.POSITION}</td>
-			<td>Too expensive to look up</td>
 			<td>{papers.TIMESTAMP}</td>
+			<td><a href="{papers.U_PM}">Give feedback to <strong>{papers.FIRST_USER}</strong></a><!-- IF papers.SECOND_USER --><br />Note - <strong>{papers.SECOND_USER}</strong> is also in this committee, don't forget to add this user to the recipients as well. Sorry I couldn't do it automatically.<!-- ENDIF --></td>
 			<td><a href="{papers.U_DOWNLOAD}">Download link</a></td>
 		</tr>
 		<!-- END papers -->

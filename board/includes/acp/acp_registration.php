@@ -906,7 +906,7 @@ class acp_registration {
           		$this->page_title = 'Position papers';
 				$this->tpl_name = 'acp_registration_papers';
 				// First get a bunch of other data and store it in an array sigh sigh sigh
-				$sql = "SELECT p.position_id, p.is_country, p.timestamp, m.country_id, m.committee_id AS committee_id, c.character_name, s.school_name AS character_school, s2.school_name AS country_school
+				$sql = "SELECT p.position_id, d.user_id, p.is_country, p.timestamp, m.country_id, m.committee_id AS committee_id, c.character_name, s.school_name AS character_school, s2.school_name AS country_school
 						FROM " . POSITION_PAPERS_TABLE . " AS p
 						LEFT JOIN " . CCM_TABLE . " AS m
 						ON p.position_id = m.id
@@ -919,27 +919,77 @@ class acp_registration {
 						LEFT JOIN " . SCHOOLS_CONTACT_TABLE . " AS s
 						ON a.school_id = s.school_id
 						LEFT JOIN " . SCHOOLS_CONTACT_TABLE . " AS s2
-						ON a2.school_id = s2.school_id"; // kill me
+						ON a2.school_id = s2.school_id
+						LEFT JOIN " . DELEGATES_TABLE . "  AS d
+						ON p.position_id = d.position_id
+							AND p.is_country = d.is_country;"; // kill me
 				$result = $db->sql_query($sql);
 				include_once($phpbb_root_path . '../delegations_array.php');
 				include_once($phpbb_root_path . '../committees_array.php');
+				$paper_data = array(); // why god why
+				$all_users = array(); // QQ
 				while ($row = $db->sql_fetchrow($result))
 				{
-					$is_country = $row['is_country'];
-					$school = ($is_country) ? $row['country_school'] : $row['character_school'];
-					$committee = ($is_country) ? $ccm_committees[$row['committee_id']] : $committees[$row['committee_id']];
-					$position = ($is_country) ? $delegations[$row['country_id']] : $row['character_name'];
-					// Oops forgot to store the format lol (either doc or docx)
-					$file_begin = $phpbb_root_path . '../papers/' . $row['position_id'] . '_' . $is_country;
-					$u_download = (file_exists($file_begin . '.doc')) ? $file_begin . '.doc' : $file_begin . '.docx';
+					$position_id = $row['position_id'];
+					// To account for the Suez Crisis as always
+					if (array_key_exists($position_id, $paper_data))
+					{
+						// This is the second user, add it in
+						// I guess I have to do a second query to get the usernames
+						$paper_data[$position_id]['second_user'] = $row['user_id'];
+						$all_users[] = $row['user_id']; // for the query, imma implode it later
+					}
+					else
+					{
+						$all_users[] = $row['user_id'];
+						// The first time we've encountered this position, do all the normal stuff
+						$is_country = $row['is_country'];
+						$school = ($is_country) ? $row['country_school'] : $row['character_school'];
+						$committee_id = $row['committee_id'];
+						$committee = ($is_country) ? $ccm_committees[$committee_id] : $committees[$committee_id];
+
+						$position = ($is_country) ? $delegations[$row['country_id']] : $row['character_name'];
+						// Oops forgot to store the format lol (either doc or docx)
+						$file_begin = $phpbb_root_path . '../papers/' . $position_id . '_' . $is_country;
+						$u_download = (file_exists($file_begin . '.doc')) ? $file_begin . '.doc' : $file_begin . '.docx';
+						$paper_data[$position_id] = array(
+							'school'		=> $school,
+							'committee'		=> $committee,
+							'position'		=> $position,
+							'timestamp'		=> $user->format_date($row['timestamp']),
+							'u_download'	=> $u_download,
+							'first_user'	=> $row['user_id'],
+						);
+					}
+				}
+
+				$sql = "SELECT user_id, username FROM " . USERS_TABLE . "
+						WHERE user_id IN (" . implode(', ', $all_users) . ")";
+				$result = $db->sql_query($sql);
+				$user_names = array();
+				while ($row = $db->sql_fetchrow($result))
+				{
+					// I guess it could be worse
+					$user_names[$row['user_id']] = $row['username'];
+				}
+
+				foreach ($paper_data as $paper)
+				{
 					$template->assign_block_vars('papers', array(
-						'SCHOOL'		=> $school,
-						'COMMITTEE'		=> $committee,
-						'POSITION'		=> $position,
-						'TIMESTAMP'		=> $user->format_date($row['timestamp']),
-						'U_DOWNLOAD'	=> $u_download,
+						'SCHOOL'		=> $paper['school'],
+						'COMMITTEE'		=> $paper['committee'],
+						'POSITION'		=> $paper['position'],
+						'TIMESTAMP'		=> $paper['timestamp'],
+						'U_DOWNLOAD'	=> $paper['u_download'],
+						'U_PM'			=> $phpbb_root_path . 'ucp.php?i=pm&mode=compose&u=' . $paper['first_user'],
+						'FIRST_USER'	=> $user_names[$paper['first_user']],
+						'SECOND_USER'	=> (array_key_exists('second_user', $paper)) ? $user_names[$paper['second_user']] : '',
 					));
 				}
+
+				$template->assign_vars(array(
+					'NUM_PAPERS'		=> count($paper_data),
+				));
             break;
       	}
 	}
