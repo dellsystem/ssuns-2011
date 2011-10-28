@@ -962,9 +962,8 @@ class acp_registration {
 						);
 					}
 				}
-
 				$sql = "SELECT user_id, username FROM " . USERS_TABLE . "
-						WHERE user_id IN (" . implode(', ', $all_users) . ")";
+						WHERE " . $db->sql_in_set('user_id', $all_users);
 				$result = $db->sql_query($sql);
 				$user_names = array();
 				while ($row = $db->sql_fetchrow($result))
