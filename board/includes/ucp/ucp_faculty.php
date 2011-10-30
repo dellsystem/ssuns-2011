@@ -99,7 +99,7 @@ class ucp_faculty
 						// Because there can be multiple delegates per country and committee FUCK YOU SUEZ CRISIS
 						$this_input_name = 'country_' . $row['id'] . '_' . $i;
 						$assignee_key = $row['id'] . '_1';
-						if (array_key_exists($assignee_key, $assigned))
+						if (array_key_exists($assignee_key, $assigned) and array_key_exists($i-1, $assigned[$assignee_key])) // in case one suez spot is not assigned
 						{
 							$assignee_pointer = $assigned[$assignee_key][$i-1]; // the element in the array etc
 							// The _1 because it's a counry, and the $i-1 because it starts indexing from 0 yeah
