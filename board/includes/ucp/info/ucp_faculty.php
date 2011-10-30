@@ -23,6 +23,7 @@ class ucp_faculty_info
 				'overview'		=> array('title' => 'Overview', 'auth' => 'acl_u_faculty', 'cat' => array('ssuns')),
 				'assignments'	=> array('title' => 'Assignments', 'auth' => 'acl_u_faculty', 'cat' => array('ssuns')),
 				'papers'		=> array('title' => 'Position papers', 'auth' => 'acl_u_faculty', 'cat' => array('ssuns')),
+				'events'		=> array('title' => 'Event registration', 'auth' => 'acl_u_faculty', 'cat' => array('ssuns')),
 			),
 		);
 	}

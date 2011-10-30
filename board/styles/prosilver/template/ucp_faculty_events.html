@@ -1,0 +1,70 @@
+<!-- INCLUDE ucp_header.html -->
+
+<form id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+
+<h2>{L_TITLE}</h2>
+
+<div class="panel">
+	<div class="inner"><span class="corners-top"><span></span></span>
+
+	<p>Here you can register for optional activities taking place during the weekend of SSUNS. Please fill this out as soon as possible so we can get an idea of how many students are planning to attend each activity.</p>
+	<hr />
+	<h2>McGill and the mountain - Saturday morning</h2>
+	<h3>McGill university tours</h3>
+	<fieldset class="fields1">
+		<p>Saturday morning tours of McGill university. More information to come.</p>
+		<dl>
+			<dt><label>Number of faculty advisors:</label></dt>
+			<dd><input type="text" size="2" name="mcgill_num_facads" class="inputbox" value="{MCGILL_NUM_FACADS}" /></dd>
+		</dl>
+		<dl>
+			<dt><label>Number of students:</label></dt>
+			<dd><input type="text" size="2" name="mcgill_num_students" class="inputbox" value="{MCGILL_NUM_STUDENTS}" /></dd>
+		</dl>
+	</fieldset>
+	<h3>Mont royal hikes</h3>
+	<fieldset class="fields1">
+		<p>Hiking up Mont Royal. More information to come.</p>
+		<dl>
+			<dt><label>Number of faculty advisors:</label></dt>
+			<dd><input type="text" size="2" name="mont_num_facads" class="inputbox" value="{MONT_NUM_FACADS}" /></dd>
+		</dl>
+		<dl>
+			<dt><label>Number of students:</label></dt>
+			<dd><input type="text" size="2" name="mont_num_students" class="inputbox" value="{MONT_NUM_STUDENTS}" /></dd>
+		</dl>
+		<dl>
+			<dt><label>Health concerns:</label></dt>
+			<dd><textarea name="mont_health">{MONT_HEALTH}</textarea></dd>
+		</dl>
+	</fieldset>
+	<h2>SSUNS gala - Saturday night</h2>
+	<h3>Dinner</h3>
+	<fieldset class="fields1">
+		<p>New to SSUNS 2011, prepare yourselves for the ultimate beginning to your Saturday night. This year’s SSUNS brings you a dinner at the Delta Centreville complete with a speaker from our conference charity UNICEF: Elizabeth Dallaire, a UNICEF Ambassador since 2007. Furthermore, will we be featuring cultural dancing throughout the meal for your dinnertime entertainment. Dress up and begin your evening with a three-course meal to energize you for the memorable dance party that is the SSUNS gala.</p>
+		<p>Menu: <strong>Butternut squash soup, traditional sugar pie, coffee/tea</strong>, and choice of either <strong>chicken jambonette with raisins and Pinot Noir sauce</strong> ($31.50 per meal, plus taxes and service) or <strong>stuffed fazoletti with ricotta and tomato cream sauce with tarragon</strong> ($29.50 per meal, plus taxes and service).</p>
+		<dl>
+			<dt><label>Number of vegetarian students and faculty advisors:</label></dt>
+			<dd><input type="text" size="2" name="gala_num_veg" class="inputbox" value="{GALA_NUM_VEG}" /></dd>
+		</dl>
+		<dl>
+			<dt><label>Number of non-vegetarian students and faculty advisors:</label></dt>
+			<dd><input type="text" size="2" name="gala_num_non_veg" class="inputbox" value="{GALA_NUM_NON_VEG}" /></dd>
+		</dl>
+		<dl>
+			<dt><label>Any dietary preferences:</label></dt>
+			<dd><textarea name="gala_prefs">{GALA_PREFS}</textarea>
+		</dl>
+	</fieldset>
+
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+
+<fieldset class="submit-buttons">
+	{S_HIDDEN_FIELDS}<input type="reset" value="{L_RESET}" name="reset" class="button2" />&nbsp; 
+	<input type="submit" name="submit" value="{L_SUBMIT}" class="button1" />
+	{S_FORM_TOKEN}
+</fieldset>
+</form>
+
+<!-- INCLUDE ucp_footer.html -->

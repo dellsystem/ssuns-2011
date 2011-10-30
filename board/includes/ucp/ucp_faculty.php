@@ -446,6 +446,45 @@ class ucp_faculty
 					'AMOUNT_PAID'	=> $amount_paid,
 				));
 			break;
+			case 'events':
+				$this->page_title = "Event registration";
+				$this->tpl_name = 'ucp_faculty_events';
+				$sql = "SELECT *
+						FROM " . SCHOOLS_CONTACT_TABLE . "
+						WHERE school_name = \"$username\""; // Idiot ...
+				$result = $db->sql_query($sql);
+				$row = $db->sql_fetchrow($result);
+				$school_id = $row['school_id'];
+				$template->assign_vars(array(
+					'MCGILL_NUM_FACADS'		=> $row['mcgill_num_facads'],
+					'MCGILL_NUM_STUDENTS'	=> $row['mcgill_num_students'],
+					'MONT_NUM_FACADS'		=> $row['mont_num_facads'],
+					'MONT_NUM_STUDENTS'		=> $row['mont_num_students'],
+					'MONT_HEALTH'			=> $row['mont_health'],
+					'GALA_NUM_VEG'			=> $row['gala_num_veg'],
+					'GALA_NUM_NON_VEG'		=> $row['gala_num_non_veg'],
+					'GALA_PREFS'			=> $row['gala_prefs'],
+				));
+				if ($submit)
+				{
+					$sql_array = array(
+						'mcgill_num_facads' => request_var('mcgill_num_facads', 0),
+						'mcgill_num_students' => request_var('mcgill_num_students', 0),
+						'mont_num_facads' => request_var('mont_num_facads', 0),
+						'mont_num_students' => request_var('mont_num_students', 0),
+						'mont_health' => request_var('mont_health', ''),
+						'gala_num_veg' => request_var('gala_num_veg', 0),
+						'gala_num_non_veg' => request_var('gala_num_non_veg', 0),
+						'gala_prefs' => request_var('gala_prefs', ''),
+					);
+					$sql = "UPDATE " . SCHOOLS_CONTACT_TABLE . "
+							SET " . $db->sql_build_array('UPDATE', $sql_array) . "
+							WHERE school_id = " . $school_id;
+					$db->sql_query($sql);
+					$u_previous = append_sid("{$phpbb_root_path}ucp.$phpEx", "i=faculty&amp;mode=events");
+					trigger_error('Submissions saved.<br /><br /><a href="' . $u_previous . '">Return to previous page</a>');
+				}
+			break;
 		}
 
 
