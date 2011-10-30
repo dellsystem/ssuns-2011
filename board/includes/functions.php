@@ -4505,6 +4505,7 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 		'U_REGISTER'			=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=register'),
 		'U_PROFILE'				=> append_sid("{$phpbb_root_path}ucp.$phpEx"),
 		'U_FACAD'				=> append_sid("{$phpbb_root_path}ucp.php", 'i=faculty&amp;mode=overview'),
+		'U_EVENTS'				=> append_sid("{$phpbb_root_path}ucp.php", 'i=faculty&amp;mode=events'),
 		'U_MODCP'				=> append_sid("{$phpbb_root_path}mcp.$phpEx", false, true, $user->session_id),
 		'U_FAQ'					=> append_sid("{$phpbb_root_path}faq.$phpEx"),
 		'U_SEARCH_SELF'			=> append_sid("{$phpbb_root_path}search.$phpEx", 'search_id=egosearch'),
@@ -4522,6 +4523,8 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 		'U_VIEW_PROFILE'		=> append_sid("{$phpbb_root_path}memberlist.$phpEx", 'mode=viewprofile&amp;u=' + $user->data['user_id']),
 		'U_AVATAR'				=> get_user_avatar($user->data['user_avatar'], $user->data['user_avatar_type'], $user->data['user_avatar_width'], $user->data['user_avatar_height']),
 
+		'NOT_UPLOADED'			=> $user->data['paper_uploaded'] == 0 && group_memberships(32, $user->data['user_id'], true),
+		'U_PAPER'				=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=240'),
 		'UNREAD_MESSAGES'		=> ($user->data['user_new_privmsg'] > 0) ? 'new-messages' : '', // to make the background stand out when there are new
 		'S_USER_LOGGED_IN'		=> ($user->data['user_id'] != ANONYMOUS) ? true : false,
 		'S_AUTOLOGIN_ENABLED'	=> ($config['allow_autologin']) ? true : false,

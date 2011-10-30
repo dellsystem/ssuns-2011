@@ -21,10 +21,15 @@
         		</p>
         	</form>
         	<!-- ELSEIF S_USER_LOGGED_IN -->
-        		<h2>Welcome, {MY_USERNAME}</h2>{U_AVATAR}<br />
-        		<!-- IF IS_FACAD -->
-       			<a href="{U_FACAD}" class="awesome" title="Manage your country/committee assignments and enter the names of your delegates">Faculty advisor panel</a><br /><!-- ENDIF -->
-	       		<a href="{U_PROFILE}" class="awesome" title="{L_PROFILE}" accesskey="e">{L_PROFILE}</a><br />   		
+				<h2>Welcome, {MY_USERNAME}</h2>{U_AVATAR}<br />
+				<!-- IF IS_FACAD -->
+				<a href="{U_FACAD}" class="awesome" title="Manage your country/committee assignments and enter the names of your delegates">Faculty advisor panel</a><br />
+				<a href="{U_EVENTS}" class="awesome new-messages" title="Register for SSUNS weekend events">Event registration</a><br />
+				<!-- ENDIF -->
+				<!-- IF NOT_UPLOADED -->
+				<a href="{U_PAPER}" class="awesome new-messages" title="Upload position paper">Upload position paper</a><br />
+				<!-- ENDIF -->
+				<a href="{U_PROFILE}" class="awesome" title="{L_PROFILE}" accesskey="e">{L_PROFILE}</a><br />   		
 				<a href="{U_PRIVATEMSGS}" class="awesome {UNREAD_MESSAGES}" title="{PRIVATE_MESSAGE_INFO}">{PRIVATE_MESSAGE_INFO}</a><br />
 				<a href="{U_SEARCH_SELF}" class="awesome" title="View your posts">View your posts</a><br />
 				<a href="{U_LOGIN_LOGOUT}" class="awesome" title="{L_LOGIN_LOGOUT}" accesskey="x">Logout</a><br />
