@@ -1,0 +1,20 @@
+<!-- INCLUDE ucp_header.html -->
+
+<h2>{L_TITLE}</h2>
+
+<form method="post" action="">
+
+<div class="panel">
+	<div class="inner"><span class="corners-top"><span></span></span>
+	<p>Here you can monitor the position paper submissions of your delegates.</p>
+<div>
+	<ul style="margin-left: 20px;"><!-- whatever -->
+		<!-- BEGIN delegate -->
+		<li>{delegate.NAME} - <!-- IF delegate.DONE -->Complete<!-- ELSE --><strong>Incomplete</strong><!-- ENDIF --></li>
+		<!-- END delegate -->
+	</ul>
+	</div>
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+
+<!-- INCLUDE ucp_footer.html -->

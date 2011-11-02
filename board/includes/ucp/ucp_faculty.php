@@ -201,6 +201,30 @@ class ucp_faculty
 					'ERROR'		=> (isset($error)) ? 'Please fill in both a name and email for every position you wish to assign. You can leave both fields empty if you would prefer to complete the assignment later.' : '',
 				));
 			break;
+			case 'monitor':
+				$this->page_title = 'Monitor position paper uploads';
+				$this->tpl_name = 'ucp_faculty_monitor';
+				$sql = "SELECT school_id FROM " . SCHOOLS_CONTACT_TABLE . "
+						WHERE school_name = \"$username\"";
+				$result = $db->sql_query($sql);
+				$row = $db->sql_fetchrow($result);
+				$school_id = $row['school_id'];
+
+				// Fetch the username and paper_uploaded fields for all the delegates of this school
+				$sql = "SELECT u.username, u.paper_uploaded
+						FROM " . DELEGATES_TABLE . " AS d
+						JOIN " . USERS_TABLE . " AS u
+						ON u.user_id = d.user_id
+						WHERE d.school_id = $school_id";
+				$result = $db->sql_query($sql);
+				while ($row = $db->sql_fetchrow($result))
+				{
+					$template->assign_block_vars('delegate', array(
+						'NAME'		=> $row['username'],
+						'DONE'		=> $row['paper_uploaded'],
+					));
+				}
+			break;
 			case 'papers':
 				include($phpbb_root_path . '../delegations_array.php');
 				include($phpbb_root_path . '../committees_array.php');
