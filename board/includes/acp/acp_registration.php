@@ -646,6 +646,7 @@ class acp_registration {
 				include($phpbb_root_path . '../committees_array.php');
 				include($phpbb_root_path . '../delegations_array.php');
 
+
 				// First get all of the relevant character names and country/committee IDs and whatnot
 				// Better than doing a huge 4-table join lol
 				$sql = "SELECT character_id, character_name, committee_id
@@ -689,6 +690,7 @@ class acp_registration {
 						'COMMITTEE'		=> ($row['is_country']) ? $ccm_committees[$countries[$position_id]['committee_id']] : $committees[$characters[$position_id]['committee_id']],
 						'NAME'			=> $row['delegate_name'],
 						'EMAIL'			=> $row['delegate_email'],
+						'USER_ID'		=> $row['user_id'],
 						'APPROVE_DELETE'=> ($row['user_id']) ? '<a href="' . $this->u_action . '&amp;unassign=' . $row['delegate_id'] . '">Unassign</a>' : '<strong><a href="' . $this->u_action . '&amp;approve=' . $row['delegate_id'] . '">Approve</a></strong>',
 					));
 				}
@@ -1016,6 +1018,10 @@ class acp_registration {
 				$all_users = array(); // QQ
 				while ($row = $db->sql_fetchrow($result))
 				{
+					if (intval($row['user_id']) == 0)
+					{
+						$row['user_id'] = 2;
+					}
 					$position_id = $row['position_id'];
 					// To account for the Suez Crisis as always
 					if (array_key_exists($position_id, $paper_data))
