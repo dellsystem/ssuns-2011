@@ -79,15 +79,19 @@ class acp_registration {
 					// Key: committee_id; value: array, character_id, then character_name, fuck the descriptions who needs that
 					$characters = array();
 					$students = array(); // mapping character ID to student name
-
-					$sql = "SELECT c.*, u.username
+					$sql = "SELECT c.*, u.username, s.school_name
 							FROM " . CHARACTERS_TABLE . " AS c
 							LEFT JOIN " . DELEGATES_TABLE . " AS d
 							ON c.character_id = d.position_id
+								AND d.is_country = 0
 							LEFT JOIN " . USERS_TABLE . " AS u
 							ON u.user_id = d.user_id
-							WHERE d.is_country = 0 OR d.is_country IS NULL";
+							LEFT JOIN " . COM_ASSIGNMENTS_TABLE . " AS a
+							ON a.character_id = c.character_id
+							LEFT JOIN " . SCHOOLS_CONTACT_TABLE . " AS s
+							ON s.school_id = a.school_id";
 					$result = $db->sql_query($sql);
+					$unassigned = array();
 					while ($row = $db->sql_fetchrow($result))
 					{
 						$committee_id = $row['committee_id'];
@@ -104,6 +108,12 @@ class acp_registration {
 						{
 							// Otherwise, create the array
 							$characters[$committee_id] = array($character_id => $character_name);
+						}
+
+						// If the position hasn't yet been assigned, make a note of it
+						if (!$student_name && $row['school_name'])
+						{
+							$unassigned[] = array('school' => $row['school_name'], 'char' => $character_name);
 						}
 					}
 
@@ -127,6 +137,16 @@ class acp_registration {
 							}
 						}
 					}
+					foreach ($unassigned as $un)
+					{
+						$template->assign_block_vars('unassigned', array(
+							'CHARACTER'	=> $un['char'],
+							'SCHOOL'	=> $un['school'],
+						));
+					}
+					$template->assign_vars(array(
+						'NUM_UNASSIGNED'		=> count($unassigned),
+					));
 				}
 			break;
 			case 'matrix':
