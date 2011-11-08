@@ -1,0 +1,45 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>SSUNS event registration</h1>
+
+<p>Here you can see who signed up for what etc</p>
+
+<table cellspacing="1">
+	<caption>List of schools</caption>
+	<col class="col1" /><col class="col2" /><col class="col2" /><col class="col2" /><col class="col2" /><col class="col2" /><col class="col2" />
+	<thead>
+	<tr>
+		<th>School name</th>
+		<th>McGill students</th>
+		<th>McGill facads</th>
+		<th>Mont students</th>
+		<th>Mont facads</th>
+		<th>Gala veg</th>
+		<th>Gala non-veg</th>
+	</tr>
+	</thead>
+	<tbody>
+		<!-- BEGIN schools -->
+		<tr>
+			<td><strong>{schools.NAME}</strong></td>
+			<td>{schools.MCGILL_STUDENTS}</td>
+			<td>{schools.MCGILL_FACADS}</td>
+			<td>{schools.MONT_STUDENTS}</td>
+			<td>{schools.MONT_FACADS}</td>
+			<td>{schools.GALA_VEG}</td>
+			<td>{schools.GALA_NON_VEG}</td>
+		</tr>
+		<!-- END schools -->
+		<tr>
+			<td>Total</td>
+			<td>{MCGILL_STUDENTS}</td>
+			<td>{MCGILL_FACADS}</td>
+			<td>{MONT_STUDENTS}</td>
+			<td>{MONT_FACADS}</td>
+			<td>{GALA_VEG}</td>
+			<td>{GALA_NON_VEG}</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- INCLUDE overall_footer.html -->

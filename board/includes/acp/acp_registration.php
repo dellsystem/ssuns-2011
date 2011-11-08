@@ -149,6 +149,72 @@ class acp_registration {
 					));
 				}
 			break;
+			case 'events':
+				$this->page_title = 'SSUNS event registration';
+				$this->tpl_name = 'acp_registration_events';
+				$sql = "SELECT school_name, mcgill_num_facads, mcgill_num_students, mont_num_facads, mont_num_students, gala_num_veg, gala_num_non_veg
+						FROM " . SCHOOLS_CONTACT_TABLE;
+				$result = $db->sql_query($sql);
+				$mcgill_s = $mcgill_f = $mont_s = $mont_f = $gala_v = $gala_n = 0; // totals
+				while ($row = $db->sql_fetchrow($result))
+				{
+					$mcgill_students = $row['mcgill_num_students'];
+					$mcgill_facads = $row['mcgill_num_facads'];
+					$mont_students = $row['mont_num_students'];
+					$mont_facads = $row['mont_num_facads'];
+					$gala_veg = $row['gala_num_veg'];
+					$gala_non_veg = $row['gala_num_non_veg'];
+					$template->assign_block_vars('schools', array(
+						'NAME'				=> $row['school_name'],
+						'MCGILL_STUDENTS'	=> $mcgill_students,
+						'MCGILL_FACADS'		=> $mcgill_facads,
+						'MONT_STUDENTS'		=> $mont_students,
+						'MONT_FACADS'		=> $mont_facads,
+						'GALA_VEG'			=> $gala_veg,
+						'GALA_NON_VEG'		=> $gala_non_veg,
+					));
+
+					// Keep track of the running totals etc
+					$mcgill_s += $mcgill_students;
+					$mcgill_f += $mcgill_facads;
+					$mont_s += $mont_students;
+					$mont_f += $mont_facads;
+					$gala_v += $gala_veg;
+					$gala_n += $gala_non_veg;
+				}
+				// I probably could have automated this somehow with an array but too late now
+				// Fuck yeah typing, <3 PHP
+				$template->assign_vars(array(
+					'MCGILL_STUDENTS'		=> $mcgill_s,
+					'MCGILL_FACADS'			=> $mcgill_f,
+					'MONT_STUDENTS'			=> $mont_s,
+					'MONT_FACADS'			=> $mont_f,
+					'GALA_VEG'				=> $gala_v,
+					'GALA_NON_VEG'			=> $gala_n,
+				));
+			break;
+			// For final position papers
+			case 'final':
+				$this->page_title = 'Final position papers';
+				$this->tpl_name = 'acp_registration_final';
+				$sql = "SELECT d.delegate_name, d.user_id, f.timestamp, f.comment
+						FROM " . DELEGATES_TABLE . " AS d
+						LEFT JOIN " . FINAL_PAPERS_TABLE . " as f
+							ON d.user_id = f.user_id
+							ORDER BY f.timestamp DESC";
+				$result = $db->sql_query($sql);
+				while ($row = $db->sql_fetchrow($result))
+				{
+					$submitted = ($row['timestamp']) ? true : false;
+					$template->assign_block_vars('delegate', array( // should loop names be singular or plural? lol
+						'NAME'		=> $row['delegate_name'],
+						'SUBMITTED'	=> ($submitted) ? 'YES' : '--',
+						'TIMESTAMP'	=> ($submitted) ? $user->format_date($row['timestamp']) : '',
+						'COMMENT'	=> $row['comment'],
+						'U_VIEW'	=> $phpbb_root_path . 'memberlist.php?mode=viewprofile&amp;u=' . $row['user_id'],
+					));
+				}
+			break;
 			case 'matrix':
 				$this->page_title = 'Country-committee matrix';
 				$this->tpl_name = 'acp_registration_matrix';

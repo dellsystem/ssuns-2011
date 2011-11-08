@@ -33,6 +33,8 @@ class acp_registration_info
                 'characters'	=> array('title' => 'Character lists', 'auth' => 'acl_a_schools', 'cat' => array('ssuns')),
                 'delegates'		=> array('title' => 'Delegate overview', 'auth' => 'acl_a_schools', 'cat' => array('ssuns')),
                 'papers'		=> array('title' => 'Position papers', 'auth' => 'acl_a_papers', 'cat' => array('ssuns')),
+                'events'		=> array('title' => 'Event registration', 'auth' => 'acl_a_schools', 'cat' => array('ssuns')),
+                'final'			=> array('title' => 'Final position papers', 'auth' => 'acl_a_papers', 'cat' => array('ssuns')),
             ),
         );
     }

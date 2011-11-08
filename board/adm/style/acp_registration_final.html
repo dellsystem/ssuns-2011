@@ -1,0 +1,32 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>Final position papers</h1>
+
+<p>See who submitted and who didn't etc. Note that chairs and secretariat members can all view each delegate's final position (if one has been submitted)</p>
+
+<table cellspacing="1">
+	<caption>List of schools</caption>
+	<col class="col1" /><col class="col1" /><col class="col2" /><col class="col2" /><col class="col2" />
+	<thead>
+	<tr>
+		<th>Delegate name</th>
+		<th>Paper submitted?</th>
+		<th>Timestamp</th>
+		<th>Comment</th>
+		<th>Options</th>
+	</tr>
+	</thead>
+	<tbody>
+		<!-- BEGIN delegate -->
+		<tr>
+			<td><strong>{delegate.NAME}</strong></td>
+			<td>{delegate.SUBMITTED}</td>
+			<td>{delegate.TIMESTAMP}</td>
+			<td>{delegate.COMMENT}</td>
+			<td><!-- IF delegate.SUBMITTED --><a href="{delegate.U_VIEW}">View</a><!-- ELSE -->Nothing lol<!-- ENDIF --></td>
+		</tr>
+		<!-- END delegate -->
+	</tbody>
+</table>
+
+<!-- INCLUDE overall_footer.html -->
