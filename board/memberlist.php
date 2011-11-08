@@ -606,7 +606,19 @@ switch ($mode)
 			$member['posts_in_queue'] = 0;
 		}
 
+		// If the user is a delegate and has submitted a final position paper, show it to secs and chairs
+		include($phpbb_root_path . 'includes/functions_user.' . $phpEx);
+		if (group_memberships(32, $member['user_id']) && $member['paper_uploaded'] && (group_memberships(8, $user->data['user_id']) || group_memberships(31, $user->data['user_id'])))
+		{
+			$sql = "SELECT text
+					FROM " . FINAL_PAPERS_TABLE . "
+					WHERE user_id = " . $member['user_id'];
+			$result = $db->sql_query($sql);
+			$final_paper = $db->sql_fetchrow($result);
+		}
+
 		$template->assign_vars(array(
+			'POSITION_PAPER'	=> (isset($final_paper)) ? $final_paper['text'] : '',
 			'L_POSTS_IN_QUEUE'	=> $user->lang('NUM_POSTS_IN_QUEUE', $member['posts_in_queue']),
 
 			'POSTS_DAY'			=> sprintf($user->lang['POST_DAY'], $posts_per_day),
